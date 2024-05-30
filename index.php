@@ -20,7 +20,9 @@
     <title>Gran Hotel</title>
 </head>
 <body class="p-0 m-0">
-    <?php require_once './auxiliares/header.php'?>
+    <?php
+    require 'creacionTablas.php';
+    require_once './auxiliares/header.php'?>
     <main>
         <section class="flex flex-wrap justify-center md:justify-between p-6">
             <div data-aos="fade-right" class="md:w-4/6 text-xl md:px-16 lg:px-32 lg:justify-center lg:text-center lg:items-center flex">

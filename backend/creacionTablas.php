@@ -4,13 +4,13 @@ require 'conexionBD.php';
 
  $query_usuarios = 'CREATE TABLE IF NOT EXISTS usuarios (
    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
-   nombre VARCHAR(255) NOT NULL CHECK (nombre <> ''),
-   apellidos VARCHAR(255) NOT NULL CHECK (apellidos <> ''),
+   nombre VARCHAR(255) NOT NULL ¡,
+   apellidos VARCHAR(255) NOT NULL,
    dni CHAR(9) NOT NULL,
    email VARCHAR(255) NOT NULL,
    contrasena VARCHAR(255) NOT NULL CHECK (LENGTH(contrasena) >= 5),
    tarjeta_credito CHAR(16) NOT NULL,
-   rol ENUM("anónimo", "cliente", "recepcionista", "administrador") NOT NULL,
+   rol ENUM("anónimo", "cliente", "recepcionista", "administrador") NOT NULL DEFAULT "cliente",
    UNIQUE (dni),
    UNIQUE (email));';
 
@@ -29,8 +29,11 @@ $query_reservas = 'CREATE TABLE IF NOT EXISTS reservas (
    );';
 
 $query_habitaciones = 'CREATE TABLE IF NOT EXISTS habitaciones (
-   id_habitacion VARCHAR(255) PRIMARY KEY,
+   id_habitacion INT AUTO_INCREMENT PRIMARY KEY,
+   nombre VARCHAR(255) NOT NULL,
    precio INT NOT NULL, 
    capacidad INT NOT NULL,
    descripcion text,
-   fotos INT NOT NULL);'
+   estado ENUM ("OCUPADA","LIBRE"),
+   fotos INT NOT NULL
+   );';

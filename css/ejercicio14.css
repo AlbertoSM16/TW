@@ -1,0 +1,47 @@
+.bg-color-dorado{
+    background-color: #D4AF37;
+}
+
+.bg-color-azul-marino{
+    background-color: #002B5C;
+}
+
+.bg-color-gris-carbon{
+    background-color: #36454F;
+}
+
+.bg-color-gris-crema{
+    background-color: #F5F5DC;
+}
+
+.bg-color-bronce-metalico{
+    background-color: #CD7F32;
+}
+
+.color-azul-marino{
+    color: #002B5C;
+}
+
+.color-gris-carbon{
+    color: #36454F;
+}
+
+.color-gris-crema{
+    color: #F5F5DC;
+}
+
+.color-bronce-metalico{
+    color: #CD7F32;
+}
+
+.color-dorado{
+    color: #D4AF37;
+}
+
+.border-azul-marino{
+    border-bottom: solid 2px #002B5C;
+}
+
+.fondo-gradiente{
+    background-image: linear-gradient(to bottom, white, #002B5C);
+}

@@ -28,9 +28,20 @@ function selectUsuarios(){
 }
 
 
-function deleteClient(){
+function deleteClient($id){
+    
 
-}
+    $query_delete = 'DELETE FROM usuarios WHERE id_usuario = '.$id.' AND rol = "cliente" ';
+    try{
+        $stmt = $pdo->prepare($query_select);
+
+        $stmt->execute();
+        
+    }catch (Exception $e){
+        echo "Error: " . $e->getMessage();
+
+    }
+    
 
 $query_delete = 'DELETE FROM usuarios WHERE id_usuario = :id AND rol = "cliente" ';
 

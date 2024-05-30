@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!--
+    Colores:
+    Dorado -> #D4AF37
+    Azul Marino Produndo -> #002B5C
+    Gris Carbón -> #36454F
+    Blanco Crema -> #F5F5DC
+    Bronce Metálico -> #CD7F32
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/ejercicio14.css">
+    <script src="https://kit.fontawesome.com/eee8b9a576.js" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>Gran Hotel</title>
+</head>
+<body class="p-0 m-0">
+    <header class="flex bg-color-gris-crema justify-between items-center border-azul-marino">
+        <section data-aos="fade-up-right" class="w-1/6 h-1/6">
+            <a  href="ejercicio14presentacion.html"><img src="img/granHotel/granHotelLogo.png" class="object-cover"></a>
+        </section>
+
+        <h1 class="text-3xl font-bold color-dorado lg:hidden">EL Gran Hotel</h1>
+
+        <i class="fa-solid fa-bars lg:hidden px-10 text-3xl color-dorado" onclick="toggleMenu()"></i>
+
+        <nav class="hidden lg:flex px-10" id="navbar">
+            <ul class="flex">
+                <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="reservas.html" class="p-6 text-3xl color-dorado ">Reservas</a></li>
+                <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="habitaciones.html" class="p-6 text-3xl color-dorado ">Habitaciones</a></li>
+                <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="registro.html" class="p-6 text-3xl color-dorado ">Registro</a></li>
+                <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="servicios.html" class="p-6 text-3xl color-dorado font-bold">Servicios</a></li>
+            </ul> 
+        </nav>
+    </header>
+
+    <main class="flex justify-center w-full">
+        <div class="lg:w-3/6 p-6">
+            <section data-aos="fade-left" class="flex justify-between h-64 bg-color-azul-marino mt-20 p-5 color-gris-crema">
+                <img src="img/granHotel/servicios/recepcion.png" alt="" class="object-cover">
+                <div class="flex items-center text-3xl font-bold">
+                    <h2>Recepción 24 H</h2>
+                </div>
+            </section >
+
+            <section data-aos="fade-right" class="flex justify-between h-64 bg-color-azul-marino mt-20 p-5 color-gris-crema">
+                <div class="flex items-center text-3xl font-bold">
+                    <h2>Parking gratuito</h2>
+                </div>
+                <img src="img/granHotel/servicios/parking.png" alt="" class="object-cover">
+            </section>
+
+            <section data-aos="fade-left" class="flex justify-between h-64 bg-color-azul-marino mt-20 p-5 color-gris-crema">
+                <img src="img/granHotel/servicios/restaurante.png" alt="" class="object-cover">
+                <div class="flex items-center text-3xl font-bold">
+                    <h2>Restaurante dentro del hotel</h2>
+                </div>
+            </section>
+
+            <section data-aos="fade-right" class="flex justify-between h-64 bg-color-azul-marino mt-20 p-5 color-gris-crema">
+                <div class="flex items-center text-3xl font-bold">
+                    <h2>Spa y piscina aclimatadas</h2>
+                </div>
+                <img src="img/granHotel/servicios/spa.png" alt="" class="object-cover">
+            </section>
+
+            <section data-aos="fade-left" class="flex justify-between h-64 bg-color-azul-marino mt-20 p-5 color-gris-crema">
+                <img src="img/granHotel/servicios/gimnasio.png" alt="" class="object-cover">
+                <div class="flex items-center text-3xl font-bold">
+                    <h2>Gimnasio y zona de deportes</h2>
+                </div>
+            </section>
+
+            <section data-aos="fade-right" class="flex justify-between h-64 bg-color-azul-marino mt-20 p-5 color-gris-crema">
+                <div class="flex items-center text-3xl font-bold">
+                    <h2>Servicio de habitaciones</h2>
+                </div>
+                <img src="img/granHotel/servicios/servicioHabitaciones.png" alt="" class="object-cover">
+            </section>
+        </div>
+    </main>
+
+    <footer class="grid p-10 bg-color-azul-marino pt-20 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 color-gris-crema">
+        <section class="flex flex-col justify-center items-start">
+            <h3 class="text-3xl font-bold">Contáctanos</h3>
+            <p>Teléfono +34 123456789 <i class="fa-solid fa-phone px-3 pt-6"></i></p>
+            <a href="">Instagram <i class="fa-brands fa-instagram px-3"></i></a>
+            <a href="">Facebook<i class="fa-brands fa-square-facebook px-3"></i></a>
+            <a href="">Gmail<i class="fa-regular fa-envelope px-3"></i></a>
+        </section>
+
+        <section class="flex flex-col text-center">
+            <h3 class="text-3xl font-bold">Copyright</h3>
+            <p class="pt-6"> &copy; 2024 El Gran Hotel. Todos los derechos reservados.</p>
+        </section>
+
+        <section class="flex flex-col text-right">
+            <h3 class="text-3xl font-bold">Dirección</h3>
+            <p class="pt-6">El Gran Hotel <br>
+                Avenida del Sol, No. 50<br>
+                Playa Dorada, 08020<br>
+                Ciudad del Mar, España</p>
+        </section>
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+</body>
+</html>

@@ -3,13 +3,17 @@
 <header class="border-azul-marino bg-color-gris-crema">
 
     <?php 
-
-        require 'backend/creacionTablas.php';
-        require 'backend/CRUDUsuarios.php';
+        require './backend/creacionTablas.php';
+        require './backend/CRUDUsuarios.php';
+        require './backend/funcionesLogin.php';
         creaTablas();
         if(!isset($_POST['Registrase'])){
             registrarUsuario();
         }
+        if(!isset($_POST['Sign In'])){
+            $logged=login();
+        }
+        
 
 ?>
     <section class="flex justify-between items-center">
@@ -29,9 +33,13 @@
             </ul>
 
             <section class="lg:top-14 right-14 color-gris-crema font-bold absolute hidden md:block">
-                <?php if(!isset($esta_en_sesion)):?>
-                    <button class="bg-color-azul-marino py-2 px-4 rounded border-white border-2 animate-pulse"><a href="sesion.php">Iniciar Sesión</a></button>
-                <?php endif;?>
+                <?php 
+                
+                    if(!$logged){
+                        echo '<button class="bg-color-azul-marino py-2 px-4 rounded border-white border-2 animate-pulse"><a href="SignIn.php">Iniciar Sesión</a></button>';
+                    }
+                ?>
+                
             </section>
 
         </nav>

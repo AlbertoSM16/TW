@@ -3,7 +3,7 @@
 
 function creaTablas(){
    require 'conexionBD.php';
-   
+
    $query_usuarios = 'CREATE TABLE IF NOT EXISTS usuarios (
       id_usuario INT AUTO_INCREMENT PRIMARY KEY,
       nombre VARCHAR(255) NOT NULL ,

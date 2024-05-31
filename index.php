@@ -21,8 +21,6 @@
 </head>
 <body class="p-0 m-0">
     <?php
-    require 'backend/creacionTablas.php';
-    require 'backend/CRUDUsuarios.php';
     require_once './auxiliares/header.php';
     
     

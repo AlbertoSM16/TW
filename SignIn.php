@@ -1,6 +1,3 @@
-<?php
-    $esta_en_sesion = 'hola';
-?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -19,15 +16,15 @@
     <?php require_once './auxiliares/header.php'?>
     <main>
         <section class="flex justify-center p-6">
-            <form action="" class="grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl">
+            <form action="index.php" method='POST' class="grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl">
                 <label for="name" class="col-span-1 pr-3 pt-6">Email:</label>
-                <input type="text" name="" placeholder="Escriba su email" class="mt-6 col-span-2 border-2 border-black color-azul-marino">
+                <input type="text" name="email" placeholder="Escriba su email" class="mt-6 col-span-2 border-2 border-black color-azul-marino">
 
                 <label for="name" class="col-span-1 pr-3 pt-6">Contraseña:</label>
-                <input type="password" name="" id="" placeholder="Escriba su contraseña" class="mt-6 col-span-2 border-2 border-black color-azul-marino">
+                <input type="password" name="contrasena" id="" placeholder="Escriba su contraseña" class="mt-6 col-span-2 border-2 border-black color-azul-marino">
 
                 <div class="text-center col-span-3 justify-center items-center  w-full pt-32">
-                    <button type="submit" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse">Enviar</button>
+                    <button type='submit' value="Sign In" type="submit" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse">Iniciar Sesion</button>;
                 </div>
 
                 <section class="text-center col-span-3 justify-center items-center  w-full pt-10 text-3xl">

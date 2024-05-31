@@ -1,10 +1,12 @@
 <?php
 
-require 'conexionBD.php';
+
 function creaTablas(){
+   require 'conexionBD.php';
+   
    $query_usuarios = 'CREATE TABLE IF NOT EXISTS usuarios (
       id_usuario INT AUTO_INCREMENT PRIMARY KEY,
-      nombre VARCHAR(255) NOT NULL ¡,
+      nombre VARCHAR(255) NOT NULL ,
       apellidos VARCHAR(255) NOT NULL,
       dni CHAR(9) NOT NULL,
       email VARCHAR(255) NOT NULL,
@@ -14,9 +16,9 @@ function creaTablas(){
       UNIQUE (dni),
       UNIQUE (email));';
    
-   $stmt = $pdo->prepare($query_usuarios);
+      $stmt = $conn->prepare($query_usuarios);
 
-   $stmt->execute();
+      $stmt->execute();
 
    $query_habitaciones = 'CREATE TABLE IF NOT EXISTS habitaciones (
       id_habitacion INT AUTO_INCREMENT PRIMARY KEY,
@@ -27,9 +29,10 @@ function creaTablas(){
       estado ENUM ("OCUPADA","LIBRE"),
       fotos INT NOT NULL
       );';
-       $stmt = $pdo->prepare($query_habitaciones);
-   
-       $stmt->execute();
+
+      $stmt = $conn->prepare($query_habitaciones);
+      $stmt->execute();
+       
    $query_reservas = 'CREATE TABLE IF NOT EXISTS reservas (
       id_reserva INT AUTO_INCREMENT PRIMARY KEY,
       id_cliente INT NOT NULL,
@@ -42,9 +45,10 @@ function creaTablas(){
       FOREIGN KEY (id_cliente) REFERENCES usuarios(id_usuario),
       FOREIGN KEY (id_habitacion) REFERENCES habitaciones(id_habitacion)
       );';
-       $stmt = $pdo->prepare($query_reservas);
 
-       $stmt->execute();ç
+      $stmt = $conn->prepare($query_reservas);
+
+      $stmt->execute();
 
       
 

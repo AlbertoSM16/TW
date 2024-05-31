@@ -6,7 +6,7 @@ function selectUsuarios(){
 
     $query_select = 'SELECT nombre, apellidos, email, dni FROM usuarios WHERE rol = "cliente"';
     
-    $stmt = $pdo->prepare($query_select);
+    $stmt = $con->prepare($query_select);
 
     $stmt->execute();
 

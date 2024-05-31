@@ -6,7 +6,7 @@ function selectUsuarios(){
 
     $query_select = 'SELECT nombre, apellidos, email, dni FROM usuarios WHERE rol = "cliente"';
     
-    $stmt = $con->prepare($query_select);
+    $stmt = $conn->prepare($query_select);
 
     $stmt->execute();
 
@@ -33,7 +33,7 @@ function deleteClient($id){
 
     $query_delete = 'DELETE FROM usuarios WHERE id_usuario = '.$id.' AND rol = "cliente" ';
     try{
-        $stmt = $pdo->prepare($query_select);
+        $stmt = $conn->prepare($query_select);
 
         $stmt->execute();
         
@@ -41,13 +41,36 @@ function deleteClient($id){
         echo "Error: " . $e->getMessage();
 
     }
+}
+   
     
+    function registrarUsuario(){
+
+        require 'conexionBD.php';
+
+        $query_insert= 'INSERT INTO usuarios (nombre, apellidos, dni, email, contrasena, tarjeta_credito) 
+        VALUES (:nombre, :apellidos, :dni, :email, :contrasena, :tarjeta_credito);';
+          
+
+        try {
+            $stament = $conn->prepare($query_insert);
+            $stament->bindParam(':nombre',$_POST['nombre']);
+            $stament->bindParam(':apellidos',$_POST['apellidos']);
+            $stament->bindParam(':email',$_POST['email']);
+            $stament->bindParam(':dni',$_POST['dni']);
+            $stament->bindParam(':contrasena',$_POST['contrasena']);
+            $stament->bindParam(':tarjeta_credito',$_POST['tarjeta_credito']);
+
+            $stament->execute();
+        }catch (Exception $e){
+            echo "Error: " .$e->getMessage();
+        }
+        
+    }
 
 $query_delete = 'DELETE FROM usuarios WHERE id_usuario = :id AND rol = "cliente" ';
 
 $query_update = 'UPDATE usuarios SET nombre = :nombre, apellidos = :apellidos, dni = :dni, email = :email, tarjeta_credito = :tarjeta_credito
  WHERE id_usuario = :id_usuario;';
 
-$query_update = 'INSERT INTO usuarios (nombre, apellidos, dni, email, contrasena, tarjeta_credito) 
-VALUES (:nombre, :apellidos, :dni, :email, :contrasena, :tarjeta_credito);';
 

@@ -1,4 +1,17 @@
+
+
 <header class="border-azul-marino bg-color-gris-crema">
+
+    <?php 
+
+        require 'backend/creacionTablas.php';
+        require 'backend/CRUDUsuarios.php';
+        creaTablas();
+        if(!isset($_POST['Registrase'])){
+            registrarUsuario();
+        }
+
+?>
     <section class="flex justify-between items-center">
         <section data-aos="fade-up-right" class="w-1/6 h-1/6">
             <a  href="index.php"><img src="img/granHotel/granHotelLogo.png" class="object-cover"></a>

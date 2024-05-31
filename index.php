@@ -22,8 +22,10 @@
 <body class="p-0 m-0">
     <?php
     require 'backend/creacionTablas.php';
+    require 'backend/CRUDUsuarios.php';
     require_once './auxiliares/header.php';
-    creaTablas();
+    
+    
     ?>
     <main>
         <section class="flex flex-wrap justify-center md:justify-between p-6">

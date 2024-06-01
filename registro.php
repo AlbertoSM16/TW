@@ -39,7 +39,7 @@
                 <div class="flex col-span-3 flex-col">
                     <div class='w-full flex text-center  justify-between items-center '>
                         <label for="name" class=" pr-3 pt-6">Apellidos:</label>
-                        <input type="password" name="registro" id="" placeholder="Escriba sus apellidos" class="mt-6 border-2 border-black color-azul-marino">
+                        <input type="text" name="registro" id="" placeholder="Escriba sus apellidos" class="mt-6 border-2 border-black color-azul-marino">
                     </div>
                     <div class="w-64 flex justify-between">
                         <p class="text-red-600 hidden" name="error">Los apellidos no pueden estar vacíos</p>
@@ -104,7 +104,6 @@
     </main>
 
     <?php require_once './auxiliares/footer.php'?>
-
     <script src="./js/registro.js" defer></script>
 
 </body>

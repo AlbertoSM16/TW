@@ -77,9 +77,10 @@
             
             <aside class="lg:w-1/6 lg:fixed lg:right-0 z-0">
                 <ul class="p-6 color-azul-marino">
+                    <li class="font-bold text-xl pt-3"><a href="./registro_habitaciones.php">Registrar habitación</a></li>
                     <li class="font-bold text-xl">Camas
                         <ul class="font-normal text-lg ml-6">
-                            <li><a href="">De matrimonio</a></li>
+                            <li><a href="">De matrimonio</a></li>w
                             <li><a href="">Individuales</a></li>
                         </ul>
                     </li>

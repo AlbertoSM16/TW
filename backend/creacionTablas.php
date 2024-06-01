@@ -25,9 +25,9 @@ function creaTablas(){
       nombre VARCHAR(255) NOT NULL,
       precio INT NOT NULL, 
       capacidad INT NOT NULL,
-      descripcion text,
-      estado ENUM ("OCUPADA","LIBRE"),
-      fotos INT NOT NULL
+      descripcion TEXT,
+      estado ENUM("OCUPADA", "LIBRE"),
+      fotos INT DEFAULT 0
       );';
 
       $stmt = $conn->prepare($query_habitaciones);
@@ -50,7 +50,17 @@ function creaTablas(){
 
       $stmt->execute();
 
-      
+   $query_fotos = 'CREATE TABLE IF NOT EXISTS fotos_habitaciones (
+      id_foto INT AUTO_INCREMENT PRIMARY KEY,
+      id_habitacion INT NOT NULL,
+      foto varchar(255) NOT NULL,
+      FOREIGN KEY (id_habitacion) REFERENCES habitaciones(id_habitacion) ON DELETE CASCADE
+      );';
+
+   $stmt = $conn->prepare($query_fotos);
+
+   $stmt->execute();
+
 
 }
  

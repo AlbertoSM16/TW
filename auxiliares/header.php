@@ -13,20 +13,32 @@
         <i class="fa-solid fa-bars lg:hidden px-10 text-3xl color-dorado"></i>
         
         <?php 
+            session_start();
              require './backend/creacionTablas.php';
              require './backend/CRUDUsuarios.php';
              require './backend/funcionesLogin.php';
              require 'navs.php';
              creaTablas();
-             
-            if(!isset($_POST['sign_in'])){
-                $logged=login();
+            
+            if (isset($_POST['sign_in'])) {
+                login();
+            } elseif (isset($_POST['Registrarse'])) {
+                registrarUsuario();
             }
-            if($_SESSION['datosUsuario']['rol']==='recepcionista'){
-                navRecepcionista();
-            }else if($_SESSION['datosUsuario']['rol'] === 'cliente'){
-                navCliente();
-            }else{
+            if(isset($_POST['cerrar_sesion'])){
+                    
+                cerrarSesion();
+            }
+            if(isLogged()){
+                if(esRecepcionista()){
+                    navRecepcionista();
+                }else if(esCliente()){
+                    navCliente();
+                }else{
+                    navAnonimo();
+                }
+            }
+            if(!isLogged()){
                 navAnonimo();
             }
         ?>

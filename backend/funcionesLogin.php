@@ -3,7 +3,6 @@
 function login(){
     require 'conexionBD.php';
 
-    session_start();
     if($_SERVER["REQUEST_METHOD"]==="POST"){
         
         $email=$_POST['email'];
@@ -27,10 +26,21 @@ function login(){
         return false;
     }
 }
-
+function isLogged(){
+    return isset($_SESSION['datosUsuario']);
+}
 function esRecepcionista(){
 
     if($_SESSION['datosUsuario']['rol']=="recepcionista"){
+        return true;
+    }
+       return false;
+    
+}
+
+function esCliente(){
+
+    if($_SESSION['datosUsuario']['rol']=="cliente"){
         return true;
     }
        return false;

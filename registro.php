@@ -31,7 +31,7 @@
                         <label for="name" class=" pr-3">Nombre:</label>
                         <input type="text" name="registro" id="" placeholder="Escriba su nombre" class="border-2 border-black color-azul-marino">
                     </div>
-                    <div class="w-full flex justify-between">
+                    <div class="w-64 flex justify-between">
                         <p class="text-red-600 hidden" name="error">El nombre no puede estar vacío</p>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                         <label for="name" class=" pr-3 pt-6">Apellidos:</label>
                         <input type="password" name="registro" id="" placeholder="Escriba sus apellidos" class="mt-6 border-2 border-black color-azul-marino">
                     </div>
-                    <div class="w-full flex justify-between">
+                    <div class="w-64 flex justify-between">
                         <p class="text-red-600 hidden" name="error">Los apellidos no pueden estar vacíos</p>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                         <label for="name" class=" pr-3 pt-6">Contraseña:</label>
                         <input type="password" name="registro" id="" placeholder="Escriba su contraseña" class="mt-6 border-2 border-black color-azul-marino">
                     </div>
-                    <div class="w-full flex justify-between">
+                    <div class="w-64 flex justify-between">
                         <p class="text-red-600 hidden" name="error">Debe contener almenos 5 caracteres alfanuméricos</p>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                         <label for="name" class=" pr-3 pt-6">Repetir contraseña:</label>
                         <input type="password" name="registro" id="" placeholder="Repite la contraseña" class="mt-6 border-2 border-black color-azul-marino">
                     </div>
-                    <div class="w-full flex justify-between">
+                    <div class="w-64 flex justify-between">
                         <p class="text-red-600 hidden" name="error">Las contraseñas no coinciden</p>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                         <label for="name" class=" pr-3 pt-6">Email:</label>
                         <input type="text" name="registro" placeholder="Escriba su email" class="mt-6 border-2 border-black color-azul-marino">
                     </div>
-                    <div class="w-full flex justify-between">
+                    <div class="w-64 flex justify-between">
                         <p class="text-red-600 hidden" name="error">La dirección de correo no es válida</p>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                         <label for="name" class=" pr-3 pt-6">DNI:</label>
                         <input type="text" name="registro" placeholder="Escriba su DNI" class="mt-6 border-2 border-black color-azul-marino">
                     </div>
-                    <div class="w-full flex justify-between">
+                    <div class="w-64 flex justify-between">
                         <p class="text-red-600 hidden" name="error">DNI con formato incorrecto</p>
                     </div>
                 </div>
@@ -91,8 +91,8 @@
                         <label for="name" class=" pr-3 pt-6">Tarjeta de credito:</label>
                         <input type="text" name="registro" placeholder="Escriba su Tarjeta de credito" class="mt-6 border-2 border-black color-azul-marino">
                     </div>
-                    <div class="w-full flex justify-between">
-                        <p class="text-red-600 hidden" name="error">La tarjeta de crédito debe ser una secuencia de 16 dígitos consecutivos</p>
+                    <div class="w-64 flex justify-between">
+                        <p class="text-red-600 hidden break-words" name="error">La tarjeta de crédito debe ser una secuencia de 16 dígitos consecutivos</p>
                     </div>
                 </div>
 

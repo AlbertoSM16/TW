@@ -10,6 +10,7 @@
 
         <nav class="hidden lg:flex px-10 flex-col relative">
             <ul class="flex">
+                <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="index.php" class="p-6 text-3xl color-dorado ">Home</a></li>
                 <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="reservas.php" class="p-6 text-3xl color-dorado ">Reservas</a></li>
                 <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="habitaciones.php" class="p-6 text-3xl color-dorado ">Habitaciones</a></li>
                 <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="servicios.php" class="p-6 text-3xl color-dorado ">Servicios</a></li>

@@ -2,20 +2,7 @@
 
 <header class="border-azul-marino bg-color-gris-crema">
 
-    <?php 
-        require './backend/creacionTablas.php';
-        require './backend/CRUDUsuarios.php';
-        require './backend/funcionesLogin.php';
-        creaTablas();
-        if(!isset($_POST['Registrase'])){
-            registrarUsuario();
-        }
-        if(!isset($_POST['Sign In'])){
-            $logged=login();
-        }
-        
 
-?>
     <section class="flex justify-between items-center">
         <section data-aos="fade-up-right" class="w-1/6 h-1/6">
             <a  href="index.php"><img src="img/granHotel/granHotelLogo.png" class="object-cover"></a>
@@ -24,25 +11,27 @@
         <h1 class="text-3xl font-bold color-dorado lg:hidden">EL Gran Hotel</h1>
 
         <i class="fa-solid fa-bars lg:hidden px-10 text-3xl color-dorado"></i>
+        
+        <?php 
+             require './backend/creacionTablas.php';
+             require './backend/CRUDUsuarios.php';
+             require './backend/funcionesLogin.php';
+             require 'navs.php';
+             creaTablas();
+             
+            if(!isset($_POST['sign_in'])){
+                $logged=login();
+            }
+            if($_SESSION['datosUsuario']['rol']==='recepcionista'){
+                navRecepcionista();
+            }else if($_SESSION['datosUsuario']['rol'] === 'cliente'){
+                navCliente();
+            }else{
+                navAnonimo();
+            }
+        ?>
 
-        <nav class="hidden lg:flex px-10 flex-col relative">
-            <ul class="flex">
-                <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="reservas.php" class="p-6 text-3xl color-dorado ">Reservas</a></li>
-                <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="habitaciones.php" class="p-6 text-3xl color-dorado ">Habitaciones</a></li>
-                <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="servicios.php" class="p-6 text-3xl color-dorado ">Servicios</a></li>
-            </ul>
-
-            <section class="lg:top-14 right-14 color-gris-crema font-bold absolute hidden md:block">
-                <?php 
-                
-                    if(!$logged){
-                        echo '<button class="bg-color-azul-marino py-2 px-4 rounded border-white border-2 animate-pulse"><a href="SignIn.php">Iniciar Sesión</a></button>';
-                    }
-                ?>
-                
-            </section>
-
-        </nav>
+    
         
     </section>
 

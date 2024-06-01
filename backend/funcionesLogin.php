@@ -20,7 +20,6 @@ function login(){
 
     if($stament->rowCount()==1){
             $usuario_log=$stament->fetch(PDO::FETCH_ASSOC);
-
             $_SESSION['datosUsuario']=$usuario_log;    
             return true;
            

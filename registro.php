@@ -44,7 +44,7 @@
         <label for="tarjeta_credito">Tarjeta de Crédito:</label><br>
         <input type="text" id="tarjeta_credito" name="tarjeta_credito" maxlength="16" required><br><br>
 
-        <input type="submit" value="Registrarse">
+        <input type="submit" value="Registrarse" name="Registrarse">
     </form>
     </main>
 

@@ -22,6 +22,10 @@
 <body class="p-0 m-0">
     <?php
     require_once './auxiliares/header.php';
+
+    if(isset($_POST['Registrarse'])){
+        registrarUsuario();
+    }
     
     
     ?>

@@ -39,6 +39,15 @@ function esRecepcionista(){
     
 }
 
+function esAdministrador(){
+
+    if($_SESSION['datosUsuario']['rol']=="administrador"){
+        return true;
+    }
+       return false;
+    
+}
+
 function esCliente(){
 
     if($_SESSION['datosUsuario']['rol']=="cliente"){

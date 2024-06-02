@@ -4,9 +4,10 @@ function mostrarInfoHabitacion($id,$fotos){
 
     require 'conexionBD.php';
 
-    $query_select = 'SELECT * FROM habitaciones WHERE "id" = '.$id.';';
+    $query_select = 'SELECT * FROM habitaciones WHERE "id" = :id;';
 
     $stmt = $conn->prepare($query_select);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
     $stmt->execute();
 
@@ -21,7 +22,9 @@ function mostrarInfoHabitacion($id,$fotos){
     
 }
 
+
 function insertar_habitacion($nombre, $precio, $capacidad, $descripcion, $estado, $num_fotos) {
+
     require 'conexionBD.php';
     try {
         // Comenzar una transacción
@@ -73,22 +76,70 @@ function insertar_habitacion($nombre, $precio, $capacidad, $descripcion, $estado
 
 function filtrarHabitaciones($pax){
 
-    $query = 'SELECT * FROM habitaciones where "capacidad"='.$pax.';';
-    
+    $query = 'SELECT * FROM habitaciones where "capacidad"=:pax;';
+   
     $stmt = $conn->prepare($query_select);
+
+    $stmt->bindParam(':pax', $pax, PDO::PARAM_INT);
 
     $stmt->execute();
 
     $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    return $resultados;
+    foreach($resultados as $hab){
+        echo'<figure class="text-center bg-color-bronce-metalico rounded-sm">';
+        foreach($fotos as $foto){
+            echo '<img src="./img/granHotel/habitaciones/'.$foto.'" alt="" class="p-3">';
+        }
+        echo '<figcaption class="p-3 color-azul-marino font-bold text-xl">'.$hab[$nombre].'</figcaption>
+        </figure>';
+    }
 
 }
 
+function mostrarHabitaciones(){
+    
+    require 'conexionBD.php';
+
+    $query_select = 'SELECT * FROM habitaciones;';
+
+    $stmt = $conn->prepare($query_select);
+
+    $stmt->execute();
+
+
+    $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $fotos = obtenerFotos();
+    foreach($resultados as $hab){
+        echo'<figure class="text-center bg-color-bronce-metalico rounded-sm">';
+        foreach($fotos as $foto){
+            echo '<img src="./img/granHotel/habitaciones/'.$foto['url'].'" alt="" class="p-3">';
+        }
+        echo '<figcaption class="p-3 color-azul-marino font-bold text-xl"><a href="habitacion.php?id='.$hab['id'].'">'.$hab['nombre'].'</figcaption>
+        </figure>';
+    }
+    
+}
+
+function eliminarHabitacion($id){
+
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    
+    $stmt->execute();
+    
+    if ($stmt->rowCount() > 0) {
+        echo "La habitación ha sido eliminada correctamente.";
+    } else {
+        alert("No es posible eliminar la habitación porque está ocupada");
+    }
+
+}
 function obtenerFotos($id){
 
-    $query= 'SELECT "url" FROM fotos_habitaciones WHERE "id_habitacion"='.$id.';';  
-    
+    $query= 'SELECT "url" FROM fotos_habitaciones WHERE "id_habitacion"=id;';
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
     $stmt = $conn->prepare($query_select);
 
     $stmt->execute();

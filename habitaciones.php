@@ -38,7 +38,8 @@
                 <?php 
                     if(isset($_GET['pax'])){
                         $pax=$_GET['pax'];
-                        $habitaciones = mostrarHabitaciones();
+                        $habitaciones = filtrarHabitaciones($pax);
+                        
                     }
 
                     if(isset($_POST['aniadirHabitacion'])){

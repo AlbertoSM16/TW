@@ -1,6 +1,7 @@
 <?php 
 
-function mostrarHabitaciones(){
+function mostrarInfoHabitacion($id){
+
     require 'conexionBD.php';
 
     $query_select = 'SELECT nombre,precio,capacidad,estado FROM habitaciones';

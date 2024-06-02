@@ -36,6 +36,7 @@ function mostrarHabitaciones(){
 
 
 }
+
 function insertar_habitacion($nombre, $precio, $capacidad, $descripcion, $estado, $fotos) {
     require 'conexionBD.php';
     try {

@@ -19,8 +19,8 @@
              require './backend/funcionesLogin.php';
              require 'navs.php';
              creaTablas();
+
              if(isset($_POST['cerrar_sesion'])){
-                    
                 cerrarSesion();
             }
             if (isset($_POST['sign_in'])) {
@@ -42,8 +42,7 @@
             if(!isLogged()){
                 navAnonimo();
             }
-
-            
+        
         ?>
        
     </section>

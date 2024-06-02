@@ -46,7 +46,9 @@
                     if(isset($_POST['aniadirHabitacion'])){
                         aniadirHabitacion();
                     }
-            
+
+
+                    //mostrarHabitaciones();
 
                 ?>
 

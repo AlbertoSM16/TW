@@ -1,21 +1,24 @@
+console.log("hola");
+
 document.addEventListener('DOMContentLoaded', function () {
     const errores = document.getElementsByName('error');
-    const inputs = document.getElementsByName('registro');
+    const inputs = document.querySelectorAll('input[type="text"], input[type="password"]');
     const boton = document.getElementById('boton');
 
+    // Inicialmente deshabilitar el botón de enviar
     boton.disabled = true;
 
     inputs.forEach((input, index) => {
         input.addEventListener('blur', function () {
-            validarInput(input, errores[index], inputs);
-            validarFormulario(inputs);
+            validarInput(input, errores[index]);
+            validarFormulario();
         });
     });
 
-    function validarInput(input, errorElem, errores) {
+    function validarInput(input, errorElem) {
         let valor = input.value;
         let esValido = false;
-        let valorContrasenia = errores[2].value; 
+        const contrasena = document.getElementById('contrasena').value;
 
         switch (input.placeholder) {
             case "Escriba su nombre":
@@ -27,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 break;
 
             case "Repite la contraseña":
-                esValido = (valor == valorContrasenia);
+                esValido = (valor === contrasena);
                 break;
 
             case "Escriba su email":
@@ -53,13 +56,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function validarFormulario(errores) {
+    function validarFormulario() {
         let formularioValido = true;
 
         inputs.forEach((input, index) => {
             let valor = input.value;
             let esValido = false;
-            let valorContrasenia = errores[2].value; 
+            const contrasena = document.getElementById('contrasena').value;
     
             switch (input.placeholder) {
                 case "Escriba su nombre":
@@ -71,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     break;
     
                 case "Repite la contraseña":
-                    esValido = (valor == valorContrasenia);
+                    esValido = (valor === contrasena);
                     break;
     
                 case "Escriba su email":
@@ -99,4 +102,4 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-
+console.log("hola");

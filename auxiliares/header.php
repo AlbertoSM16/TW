@@ -19,16 +19,16 @@
              require './backend/funcionesLogin.php';
              require 'navs.php';
              creaTablas();
-            
+             if(isset($_POST['cerrar_sesion'])){
+                    
+                cerrarSesion();
+            }
             if (isset($_POST['sign_in'])) {
                 login();
             } elseif (isset($_POST['Registrarse'])) {
                 registrarUsuario();
             }
-            if(isset($_POST['cerrar_sesion'])){
-                    
-                cerrarSesion();
-            }
+            
             if(isLogged()){
                 if(esRecepcionista()){
                     navRecepcionista();

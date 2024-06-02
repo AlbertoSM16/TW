@@ -15,7 +15,7 @@
 
     <main>
         <section class="flex justify-center p-6">
-            <form action="" class="grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center"  enctype="multipart/form-data">
+            <form action="habitaciones.php" method="POST" class="grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center"  enctype="multipart/form-data">
                 <div class="flex col-span-3 flex-col">
                     <div class='w-full flex text-center  justify-between items-center '>
                         <label for="habitacion" class=" pr-3">Número de habitación:</label>
@@ -59,12 +59,12 @@
                 <div class="flex col-span-3 flex-col">
                     <div class='w-full flex text-center  justify-between items-center '>
                         <label for="name" class=" pr-3 pt-6">Fotografías:</label>
-                        <input type="file" name="fileToUpload" id="fileToUpload" class="mt-6">
+                        <input type="file" name="filesToUpload[]" id="fileToUpload" class="mt-6" multiple>
                     </div>
                 </div>
 
                 <div class="text-center col-span-3 justify-center items-center  w-full pt-16">
-                    <button type="submit" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton">Enviar</button>
+                    <button type="submit" name="aniadirHabitacion" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton">Enviar</button>
                 </div>
             </form>
         </section>

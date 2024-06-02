@@ -24,7 +24,7 @@
                 <input type="password" name="contrasena" id="" placeholder="Escriba su contraseña" class="mt-6 col-span-2 border-2 border-black color-azul-marino">
 
                 <div class="text-center col-span-3 justify-center items-center  w-full pt-32">
-                    <input type='submit' value="Iniciar Sesion" name="sign_in" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse">
+                    <button type='submit' name="sign_in" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse">Iniciar Sesion</button>
                 </div>
 
                 <section class="text-center col-span-3 justify-center items-center  w-full pt-10 text-3xl">

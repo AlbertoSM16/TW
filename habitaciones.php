@@ -1,3 +1,10 @@
+<?php
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -28,21 +35,32 @@
             
             <section class="lg:w-5/6 grid grid-cols-2 md:grid-cols-3 gap-6 p-6">
                 
-               
+                <?php 
+                    if(isset($_GET['pax'])){
+                        $pax=$_GET['pax'];
+                        $habitaciones = mostrarHabitaciones();
+                    }
+
+                    if(isset($_POST['aniadirHabitacion'])){
+
+                        aniadirHabitacion();
+                    }
+
+
+                    mostrarHabitaciones();
+
+                ?>
+
+    
             </section>
             
             <aside class="lg:w-1/6 lg:fixed lg:right-0 z-0">
                 <ul class="p-6 color-azul-marino">
-                    <?php 
-                        if(esRecepcionista()){
-                            
-                            echo '<li class="font-bold text-xl pt-3"><a href="./registro_habitaciones.php">Registrar habitación</a></li>';
-                        }
-                    ?>
+                    <li class="font-bold text-xl pt-3"><a href="./registro_habitaciones.php">Registrar habitación</a></li>
                     <li class="font-bold text-xl">Camas
                         <ul class="font-normal text-lg ml-6">
-                            <li><a href="">De matrimonio</a></li>w
-                            <li><a href="">Individuales</a></li>
+                            <li><a href="habitaciones.php?pax=2" >De matrimonio</a></li>w
+                            <li><a href="habitaciones.php?pax=1">Individuales</a></li>
                         </ul>
                     </li>
                     

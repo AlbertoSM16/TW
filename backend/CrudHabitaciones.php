@@ -18,7 +18,7 @@ function mostrarInfoHabitacion($id,$fotos){
 
         echo '<figcaption class="p-3 color-azul-marino font-bold text-xl">'.$hab[$nombre].'</figcaption>
         </figure>';
-    }
+    
 }
 
 function insertar_habitacion($nombre, $precio, $capacidad, $descripcion, $estado, $fotos) {

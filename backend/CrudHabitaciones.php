@@ -1,18 +1,15 @@
 <?php 
 
-function mostrarInfoHabitacion($id){
+function mostrarInfoHabitacion($id,$fotos){
 
     require 'conexionBD.php';
 
-    $query_select = 'SELECT nombre,precio,capacidad,estado FROM habitaciones';
+    $query_select = 'SELECT * FROM habitaciones WHERE "id" = '.$id.';';
 
     $stmt = $conn->prepare($query_select);
 
     $stmt->execute();
 
-    $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-    foreach($resultados as $hab){
         echo'<figure class="text-center bg-color-bronce-metalico rounded-sm">';
         
         foreach($fotos as $foto){

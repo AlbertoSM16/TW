@@ -1,3 +1,9 @@
+<?php
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        
+    }
+?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -29,50 +35,23 @@
             
             <section class="lg:w-5/6 grid grid-cols-2 md:grid-cols-3 gap-6 p-6">
                 
-                <figure class="text-center bg-color-bronce-metalico rounded-sm">
-                    <img src="img/granHotel/habitacion1.png" alt="" class="p-3">
-                    <figcaption class="p-3 color-azul-marino font-bold text-xl">Habitación 1</figcaption>
-                </figure>
-     
-                <figure class="text-center bg-color-bronce-metalico rounded-sm">
-                    <img src="img/granHotel/habitacion1.png" alt="" class="p-3">
-                    <figcaption class="p-3 color-azul-marino font-bold text-xl">Habitación 1</figcaption>
-                </figure>
+                <?php 
+                    if(isset($_GET['pax'])){
+                        $pax=$_GET['pax'];
+                        $habitaciones = filtrarHabitaciones($pax);
+                        
+                    }
 
-                <figure class="text-center bg-color-bronce-metalico rounded-sm">
-                    <img src="img/granHotel/habitacion1.png" alt="" class="p-3">
-                    <figcaption class="p-3 color-azul-marino font-bold text-xl">Habitación 1</figcaption>
-                </figure>
+                    if(isset($_POST['aniadirHabitacion'])){
 
-                <figure class="text-center bg-color-bronce-metalico rounded-sm">
-                    <img src="img/granHotel/habitacion1.png" alt="" class="p-3">
-                    <figcaption class="p-3 color-azul-marino font-bold text-xl">Habitación 1</figcaption>
-                </figure>
+                        aniadirHabitacion();
+                    }
 
-                <figure class="text-center bg-color-bronce-metalico rounded-sm">
-                    <img src="img/granHotel/habitacion1.png" alt="" class="p-3">
-                    <figcaption class="p-3 color-azul-marino font-bold text-xl">Habitación 1</figcaption>
-                </figure>
 
-                <figure class="text-center bg-color-bronce-metalico rounded-sm">
-                    <img src="img/granHotel/habitacion1.png" alt="" class="p-3">
-                    <figcaption class="p-3 color-azul-marino font-bold text-xl">Habitación 1</figcaption>
-                </figure>
+                    mostrarHabitaciones();
 
-                <figure class="text-center bg-color-bronce-metalico rounded-sm">
-                    <img src="img/granHotel/habitacion1.png" alt="" class="p-3">
-                    <figcaption class="p-3 color-azul-marino font-bold text-xl">Habitación 1</figcaption>
-                </figure>
+                ?>
 
-                <figure class="text-center bg-color-bronce-metalico rounded-sm">
-                    <img src="img/granHotel/habitacion1.png" alt="" class="p-3">
-                    <figcaption class="p-3 color-azul-marino font-bold text-xl">Habitación 1</figcaption>
-                </figure>
-
-                <figure class="text-center bg-color-bronce-metalico rounded-sm">
-                    <img src="img/granHotel/habitacion1.png" alt="" class="p-3">
-                    <figcaption class="p-3 color-azul-marino font-bold text-xl">Habitación 1</figcaption>
-                </figure>
     
             </section>
             
@@ -81,8 +60,8 @@
                     <li class="font-bold text-xl pt-3"><a href="./registro_habitaciones.php">Registrar habitación</a></li>
                     <li class="font-bold text-xl">Camas
                         <ul class="font-normal text-lg ml-6">
-                            <li><a href="">De matrimonio</a></li>
-                            <li><a href="">Individuales</a></li>
+                            <li><a href="habitaciones.php?pax=2" >De matrimonio</a></li>
+                            <li><a href="habitaciones.php?pax=1">Individuales</a></li>
                         </ul>
                     </li>
                     

@@ -1,40 +1,24 @@
 <?php 
 
+function mostrarInfoHabitacion($id,$fotos){
 
-
-function mostrarHabitaciones(){
     require 'conexionBD.php';
 
-    $query_select = 'SELECT nombre,precio,capacidad,estado FROM habitaciones';
+    $query_select = 'SELECT * FROM habitaciones WHERE "id" = '.$id.';';
 
     $stmt = $conn->prepare($query_select);
 
     $stmt->execute();
 
-    $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-    echo '<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-32">';
-
-    foreach($resultados as $hab){
-         echo'<section class="flex flex-col md:flex-row bg-color-gris-carbon p-6 color-gris-crema mt-10"> 
-                <section = class="flex flex-col">
-                    <p>Nombre:'.$hab["nombre"].' 101</p>
-                    <p>Capacidad:'.$hab["capacidad"].'</p>
-                    <p>Precio:'.$hab["precio"].'</p>
-                </section>
-
-        <section class="text-black p-10">';
-        if($hab["estado"]==="OCUPADA"){
-          echo ' <span class="border-2 border-black bg-red-500 inline p-3">Ocupada</span>';
-        }else{
-            echo '<span class="border-2 border-black bg-green-500 inline p-3">Libre</span>';
+        echo'<figure class="text-center bg-color-bronce-metalico rounded-sm">';
+        
+        foreach($fotos as $foto){
+            echo '<img src="./img/granHotel/habitaciones/'.$foto.'" alt="" class="p-3">';
         }
-        echo'</section>
-        </section>';
-    }
-    echo '</section>';
 
-
+        echo '<figcaption class="p-3 color-azul-marino font-bold text-xl">'.$hab[$nombre].'</figcaption>
+        </figure>';
+    
 }
 
 function insertar_habitacion($nombre, $precio, $capacidad, $descripcion, $estado, $fotos) {
@@ -83,7 +67,38 @@ function insertar_habitacion($nombre, $precio, $capacidad, $descripcion, $estado
         $conn->rollback();
         echo "Error al insertar la habitación: " . $e->getMessage();
     }
+
+    
 }
+
+function filtrarHabitaciones($pax){
+
+    $query = 'SELECT * FROM habitaciones where "capacidad"='.$pax.';';
+    
+    $stmt = $conn->prepare($query_select);
+
+    $stmt->execute();
+
+    $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $resultados;
+
+}
+
+function obtenerFotos($id){
+
+    $query= 'SELECT "url" FROM fotos_habitaciones WHERE "id_habitacion"='.$id.';'
+    
+    $stmt = $conn->prepare($query_select);
+
+    $stmt->execute();
+
+    $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $resultados;
+
+}
+
 
 
 

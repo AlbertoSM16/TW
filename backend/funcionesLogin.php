@@ -32,8 +32,10 @@ function isLogged(){
 
 function esRecepcionista(){
 
-    if($_SESSION['datosUsuario']['rol']=="recepcionista"){
-        return true;
+    if(isset($_SESSION['datosUsuario'])){
+        if($_SESSION['datosUsuario']['rol']=="recepcionista"){
+            return true;
+        }
     }
        return false;
     

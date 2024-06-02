@@ -1,10 +1,11 @@
 <?php 
 
+
 function mostrarInfoHabitacion($id,$fotos){
 
     require 'conexionBD.php';
 
-    $query_select = 'SELECT * FROM habitaciones WHERE "id" = :id;';
+    $query_select = 'SELECT * FROM habitaciones WHERE "id_habitacion" = :id;';
 
     $stmt = $conn->prepare($query_select);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -109,17 +110,20 @@ function mostrarHabitaciones(){
 
 
     $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $fotos = obtenerFotos();
+    
     foreach($resultados as $hab){
+        
+        $fotos = obtenerFotos($hab['id_habitacion']);
         echo'<figure class="text-center bg-color-bronce-metalico rounded-sm">';
-        foreach($fotos as $foto){
-            echo '<img src="./img/granHotel/habitaciones/'.$foto['url'].'" alt="" class="p-3">';
-        }
-        echo '<figcaption class="p-3 color-azul-marino font-bold text-xl"><a href="habitacion.php?id='.$hab['id'].'">'.$hab['nombre'].'</figcaption>
+
+        echo '<img src="' . $fotos[0]['foto'] . '" alt="" class="p-3">';
+
+        echo '<figcaption class="p-3 color-azul-marino font-bold text-xl"><a href="habitacion.php?id='.$hab['id_habitacion'].'">'.$hab['nombre'].'</figcaption>
         </figure>';
     }
     
 }
+
 
 function eliminarHabitacion($id){
 
@@ -135,15 +139,14 @@ function eliminarHabitacion($id){
     }
 
 }
+
 function obtenerFotos($id){
 
-    $query= 'SELECT "url" FROM fotos_habitaciones WHERE "id_habitacion"=id;';
+    require 'conexionBD.php';
+    $query= 'SELECT * FROM fotos_habitaciones WHERE id_habitacion=:id;';
+    $stmt = $conn->prepare($query);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-
-    $stmt = $conn->prepare($query_select);
-
     $stmt->execute();
-
     $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     return $resultados;

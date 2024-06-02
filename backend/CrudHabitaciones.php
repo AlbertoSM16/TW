@@ -23,8 +23,8 @@ function mostrarInfoHabitacion($id,$fotos){
 }
 
 
+function insertar_habitacion($nombre, $precio, $capacidad, $descripcion, $estado, $num_fotos) {
 
-function insertar_habitacion($nombre, $precio, $capacidad, $descripcion, $estado, $fotos) {
     require 'conexionBD.php';
     try {
         // Comenzar una transacción
@@ -47,11 +47,11 @@ function insertar_habitacion($nombre, $precio, $capacidad, $descripcion, $estado
 
         // Insertar cada foto en la tabla fotos_habitaciones
         for ($i = 0; $i < $num_fotos; $i++) {
-            $foto_nombre = $_FILES['fotos']['name'][$i];
-            $foto_temporal = $_FILES['fotos']['tmp_name'][$i];
+            $foto_nombre = $_FILES['filesToUpload']['name'][$i];
+            $foto_temporal = $_FILES['filesToUpload']['tmp_name'][$i];
 
             // Mover la foto al directorio deseado
-            $ruta_foto = 'directorio_destino/' . $foto_nombre;
+            $ruta_foto = './img/granHotel/habitaciones/' . $foto_nombre;
             move_uploaded_file($foto_temporal, $ruta_foto);
 
             // Insertar la foto en la base de datos
@@ -106,6 +106,7 @@ function mostrarHabitaciones(){
     $stmt = $conn->prepare($query_select);
 
     $stmt->execute();
+
 
     $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $fotos = obtenerFotos();

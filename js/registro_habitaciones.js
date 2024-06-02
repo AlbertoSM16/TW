@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const errores = document.getElementsByName('error');
-    const inputs = document.getElementsByName('registro');
+    const inputs = document.querySelectorAll('#registro');
     const boton = document.getElementById('boton');
 
     boton.disabled = true;

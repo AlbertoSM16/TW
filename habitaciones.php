@@ -48,7 +48,7 @@
                     }
 
 
-                    mostrarHabitaciones();
+                    //mostrarHabitaciones();
 
                 ?>
 

@@ -1,7 +1,5 @@
 <?php 
 
-
-
 function mostrarHabitaciones(){
     require 'conexionBD.php';
 
@@ -81,6 +79,16 @@ function insertar_habitacion($nombre, $precio, $capacidad, $descripcion, $estado
         // Revertir la transacción en caso de error
         $conn->rollback();
         echo "Error al insertar la habitación: " . $e->getMessage();
+    }
+
+    function filtrarHabitaciones($filtro){
+
+        $query = 'SELECT * FROM habitaciones where "capacidad"='.$filtro.';';
+        
+        $stmt = $conn->prepare($query_select);
+
+        $stmt->execute();
+    
     }
 }
 

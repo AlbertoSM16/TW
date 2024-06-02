@@ -25,7 +25,7 @@
 
     <main>
         <section class="flex justify-center p-6">
-            <form action="" class="grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center">
+            <form action="index.php" method="POST" class="grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center">
                 <div class="flex col-span-3 flex-col">
                     <div class='w-full flex text-center  justify-between items-center '>
                         <label for="name" class=" pr-3">Nombre:</label>
@@ -89,7 +89,7 @@
                 <div class="flex col-span-3 flex-col">
                     <div class='w-full flex text-center  justify-between items-center '>
                         <label for="name" class=" pr-3 pt-6">Tarjeta de credito:</label>
-                        <input type="text" name="registro" placeholder="Escriba su Tarjeta de credito" class="mt-6 border-2 border-black color-azul-marino">
+                        <input type="text" name="Registrarse" placeholder="Escriba su Tarjeta de credito" class="mt-6 border-2 border-black color-azul-marino">
                     </div>
                     <div class="w-64 flex justify-between">
                         <p class="text-red-600 hidden break-words" name="error">La tarjeta de crédito debe ser una secuencia de 16 dígitos consecutivos</p>
@@ -97,7 +97,7 @@
                 </div>
 
                 <div class="text-center col-span-3 justify-center items-center  w-full pt-16">
-                    <button type="submit" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton">Enviar</button>
+                    <button type="submit" name="sign_in" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton">Enviar</button>
                 </div>
             </form>
         </section>

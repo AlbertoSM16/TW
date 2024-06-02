@@ -28,56 +28,17 @@
             
             <section class="lg:w-5/6 grid grid-cols-2 md:grid-cols-3 gap-6 p-6">
                 
-                <figure class="text-center bg-color-bronce-metalico rounded-sm">
-                    <img src="img/granHotel/habitacion1.png" alt="" class="p-3">
-                    <figcaption class="p-3 color-azul-marino font-bold text-xl">Habitación 1</figcaption>
-                </figure>
-     
-                <figure class="text-center bg-color-bronce-metalico rounded-sm">
-                    <img src="img/granHotel/habitacion1.png" alt="" class="p-3">
-                    <figcaption class="p-3 color-azul-marino font-bold text-xl">Habitación 1</figcaption>
-                </figure>
-
-                <figure class="text-center bg-color-bronce-metalico rounded-sm">
-                    <img src="img/granHotel/habitacion1.png" alt="" class="p-3">
-                    <figcaption class="p-3 color-azul-marino font-bold text-xl">Habitación 1</figcaption>
-                </figure>
-
-                <figure class="text-center bg-color-bronce-metalico rounded-sm">
-                    <img src="img/granHotel/habitacion1.png" alt="" class="p-3">
-                    <figcaption class="p-3 color-azul-marino font-bold text-xl">Habitación 1</figcaption>
-                </figure>
-
-                <figure class="text-center bg-color-bronce-metalico rounded-sm">
-                    <img src="img/granHotel/habitacion1.png" alt="" class="p-3">
-                    <figcaption class="p-3 color-azul-marino font-bold text-xl">Habitación 1</figcaption>
-                </figure>
-
-                <figure class="text-center bg-color-bronce-metalico rounded-sm">
-                    <img src="img/granHotel/habitacion1.png" alt="" class="p-3">
-                    <figcaption class="p-3 color-azul-marino font-bold text-xl">Habitación 1</figcaption>
-                </figure>
-
-                <figure class="text-center bg-color-bronce-metalico rounded-sm">
-                    <img src="img/granHotel/habitacion1.png" alt="" class="p-3">
-                    <figcaption class="p-3 color-azul-marino font-bold text-xl">Habitación 1</figcaption>
-                </figure>
-
-                <figure class="text-center bg-color-bronce-metalico rounded-sm">
-                    <img src="img/granHotel/habitacion1.png" alt="" class="p-3">
-                    <figcaption class="p-3 color-azul-marino font-bold text-xl">Habitación 1</figcaption>
-                </figure>
-
-                <figure class="text-center bg-color-bronce-metalico rounded-sm">
-                    <img src="img/granHotel/habitacion1.png" alt="" class="p-3">
-                    <figcaption class="p-3 color-azul-marino font-bold text-xl">Habitación 1</figcaption>
-                </figure>
-    
+               
             </section>
             
             <aside class="lg:w-1/6 lg:fixed lg:right-0 z-0">
                 <ul class="p-6 color-azul-marino">
-                    <li class="font-bold text-xl pt-3"><a href="./registro_habitaciones.php">Registrar habitación</a></li>
+                    <?php 
+                        if(esRecepcionista()){
+                            
+                            echo '<li class="font-bold text-xl pt-3"><a href="./registro_habitaciones.php">Registrar habitación</a></li>';
+                        }
+                    ?>
                     <li class="font-bold text-xl">Camas
                         <ul class="font-normal text-lg ml-6">
                             <li><a href="">De matrimonio</a></li>w

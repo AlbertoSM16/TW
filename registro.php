@@ -101,8 +101,6 @@
                 </div>
             </form>
         </section>
-    </main>
-
     <?php require_once './auxiliares/footer.php'?>
     <script src="./js/registro.js" defer></script>
 

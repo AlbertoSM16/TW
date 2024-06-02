@@ -38,17 +38,15 @@
                 <?php 
                     if(isset($_GET['pax'])){
                         $pax=$_GET['pax'];
-                        $habitaciones = filtrarHabitaciones($pax);
-                        
+                        filtrarHabitaciones($pax);   
+                    }else{
+                        mostrarHabitaciones();
                     }
 
                     if(isset($_POST['aniadirHabitacion'])){
-
                         aniadirHabitacion();
                     }
-
-
-                    mostrarHabitaciones();
+            
 
                 ?>
 
@@ -60,7 +58,8 @@
                     <li class="font-bold text-xl pt-3"><a href="./registro_habitaciones.php">Registrar habitación</a></li>
                     <li class="font-bold text-xl">Camas
                         <ul class="font-normal text-lg ml-6">
-                            <li><a href="habitaciones.php?pax=2" >De matrimonio</a></li>
+                            <li><a href="habitaciones.php?pax=2" >Doble Estandar</a></li>
+                            <li><a href="habitaciones.php?pax=3" >Suites</a></li>
                             <li><a href="habitaciones.php?pax=1">Individuales</a></li>
                         </ul>
                     </li>

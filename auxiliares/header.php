@@ -27,6 +27,7 @@
                 login();
             } elseif (isset($_POST['Registrarse'])) {
                 registrarUsuario();
+                login();
             }
             
             if(isLogged()){
@@ -41,8 +42,10 @@
             if(!isLogged()){
                 navAnonimo();
             }
+
+            
         ?>
-        
+       
     </section>
 
 </header>

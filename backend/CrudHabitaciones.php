@@ -108,13 +108,13 @@ function mostrarHabitaciones(){
     $stmt->execute();
 
     $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+    $fotos = obtenerFotos();
     foreach($resultados as $hab){
         echo'<figure class="text-center bg-color-bronce-metalico rounded-sm">';
         foreach($fotos as $foto){
-            echo '<img src="./img/granHotel/habitaciones/'.$foto.'" alt="" class="p-3">';
+            echo '<img src="./img/granHotel/habitaciones/'.$foto['url'].'" alt="" class="p-3">';
         }
-        echo '<figcaption class="p-3 color-azul-marino font-bold text-xl">'.$hab[$nombre].'</figcaption>
+        echo '<figcaption class="p-3 color-azul-marino font-bold text-xl"><a href="habitacion.php?id='.$hab['id'].'">'.$hab['nombre'].'</figcaption>
         </figure>';
     }
     

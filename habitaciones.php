@@ -36,6 +36,7 @@
             <section class="lg:w-5/6 grid grid-cols-2 md:grid-cols-3 gap-6 p-6">
                 
                 <?php 
+                
                     if(isset($_GET['pax'])){
                         $pax=$_GET['pax'];
                         filtrarHabitaciones($pax);   
@@ -47,8 +48,6 @@
                         aniadirHabitacion();
                     }
 
-
-                    //mostrarHabitaciones();
 
                 ?>
 

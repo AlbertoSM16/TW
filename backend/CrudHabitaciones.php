@@ -76,23 +76,24 @@ function insertar_habitacion($nombre, $precio, $capacidad, $descripcion, $estado
 }
 
 function filtrarHabitaciones($pax){
-
-    $query = 'SELECT * FROM habitaciones where "capacidad"=:pax;';
+    require 'conexionBD.php';
+var_dump($pax);
+    $query = 'SELECT * FROM habitaciones WHERE capacidad=:pax;';
    
-    $stmt = $conn->prepare($query_select);
+    $stmt = $conn->prepare($query);
 
-    $stmt->bindParam(':pax', $pax, PDO::PARAM_INT);
+    $stmt->bindParam(':pax', $pax);
 
     $stmt->execute();
 
     $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
     foreach($resultados as $hab){
+        
+        $fotos = obtenerFotos($hab['id_habitacion']);
         echo'<figure class="text-center bg-color-bronce-metalico rounded-sm">';
-        foreach($fotos as $foto){
-            echo '<img src="./img/granHotel/habitaciones/'.$foto.'" alt="" class="p-3">';
-        }
-        echo '<figcaption class="p-3 color-azul-marino font-bold text-xl">'.$hab[$nombre].'</figcaption>
+        echo '<img src="' . $fotos[0]['foto'] . '" alt="" class="p-3">';
+
+        echo '<figcaption class="p-3 color-azul-marino font-bold text-xl"><a href="habitacion.php?id='.$hab['id_habitacion'].'">'.$hab['nombre'].'</figcaption>
         </figure>';
     }
 
@@ -115,7 +116,6 @@ function mostrarHabitaciones(){
         
         $fotos = obtenerFotos($hab['id_habitacion']);
         echo'<figure class="text-center bg-color-bronce-metalico rounded-sm">';
-
         echo '<img src="' . $fotos[0]['foto'] . '" alt="" class="p-3">';
 
         echo '<figcaption class="p-3 color-azul-marino font-bold text-xl"><a href="habitacion.php?id='.$hab['id_habitacion'].'">'.$hab['nombre'].'</figcaption>

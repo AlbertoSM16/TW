@@ -1,10 +1,10 @@
 <?php
 
-require 'conexionBD.php';
 
-function selectUsuarios(){
+function mostrarUsuarios(){
+    require 'conexionBD.php';
 
-    $query_select = 'SELECT nombre, apellidos, email, dni FROM usuarios WHERE rol = "cliente"';
+    $query_select = 'SELECT * FROM usuarios';
     
     $stmt = $conn->prepare($query_select);
 
@@ -13,7 +13,16 @@ function selectUsuarios(){
     $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     echo "<table border='1'>";
-    echo "<tr><th>Nombre</th><th>Apellidos</th><th>Email</th><th>DNI</th></tr>";
+    echo '<tr class="bg-custom-header text-custom-header">
+                    <th class="py-2 px-4 border-b">NOMBRE</th>
+                    <th class="py-2 px-4 border-b">APELLIDOS</th>
+                    <th class="py-2 px-4 border-b">EMAIL</th>
+                    <th class="py-2 px-4 border-b">DNI</th>
+                    <th class="py-2 px-4 border-b">ROL</th>
+                    <th class="py-2 px-4 border-b">Tarjeta</th>
+
+
+                </tr>';
 
     foreach ($resultados as $fila) {
         echo "<tr>";
@@ -21,6 +30,10 @@ function selectUsuarios(){
         echo "<td>" . htmlspecialchars($fila['apellidos']) . "</td>";
         echo "<td>" . htmlspecialchars($fila['email']) . "</td>";
         echo "<td>" . htmlspecialchars($fila['dni']) . "</td>";
+        echo "<td>" . htmlspecialchars($fila['rol']) . "</td>";
+        echo "<td>" . htmlspecialchars($fila['tarjeta_credito']) . "</td>";
+
+
         echo "</tr>";
     }
 
@@ -31,10 +44,11 @@ function selectUsuarios(){
 function deleteClient($id){
     
 
-    $query_delete = 'DELETE FROM usuarios WHERE id_usuario = '.$id.' AND rol = "cliente" ';
+    $query_delete = 'DELETE FROM usuarios WHERE id_usuario =:id AND rol = "cliente" ';
     try{
-        $stmt = $conn->prepare($query_select);
 
+        $stmt = $conn->prepare($query_select);
+        $stmt->bindParam(':id',$id);
         $stmt->execute();
         
     }catch (Exception $e){
@@ -68,7 +82,41 @@ function deleteClient($id){
         
     }
 
-$query_delete = 'DELETE FROM usuarios WHERE id_usuario = :id AND rol = "cliente" ';
+
+    function filtrarUsuarios($rol){
+
+        require 'conexionBD.php';
+
+        $query = 'SELECT * FROM usuarios WHERE rol =:rol';
+        $stmt = $conn->prepare($query_insert);
+        $stmt->bindParam(':id',$rol);
+
+        $stament->execute();
+
+        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        
+        echo "<table border='1'>";
+        echo '<tr class="bg-custom-header text-custom-header">
+                        <th class="py-2 px-4 border-b">Nombre</th>
+                        <th class="py-2 px-4 border-b">Apellidos</th>
+                        <th class="py-2 px-4 border-b">Email</th>
+                        <th class="py-2 px-4 border-b">DNI</th>
+                    </tr>';
+
+        foreach ($resultados as $fila) {
+            echo "<tr>";
+            echo "<td>" . htmlspecialchars($fila['nombre']) . "</td>";
+            echo "<td>" . htmlspecialchars($fila['apellidos']) . "</td>";
+            echo "<td>" . htmlspecialchars($fila['email']) . "</td>";
+            echo "<td>" . htmlspecialchars($fila['dni']) . "</td>";
+            echo "</tr>";
+        }
+
+        echo "</table>";
+
+    }
+
 
 $query_update = 'UPDATE usuarios SET nombre = :nombre, apellidos = :apellidos, dni = :dni, email = :email, tarjeta_credito = :tarjeta_credito
  WHERE id_usuario = :id_usuario;';

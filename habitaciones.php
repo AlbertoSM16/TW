@@ -44,7 +44,7 @@
 
                     
                     if(isset($_GET['pax'])){
-                        $pax=$_GET['pax'];
+                        $pax=(int)$_GET['pax'];
                         filtrarHabitaciones($pax);   
                     }else{
                         mostrarHabitaciones();
@@ -69,12 +69,7 @@
                         </ul>
                     </li>
                     
-                    <li class="font-bold text-xl pt-3">Partes del hogar
-                        <ul class="font-normal text-lg ml-6 ">
-                            <li><a href="">Con cocina</a></li>
-                            <li><a href="">Con dos baños</a></li>
-                        </ul>
-                    </li> 
+                
                 </ul>
             </aside>
         </section>

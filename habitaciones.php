@@ -31,11 +31,11 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>Gran Hotel</title>
 </head>
-<body class="p-0 m-0">
+<body class="p-0 m-0 overflow-x-hidden">
     
     <?php require_once 'auxiliares/header.php'?>
     
-    <main>
+    <main class = "pt-36 md:pt-56 lg:p-0">
         <section class="flex flex-col-reverse lg:flex-row">
             
             <section class="lg:w-5/6 grid grid-cols-2 md:grid-cols-3 gap-6 p-6">

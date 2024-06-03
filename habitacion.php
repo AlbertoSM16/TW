@@ -24,7 +24,7 @@
     
     <?php require_once 'auxiliares/header.php'?>
     
-    <main>
+    <main class ="pt-36 md:pt-56 lg:p-0">
 
 
 

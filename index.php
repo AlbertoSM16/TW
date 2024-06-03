@@ -19,13 +19,13 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>Gran Hotel</title>
 </head>
-<body class="p-0 m-0">
+<body class="p-0 m-0 overflow-x-hidden">
     <?php
     require_once './auxiliares/header.php';
     
     
     ?>
-    <main>
+    <main class ="pt-36 md:pt-56 lg:p-0">
         <section class="flex flex-wrap justify-center md:justify-between p-6">
             <div data-aos="fade-right" class="md:w-4/6 text-xl md:px-16 lg:px-32 lg:justify-center lg:text-center lg:items-center flex">
                 <p>Descubre el lujo y la serenidad en el Gran Hotel. Ubicado en el vibrante corazón de la ciudad, te invitamos a disfrutar de una estadía inolvidable con servicios de primera clase, comodidades de lujo y una atención excepcional. Reserva ahora para vivir el encanto y la elegancia que solo el Gran Hotel puede ofrecer.</p>

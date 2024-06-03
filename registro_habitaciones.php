@@ -10,14 +10,14 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>Gran Hotel</title>
 </head>
-<body class="p-0 m-0">
+<body class="p-0 m-0 overflow-x-hidden">
 <?php require_once 'auxiliares/header.php' ?>
 
 <?php if(!esRecepcionista()):?>
         <meta http-equiv="refresh" content="0;url=habitaciones.php">    
 <?php endif;?>
 
-    <main>
+    <main class ="pt-36 md:pt-56 lg:p-0">
         <section class="flex justify-center p-6">
             <form id="miFormulario" action="habitaciones.php" method="POST" class="grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center"  enctype="multipart/form-data">
                 <div class="flex col-span-3 flex-col">

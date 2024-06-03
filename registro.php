@@ -9,11 +9,11 @@
     <title>Gran Hotel</title>
 
 </head>
-<body class="p-0 m-0">
+<body class="p-0 m-0 overflow-x-hidden">
     
     <?php require_once 'auxiliares/header.php' ?>
 
-    <main>
+    <main class ="pt-36 md:pt-56 lg:p-0">
         <section class="flex justify-center p-6">
             <form action="index.php" method="POST" class="grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center">
                 <div class="flex col-span-3 flex-col">

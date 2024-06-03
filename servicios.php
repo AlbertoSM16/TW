@@ -19,11 +19,11 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>Gran Hotel</title>
 </head>
-<body class="p-0 m-0">
+<body class="p-0 m-0 overflow-x-hidden">
     
     <?php require_once 'auxiliares/header.php' ?>
 
-    <main class="flex justify-center w-full">
+    <main class="flex justify-center w-full pt-36 md:pt-44 lg:p-0"">
         <div class="lg:w-3/6 p-6">
             <section data-aos="fade-left" class="flex justify-between h-64 bg-color-azul-marino mt-20 p-5 color-gris-crema">
                 <img src="img/granHotel/servicios/recepcion.png" alt="" class="object-cover">

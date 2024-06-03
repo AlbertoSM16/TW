@@ -20,12 +20,12 @@
     <title>Gran Hotel</title>
 </head>
 
-<body class="p-0 m-0">
+<body class="p-0 m-0 overflow-x-hidden">
     <?php
     require_once './auxiliares/header.php';
 
     ?>
-<main>
+<main class ="pt-36 md:pt-56 lg:p-0">
 <form action="aceptarReserva.php" method="post">
         
         <label for="num_pax">Numero de personas:</label>

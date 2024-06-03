@@ -88,10 +88,10 @@ function deleteClient($id){
         require 'conexionBD.php';
 
         $query = 'SELECT * FROM usuarios WHERE rol =:rol';
-        $stmt = $conn->prepare($query_insert);
+        $stmt = $conn->prepare($query);
         $stmt->bindParam(':id',$rol);
 
-        $stament->execute();
+        $stmt->execute();
 
         $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
         

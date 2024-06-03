@@ -28,10 +28,8 @@ function insertar_habitacion($nombre, $precio, $capacidad, $descripcion, $estado
 
     require 'conexionBD.php';
     try {
-        // Comenzar una transacción
         $conn->beginTransaction();
 
-        // Insertar la habitación
         $query_habitacion = "INSERT INTO habitaciones (nombre, precio, capacidad, descripcion, estado, fotos) 
                             VALUES (:nombre, :precio, :capacidad, :descripcion, :estado, :num_fotos)";
         $stmt_habitacion = $conn->prepare($query_habitacion);
@@ -43,19 +41,14 @@ function insertar_habitacion($nombre, $precio, $capacidad, $descripcion, $estado
         $stmt_habitacion->bindParam(':num_fotos', $num_fotos);
         $stmt_habitacion->execute();
 
-        // Obtener el ID de la habitación recién insertada
         $id_habitacion = $conn->lastInsertId();
 
-        // Insertar cada foto en la tabla fotos_habitaciones
         for ($i = 0; $i < $num_fotos; $i++) {
             $foto_nombre = $_FILES['filesToUpload']['name'][$i];
             $foto_temporal = $_FILES['filesToUpload']['tmp_name'][$i];
-
-            // Mover la foto al directorio deseado
             $ruta_foto = './img/granHotel/habitaciones/' . $foto_nombre;
             move_uploaded_file($foto_temporal, $ruta_foto);
 
-            // Insertar la foto en la base de datos
             $query_foto = "INSERT INTO fotos_habitaciones (id_habitacion, foto) VALUES (:id_habitacion, :ruta_foto)";
             $stmt_foto = $conn->prepare($query_foto);
             $stmt_foto->bindParam(':id_habitacion', $id_habitacion);
@@ -77,7 +70,6 @@ function insertar_habitacion($nombre, $precio, $capacidad, $descripcion, $estado
 
 function filtrarHabitaciones($pax){
     require 'conexionBD.php';
-var_dump($pax);
     $query = 'SELECT * FROM habitaciones WHERE capacidad=:pax;';
    
     $stmt = $conn->prepare($query);
@@ -126,16 +118,19 @@ function mostrarHabitaciones(){
 
 
 function eliminarHabitacion($id){
+    
+    require 'conexionBD.php';
+
+    $query = 'DELETE FROM habitaciones WHERE id=:id AND estado = "LIBRE"';
 
     $stmt = $conn->prepare($query);
-    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    
+    $stmt->bindParam(':id', $id);
     
     $stmt->execute();
     
     if ($stmt->rowCount() > 0) {
         echo "La habitación ha sido eliminada correctamente.";
-    } else {
-        alert("No es posible eliminar la habitación porque está ocupada");
     }
 
 }
@@ -145,7 +140,7 @@ function obtenerFotos($id){
     require 'conexionBD.php';
     $query= 'SELECT * FROM fotos_habitaciones WHERE id_habitacion=:id;';
     $stmt = $conn->prepare($query);
-    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->bindParam(':id', $id);
     $stmt->execute();
     $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

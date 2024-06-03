@@ -24,7 +24,7 @@ function navRecepcionista(){
             <ul class="flex">
                 <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="reservas.php" class="p-6 text-3xl color-dorado ">Gestionar Reservas</a></li>
                 <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="usuarios.php" class="p-6 text-3xl color-dorado ">Gestionar Clientes</a></li>
-                <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="habitaciones.php" class="p-6 text-3xl color-dorado ">Gestion Habitaciones</a></li>
+                <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="habitaciones.php" class="p-6 text-3xl color-dorado ">Gestionar Habitaciones</a></li>
                 <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="servicios.php" class="p-6 text-3xl color-dorado ">Servicios</a></li>
             </ul>
 

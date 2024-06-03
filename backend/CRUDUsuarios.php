@@ -43,6 +43,7 @@ function mostrarUsuarios(){
 
 function deleteClient($id){
     
+    require 'conexionBD.php';
 
     $query_delete = 'DELETE FROM usuarios WHERE id_usuario =:id AND rol = "cliente" ';
     try{
@@ -88,10 +89,10 @@ function deleteClient($id){
         require 'conexionBD.php';
 
         $query = 'SELECT * FROM usuarios WHERE rol =:rol';
-        $stmt = $conn->prepare($query_insert);
-        $stmt->bindParam(':id',$rol);
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':rol',$rol);
 
-        $stament->execute();
+        $stmt->execute();
 
         $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
         

@@ -26,16 +26,13 @@
 <main>
 
 <?php 
-
+    
     if(isset($_GET['rol'])){
         $rol = $_GET['rol'];
         filtrarUsuarios($rol);
     }
     mostrarUsuarios();
 ?>
-
-
-
 
             <aside class="lg:w-1/6 lg:fixed lg:right-0 z-0">
                     <ul class="p-6 color-azul-marino">
@@ -45,8 +42,8 @@
                         <li class="font-bold text-xl">Filtrado de usuarios
                             <ul class="font-normal text-lg ml-6">
                                 <li><a href="usuarios.php?rol=cliente" >Clientes</a></li>
-                                <li><a href="habitaciones.php?rol=administrador" >Administradores</a></li>
-                                <li><a href="habitaciones.php?rol=recepcionista">Recepcionistas</a></li>
+                                <li><a href="usuarios.php?rol=administrador" >Administradores</a></li>
+                                <li><a href="usuarios.php?rol=recepcionista">Recepcionistas</a></li>
                             </ul>
                         </li>
                      

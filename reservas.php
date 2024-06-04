@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -19,11 +20,11 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>Gran Hotel</title>
 </head>
-<body class="p-0 m-0">
+<body class="p-0 m-0 overflow-x-hidden">
     
     <?php require_once 'auxiliares/header.php' ?>
 
-    <main>
+     <main class ="pt-36 md:pt-32 lg:p-0">
         <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-32">
         
             <?php 
@@ -52,4 +53,5 @@
 
     <?php require_once './auxiliares/footer.php'?>
 </body>
+
 </html>

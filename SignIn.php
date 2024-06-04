@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -12,9 +13,9 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
-<body class="p-0 m-0">
+<body class="p-0 m-0 overflow-x-hidden">
     <?php require_once './auxiliares/header.php'?>
-    <main>
+    <main class="pt-36 md:pt-56 lg:p-0">
         <section class="flex justify-center p-6">
             <form action="index.php" method='POST' class="grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl">
                 <label for="name" class="col-span-1 pr-3 pt-6">Email:</label>
@@ -35,4 +36,5 @@
     </main>
     <?php require_once './auxiliares/footer.php'?>
 </body>
+
 </html>

@@ -27,6 +27,7 @@
 
     ?>
 <main class ="pt-36 md:pt-56 lg:p-0">
+
     <section class="flex justify-center p-6">
         <form action="aceptarReserva.php" method="post" class="w-full grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center"> 
             <div class="flex col-span-3 flex-col">
@@ -87,6 +88,7 @@
 
         </form>
     </section>
+
 </main>
 
     <?php require_once './auxiliares/footer.php'?>

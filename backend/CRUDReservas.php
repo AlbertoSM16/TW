@@ -47,22 +47,20 @@ function mostrarReservas(){
         $stmt->execute();
 
         $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
         foreach($resultados as $reserva){
 
-            $query = 'SELECT nombre FROM habitaciones WHERE id=:id';
+            $query_hab = 'SELECT nombre FROM habitaciones WHERE id_habitacion=:id';
 
-            $stmt = $conn->prepare($query);
+            $statement = $conn->prepare($query_hab);
             
-            $stmt->bindParam(':id',  $resultado['id'] );
+            $statement->bindParam(':id',  $reserva['id_habitacion'] );
 
-            $stmt->execute();
+            $statement->execute();
     
-            $nombre = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+            $nombre = $statement->fetchAll(PDO::FETCH_ASSOC);
             echo '<section class="flex flex-col md:flex-row bg-color-gris-carbon p-6 color-gris-crema mt-10">
                 <section = class="flex flex-col">
-                    <p>N Habitacion: '.$nombre.'</p>
+                    <p>N Habitacion: '.$nombre[0]["nombre"].'</p>
                     <p>Capacidad:'.$reserva['num_pax'].'</p>
                     <p>Fecha Inicio:'.$reserva['dia_entrada'].'</p>
                     <p>Fecha Fin:'.$reserva['dia_salida'].'</p>
@@ -76,11 +74,12 @@ function mostrarReservas(){
                 }else{
                     echo '<section class="text-black p-10">
                     <span class="border-2 border-black bg-green-500 inline p-3">PENDIENTE</span>
+                    </section>
                     </section>';
                 }
             
         }
-
+    }
     function filtrarReservas($estado){
         
         require 'conexionBD.php';
@@ -98,18 +97,18 @@ function mostrarReservas(){
 
         foreach($resultados as $reserva){
 
-            $query = 'SELECT nombre FROM habitaciones WHERE id=:id';
+            $query = 'SELECT nombre FROM habitaciones WHERE id_habitacion=:id';
 
             $stmt = $conn->prepare($query);
             
-            $stmt->bindParam(':id', $resultado['id']);
+            $stmt->bindParam(':id', $reserva['id_habitacion']);
 
             $stmt->execute();
     
             $nombre = $stmt->fetchAll(PDO::FETCH_ASSOC);
             echo '<section class="flex flex-col md:flex-row bg-color-gris-carbon p-6 color-gris-crema mt-10">
             <section = class="flex flex-col">
-                <p>N Habitacion: '.$nombre.'</p>
+                <p>N Habitacion: '.$nombre[0]['nombre'].'</p>
                 <p>Capacidad:'.$reserva['num_pax'].'</p>
                 <p>Fecha Inicio:'.$reserva['dia_entrada'].'</p>
                 <p>Fecha Fin:'.$reserva['dia_salida'].'</p>
@@ -123,6 +122,7 @@ function mostrarReservas(){
             }else{
                 echo '<section class="text-black p-10">
                 <span class="border-2 border-black bg-green-500 inline p-3">PENDIENTE</span>
+                </section>
                 </section>';
             }
         }
@@ -135,7 +135,7 @@ function mostrarReservas(){
 
         require 'conexionBD.php';
 
-        $query = 'DELETE  FROM reservas WHERE id=:id';
+        $query = 'DELETE  FROM reservas WHERE id_reserva=:id';
 
         $stmt= $conn->prepare($query);
 
@@ -183,4 +183,3 @@ function mostrarReservas(){
 
 
     }
-}

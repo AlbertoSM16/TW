@@ -16,14 +16,17 @@
             <h1 class="text-3xl font-bold color-dorado lg:hidden">EL Gran Hotel</h1>
             <i id="barra" class="fa-solid fa-bars lg:hidden px-10 text-3xl color-dorado"></i>
 
-
-            <?php 
-                session_start();
-                require './backend/creacionTablas.php';
-                require './backend/CRUDUsuarios.php';
-                require './backend/funcionesLogin.php';
-                require 'navs.php';
-                creaTablas();
+        <i class="fa-solid fa-bars lg:hidden px-10 text-3xl color-dorado"></i>
+        
+        <?php 
+            session_start();
+             require './backend/creacionTablas.php';
+             require './backend/CRUDUsuarios.php';
+             require './backend/funcionesLogin.php';
+             require './backend/CRUDReservas.php';
+             require './backend/CrudHabitaciones.php';
+             require 'navs.php';
+             creaTablas();
 
                 if(isset($_POST['cerrar_sesion'])){
                     cerrarSesion();

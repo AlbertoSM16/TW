@@ -11,7 +11,9 @@
     <title>Gran Hotel</title>
 </head>
 <body class="p-0 m-0">
-<?php require_once 'auxiliares/header.php'; 
+    
+<?php require_once 'auxiliares/header.php';
+
 
     if(isset($_GET['id_habitacion'])){
         $habitacion=infoHabitacion($_GET['id_habitacion']);

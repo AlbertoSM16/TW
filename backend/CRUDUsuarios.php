@@ -12,28 +12,24 @@ function mostrarUsuarios(){
 
     $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    echo "<table border='1'>";
+    echo "<table border='5'>";
     echo '<tr class="bg-custom-header text-custom-header">
-                    <th class="py-2 px-4 border-b">NOMBRE</th>
-                    <th class="py-2 px-4 border-b">APELLIDOS</th>
-                    <th class="py-2 px-4 border-b">EMAIL</th>
-                    <th class="py-2 px-4 border-b">DNI</th>
-                    <th class="py-2 px-4 border-b">ROL</th>
-                    <th class="py-2 px-4 border-b">Tarjeta</th>
-
-
-                </tr>';
+                    <th class="py-2 px-10 border-b">NOMBRE</th>
+                    <th class="py-2 px-10 border-b">APELLIDOS</th>
+                    <th class="py-2 px-10 border-b">EMAIL</th>
+                    <th class="py-2 px-10 border-b">DNI</th>
+                    <th class="py-2 px-10 border-b">ROL</th>
+                    <th class="py-2 px-10 border-b">Tarjeta</th>
+            </tr>';
 
     foreach ($resultados as $fila) {
         echo "<tr>";
-        echo "<td>" . htmlspecialchars($fila['nombre']) . "</td>";
-        echo "<td>" . htmlspecialchars($fila['apellidos']) . "</td>";
-        echo "<td>" . htmlspecialchars($fila['email']) . "</td>";
-        echo "<td>" . htmlspecialchars($fila['dni']) . "</td>";
-        echo "<td>" . htmlspecialchars($fila['rol']) . "</td>";
-        echo "<td>" . htmlspecialchars($fila['tarjeta_credito']) . "</td>";
-
-
+            echo "<td class='py-2 px-10 border-b'>" . htmlspecialchars($fila['nombre']) . "</td>";
+            echo "<td class='py-2 px-10 border-b'>" . htmlspecialchars($fila['apellidos']) . "</td>";
+            echo "<td class='py-2 px-10 border-b'>" . htmlspecialchars($fila['email']) . "</td>";
+            echo "<td class='py-2 px-10 border-b'>" . htmlspecialchars($fila['dni']) . "</td>";
+            echo "<td class='py-2 px-10 border-b'>" . htmlspecialchars($fila['rol']) . "</td>";
+            echo "<td class='py-2 px-10 border-b'>" . htmlspecialchars($fila['tarjeta_credito']) . "</td>";
         echo "</tr>";
     }
 

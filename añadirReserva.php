@@ -27,25 +27,66 @@
 
     ?>
 <main class ="pt-36 md:pt-56 lg:p-0">
-<form action="aceptarReserva.php" method="post">
-        
-        <label for="num_pax">Numero de personas:</label>
-        <input type="number" id="num_pax" name="num_pax" required><br><br>
-        
-        <label for="dia_entrada">Día de Entrada:</label>
-        <input type="date" id="dia_entrada" name="dia_entrada" required><br><br>
-        
-        <label for="dia_salida">Día de Salida:</label>
-        <input type="date" id="dia_salida" name="dia_salida" required><br><br>
-        
-        <label for="num_pax">Número de Personas:</label>
-        <input type="number" id="num_pax" name="num_pax" required><br><br>
-        
-        <label for="comentario">Comentario:</label><br>
-        <textarea id="comentario" name="comentario" rows="4" cols="50"></textarea><br><br>
-        
-        <input type="submit" value="Realizar Reserva" name="add_reserva">
-    </form>
+    <section class="flex justify-center p-6">
+        <form action="aceptarReserva.php" method="post" class="w-full grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center"> 
+            <div class="flex col-span-3 flex-col">
+                <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
+                    <label for="num_pax">Numero de personas:</label>
+                    <input type="number" id="num_pax" name="num_pax" class="mt-6 border-2 border-black color-azul-marino" required><br><br>
+                </div>
+                <div class="w-64 flex justify-between">
+                    <p class="text-red-600 hidden" name="error">El nombre no puede estar vacío</p>
+                </div>
+            </div>
+
+            <div class="flex col-span-3 flex-col">
+                <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center'> 
+                    <label for="dia_entrada">Día de Entrada:</label>
+                    <input class="mt-6 border-2 border-black color-azul-marino" type="date" id="dia_entrada" name="dia_entrada" required><br><br>
+                </div>
+                <div class="w-64 flex justify-between">
+                    <p class="text-red-600 hidden" name="error">Los apellidos no pueden estar vacíos</p>
+                </div>
+            </div>
+
+            <div class="flex col-span-3 flex-col">
+                <div class=" flex-col w-full lg:flex-row flex text-center  justify-between items-center">
+                    <label for="dia_salida">Día de Salida:</label>
+                    <input class="mt-6 border-2 border-black color-azul-marino" type="date" id="dia_salida" name="dia_salida" required><br><br>
+                </div>
+
+                
+                <div class="w-64 flex justify-between">
+                    <p class="text-red-600 hidden" name="error">Los apellidos no pueden estar vacíos</p>
+                </div>  
+            </div>
+
+            <div class="flex col-span-3 flex-col">
+                <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
+                    <label for="num_pax">Número de Personas:</label>
+                    <input class="mt-6 border-2 border-black color-azul-marino" type="number" id="num_pax" name="num_pax" required><br><br>
+                </div>
+                <div class="w-64 flex justify-between">
+                    <p class="text-red-600 hidden" name="error">Los apellidos no pueden estar vacíos</p>
+                </div>
+            </div>
+
+            <div class="flex col-span-3 flex-col">
+                <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
+                    <label for="comentario">Comentario:</label><br>
+                    <textarea class="mt-6 border-2 mr-6 w-11/12 lg:w-6/12 border-black color-azul-marino" id="comentario" name="comentario" rows="4" cols="50"></textarea><br><br>
+                </div>
+                <div class="w-64 flex justify-between">
+                    <p class="text-red-600 hidden" name="error">Debe contener almenos 5 caracteres alfanuméricos</p>
+                </div>
+            </div>
+
+            <div class="text-center col-span-3 justify-center items-center   flex-col w-full lg:flex-row pt-16">
+                <button type="submit" name="add_reserva" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton">Realizar reserva</button>
+            </div>
+
+        </form>
+    </section>
 </main>
 
     <?php require_once './auxiliares/footer.php'?>

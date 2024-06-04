@@ -16,11 +16,11 @@
 
     <main class ="pt-36 md:pt-56 lg:p-0">
         <section class="flex justify-center p-6">
-            <form action="index.php" method="POST" class="grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center">
+            <form action="index.php" method="POST" class="w-full grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center">
                 <div class="flex col-span-3 flex-col">
-                    <div class='w-full flex text-center  justify-between items-center '>
+                    <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                         <label for="nombre" class=" pr-3">Nombre:</label>
-                        <input type="text" name="nombre" id="nombre" placeholder="Escriba su nombre" class="border-2 border-black color-azul-marino">
+                        <input type="text" name="nombre" id="nombre" placeholder="Escriba su nombre" class=" mt-6 lg:mt-0 border-2 border-black color-azul-marino">
                     </div>
                     <div class="w-64 flex justify-between">
                         <p class="text-red-600 hidden" name="error">El nombre no puede estar vacío</p>
@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="flex col-span-3 flex-col">
-                    <div class='w-full flex text-center  justify-between items-center '>
+                    <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                         <label for="apellidos" class=" pr-3 pt-6">Apellidos:</label>
                         <input type="text" name="apellidos" id="apellidos" placeholder="Escriba sus apellidos" class="mt-6 border-2 border-black color-azul-marino">
                     </div>
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="flex col-span-3 flex-col">
-                    <div class='w-full flex text-center  justify-between items-center '>
+                    <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                         <label for="contrasena" class=" pr-3 pt-6">Contraseña:</label>
                         <input type="password" name="contrasena" id="contrasena" placeholder="Escriba su contraseña" class="mt-6 border-2 border-black color-azul-marino">
                     </div>
@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="flex col-span-3 flex-col">
-                    <div class='w-full flex text-center  justify-between items-center '>
+                    <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                         <label for="confirmar_contrasena" class=" pr-3 pt-6">Repetir contraseña:</label>
                         <input type="password" name="confirmar_contrasena" id="confirmar_contrasena" placeholder="Repite la contraseña" class="mt-6 border-2 border-black color-azul-marino">
                     </div>
@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="flex col-span-3 flex-col">
-                    <div class='w-full flex text-center  justify-between items-center '>
+                    <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                         <label for="email" class=" pr-3 pt-6">Email:</label>
                         <input type="text" name="email" id="email" placeholder="Escriba su email" class="mt-6 border-2 border-black color-azul-marino">
                     </div>
@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="flex col-span-3 flex-col">
-                    <div class='w-full flex text-center  justify-between items-center '>
+                    <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                         <label for="dni" class=" pr-3 pt-6">DNI:</label>
                         <input type="text" name="dni" id="dni" placeholder="Escriba su DNI" class="mt-6 border-2 border-black color-azul-marino">
                     </div>
@@ -78,7 +78,7 @@
                 </div>
 
                 <div class="flex col-span-3 flex-col">
-                    <div class='w-full flex text-center  justify-between items-center '>
+                    <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                         <label for="tarjeta_credito" class=" pr-3 pt-6">Tarjeta de credito:</label>
                         <input type="text" name="tarjeta_credito" id="tarjeta_credito" placeholder="Escriba su Tarjeta de credito" class="mt-6 border-2 border-black color-azul-marino">
                     </div>

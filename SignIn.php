@@ -17,12 +17,18 @@
     <?php require_once './auxiliares/header.php'?>
     <main class="pt-36 md:pt-56 lg:p-0">
         <section class="flex justify-center p-6">
-            <form action="index.php" method='POST' class="grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl">
-                <label for="name" class="col-span-1 pr-3 pt-6">Email:</label>
-                <input type="text" name="email" placeholder="Escriba su email" class="mt-6 col-span-2 border-2 border-black color-azul-marino">
+            <form action="index.php" method='POST' class="w-full grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center">
+                
 
-                <label for="name" class="col-span-1 pr-3 pt-6">Contraseña:</label>
-                <input type="password" name="contrasena" id="" placeholder="Escriba su contraseña" class="mt-6 col-span-2 border-2 border-black color-azul-marino">
+                <div  class=' col-span-3 flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
+                    <label for="name">Email:</label>
+                    <input type="text" name="email" placeholder="Escriba su email" class="mt-6 lg:mt-0 col-span-2 border-2 border-black color-azul-marino">
+                </div>
+
+                <div  class=' col-span-3 flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
+                    <label for="name" class="mt-6">Contraseña:</label>
+                    <input type="password" name="contrasena" id="" placeholder="Escriba su contraseña" class="mt-6 col-span-2 border-2 border-black color-azul-marino">
+                </div>
 
                 <div class="text-center col-span-3 justify-center items-center  w-full pt-32">
                     <button type='submit' name="sign_in" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse">Iniciar Sesion</button>

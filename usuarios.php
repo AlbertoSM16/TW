@@ -24,16 +24,23 @@
     <?php require 'auxiliares/header.php' ?>
 
 <main class ="pt-36 md:pt-44 lg:p-0">
-  
     <section class="flex flex-col-reverse lg:flex-row">
-        <div class="flex h-screen jusify-center">
-            <?php if(isset($_GET['rol'])){
+        
+        <div class="flex h-screen justify-center items-center w-3/6 p-6">
+            <?php if(isset($_GET['rol'])):?>
+                <div>
+                    <?php 
                     $rol = $_GET['rol'];
                     filtrarUsuarios($rol);
-                }else{
-                    mostrarUsuarios();
+                    ?>
+                </div>
+            <?php else:?>
 
-                }?>
+            <div>
+                <?php mostrarUsuarios();?>
+            </div>
+
+            <?php endif; ?>
         </div>
 
 

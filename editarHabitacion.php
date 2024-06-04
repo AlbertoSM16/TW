@@ -14,6 +14,7 @@
     
 <?php require_once 'auxiliares/header.php';
 
+
     if(isset($_GET['id_habitacion'])){
         $habitacion=infoHabitacion($_GET['id_habitacion']);
         $fotos = obtenerFotos($_GET['id_habitacion']);

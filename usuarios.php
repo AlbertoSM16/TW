@@ -30,8 +30,10 @@
     if(isset($_GET['rol'])){
         $rol = $_GET['rol'];
         filtrarUsuarios($rol);
+    }else{
+        mostrarUsuarios();
+
     }
-    mostrarUsuarios();
 ?>
 
             <aside class="lg:w-1/6 lg:fixed lg:right-0 z-0">

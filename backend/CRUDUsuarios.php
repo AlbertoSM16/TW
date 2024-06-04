@@ -98,28 +98,69 @@ function deleteClient($id){
         
         
         echo "<table border='1'>";
-        echo '<tr class="bg-custom-header text-custom-header">
-                        <th class="py-2 px-4 border-b">Nombre</th>
-                        <th class="py-2 px-4 border-b">Apellidos</th>
-                        <th class="py-2 px-4 border-b">Email</th>
-                        <th class="py-2 px-4 border-b">DNI</th>
-                    </tr>';
+    echo '<tr class="bg-custom-header text-custom-header">
+                    <th class="py-2 px-4 border-b">NOMBRE</th>
+                    <th class="py-2 px-4 border-b">APELLIDOS</th>
+                    <th class="py-2 px-4 border-b">EMAIL</th>
+                    <th class="py-2 px-4 border-b">DNI</th>
+                    <th class="py-2 px-4 border-b">ROL</th>
+                    <th class="py-2 px-4 border-b">Tarjeta</th>
 
-        foreach ($resultados as $fila) {
-            echo "<tr>";
-            echo "<td>" . htmlspecialchars($fila['nombre']) . "</td>";
-            echo "<td>" . htmlspecialchars($fila['apellidos']) . "</td>";
-            echo "<td>" . htmlspecialchars($fila['email']) . "</td>";
-            echo "<td>" . htmlspecialchars($fila['dni']) . "</td>";
-            echo "</tr>";
-        }
+                </tr>';
 
-        echo "</table>";
+    foreach ($resultados as $fila) {
+        echo "<tr>";
+        echo "<td>" . htmlspecialchars($fila['nombre']) . "</td>";
+        echo "<td>" . htmlspecialchars($fila['apellidos']) . "</td>";
+        echo "<td>" . htmlspecialchars($fila['email']) . "</td>";
+        echo "<td>" . htmlspecialchars($fila['dni']) . "</td>";
+        echo "<td>" . htmlspecialchars($fila['rol']) . "</td>";
+        echo "<td>" . htmlspecialchars($fila['tarjeta_credito']) . "</td>";
+
+
+        echo "</tr>";
+    }
+
+    echo "</table>";
 
     }
 
 
-$query_update = 'UPDATE usuarios SET nombre = :nombre, apellidos = :apellidos, dni = :dni, email = :email, tarjeta_credito = :tarjeta_credito
- WHERE id_usuario = :id_usuario;';
+
+    function infoUsario($id){
+
+        $query = 'SELECT * FROM usuarios WHERE id =:id';
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':id',$id);
+
+        $stmt->execute();
+
+        $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $resultado;
+           
+    }
+
+
+    function modificarUsuario(){
+        $query_update = 'UPDATE usuarios SET nombre = :nombre, apellidos = :apellidos, dni = :dni, email = :email, tarjeta_credito = :tarjeta_credito
+        WHERE id_usuario = :id_usuario;';
+
+
+        try {
+            $stament = $conn->prepare($query_insert);
+            $stament->bindParam(':nombre',$_POST['nombre']);
+            $stament->bindParam(':apellidos',$_POST['apellidos']);
+            $stament->bindParam(':email',$_POST['email']);
+            $stament->bindParam(':dni',$_POST['dni']);
+            $stament->bindParam(':contrasena',$_POST['contrasena']);
+            $stament->bindParam(':tarjeta_credito',$_POST['tarjeta_credito']);
+
+            $stament->execute();
+        }catch (Exception $e){
+            echo "Error: " .$e->getMessage();
+        }
+
+    }
 
 

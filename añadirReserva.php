@@ -43,7 +43,7 @@
         <label for="comentario">Comentario:</label><br>
         <textarea id="comentario" name="comentario" rows="4" cols="50"></textarea><br><br>
         
-        <input type="submit" value="Realizar Reserva" name="add_reserva">
+        <button type="submit" name="add_reserva">Realizar Reserva</button>
     </form>
 </main>
 

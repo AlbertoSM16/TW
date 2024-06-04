@@ -19,11 +19,11 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>Gran Hotel</title>
 </head>
-<body class="p-0 m-0">
+<body class="p-0 m-0 overflow-x-hidden">
     
     <?php require 'auxiliares/header.php' ?>
 
-<main>
+<main class ="pt-36 md:pt-44 lg:p-0">
 
 <?php 
     
@@ -34,25 +34,30 @@
         mostrarUsuarios();
 
     }
-?>
 
-            <aside class="lg:w-1/6 lg:fixed lg:right-0 z-0">
-                    <ul class="p-6 color-azul-marino">
-                        <?php if(esRecepcionista()): ?>
-                            <li class="font-bold text-xl pt-3"><a href="registro.php">Añadir Usuario</a></li>
-                        <?php endif;?>
-                        <li class="font-bold text-xl">Filtrado de usuarios
-                            <ul class="font-normal text-lg ml-6">
-                                <li><a href="usuarios.php?rol=cliente" >Clientes</a></li>
-                                <li><a href="usuarios.php?rol=administrador" >Administradores</a></li>
-                                <li><a href="usuarios.php?rol=recepcionista">Recepcionistas</a></li>
-                            </ul>
-                        </li>
-                     
-                    </ul>
-            </aside>
+?>    
+    <section class="flex flex-col-reverse lg:flex-row">
+        <div class="flex h-screen jusify-center">
+            <?php mostrarUsuarios();?>
+        </div>
 
 
+        <aside class="lg:w-1/6 lg:fixed lg:right-0 z-0">
+                <ul class="p-6 color-azul-marino">
+                    <?php if(esRecepcionista()): ?>
+                        <li class="font-bold text-xl pt-3"><a href="registro.php">Añadir Usuario</a></li>
+                    <?php endif;?>
+                    <li class="font-bold text-xl">Filtrado de usuarios
+                        <ul class="font-normal text-lg ml-6">
+                            <li><a href="usuarios.php?rol=cliente" >Clientes</a></li>
+                            <li><a href="habitaciones.php?rol=administrador" >Administradores</a></li>
+                            <li><a href="habitaciones.php?rol=recepcionista">Recepcionistas</a></li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+        </aside>
+    </section>
 
 </main>
 

@@ -90,7 +90,9 @@ function deleteClient($id){
 
         $query = 'SELECT * FROM usuarios WHERE rol =:rol';
         $stmt = $conn->prepare($query);
+
         $stmt->bindParam(':rol',$rol);
+
 
         $stmt->execute();
 

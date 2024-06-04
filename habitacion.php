@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -24,7 +25,7 @@
     
     <?php require_once 'auxiliares/header.php'?>
     
-    <main>
+    <main class ="pt-36 md:pt-56 lg:p-0">
 
 
 
@@ -34,4 +35,5 @@
     <?php require_once './auxiliares/footer.php'?>
 
 </body>
+
 </html>

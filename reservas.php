@@ -22,18 +22,17 @@
 </head>
 <body class="p-0 m-0 overflow-x-hidden">
     
-    <?php require_once 'auxiliares/header.php' ?>
+    <?php require 'auxiliares/header.php' ;
+        echo' <main class ="pt-36 md:pt-32 lg:p-0">
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-32">';
+        if(isset($_GET['estado'])){
+            filtrarReservas($_GET['estado']);
+        }else{
+            mostrarReservas();
+        }
+    ?>
 
-     <main class ="pt-36 md:pt-32 lg:p-0">
-        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-32">
-        
-            <?php 
-                if(isset($_GET['estado'])){
-                    filtrarReservas($_GET['estado']);
-                }else{
-                    mostrarReservas();
-                }
-            ?>    
+   
 
                 <aside class="lg:w-1/6 lg:fixed lg:right-0 z-0">
                     <ul class="p-6 color-azul-marino">
@@ -42,8 +41,8 @@
                     <?php endif;?>
                     <li class="font-bold text-xl">Estado
                         <ul class="font-normal text-lg ml-6">
-                            <li><a href="reservas.php?estado='PENDIENTE'" >Pendientes</a></li>
-                            <li><a href="habitaciones.php?estado='CONFIRMADA'" >Confimadas</a></li>
+                            <li><a href="reservas.php?estado=PENDIENTE" >Pendientes</a></li>
+                            <li><a href="reservas.php?estado=CONFIRMADA" >Confimadas</a></li>
                         </ul>
                     </li>
                 </ul>

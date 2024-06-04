@@ -24,6 +24,7 @@
              require './backend/CRUDUsuarios.php';
              require './backend/funcionesLogin.php';
              require './backend/CRUDReservas.php';
+             require './backend/CrudHabitaciones.php';
              require 'navs.php';
              creaTablas();
 

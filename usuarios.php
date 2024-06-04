@@ -24,21 +24,16 @@
     <?php require 'auxiliares/header.php' ?>
 
 <main class ="pt-36 md:pt-44 lg:p-0">
-
-<?php 
-    
-    if(isset($_GET['rol'])){
-        $rol = $_GET['rol'];
-        filtrarUsuarios($rol);
-    }else{
-        mostrarUsuarios();
-
-    }
-
-?>    
+  
     <section class="flex flex-col-reverse lg:flex-row">
         <div class="flex h-screen jusify-center">
-            <?php mostrarUsuarios();?>
+            <?php if(isset($_GET['rol'])){
+                    $rol = $_GET['rol'];
+                    filtrarUsuarios($rol);
+                }else{
+                    mostrarUsuarios();
+
+                }?>
         </div>
 
 
@@ -50,8 +45,8 @@
                     <li class="font-bold text-xl">Filtrado de usuarios
                         <ul class="font-normal text-lg ml-6">
                             <li><a href="usuarios.php?rol=cliente" >Clientes</a></li>
-                            <li><a href="habitaciones.php?rol=administrador" >Administradores</a></li>
-                            <li><a href="habitaciones.php?rol=recepcionista">Recepcionistas</a></li>
+                            <li><a href="usuarios.php?rol=administrador" >Administradores</a></li>
+                            <li><a href="usuarios.php?rol=recepcionista">Recepcionistas</a></li>
                         </ul>
                     </li>
                     

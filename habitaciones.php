@@ -33,16 +33,12 @@
     <title>Gran Hotel</title>
 </head>
 <body class="p-0 m-0 overflow-x-hidden">
-    
     <?php require_once 'auxiliares/header.php'?>
-    
     <main class = "pt-36 md:pt-56 lg:p-0">
         <section class="flex flex-col-reverse lg:flex-row">
-            
             <section class="lg:w-5/6 grid grid-cols-2 md:grid-cols-3 gap-6 p-6">
                 
                 <?php 
-
                     
                     if(isset($_GET['pax'])){
                         $pax=(int)$_GET['pax'];
@@ -51,12 +47,9 @@
                         mostrarHabitaciones();
                     }
 
-
                 ?>
 
-    
-            </section>
-            
+            </section>            
             <aside class="lg:w-1/6 lg:fixed lg:right-0 z-0">
                 <ul class="p-6 color-azul-marino">
                     <?php if(esRecepcionista()): ?>
@@ -69,8 +62,6 @@
                             <li><a href="habitaciones.php?pax=1">Individuales</a></li>
                         </ul>
                     </li>
-                    
-                
                 </ul>
             </aside>
         </section>

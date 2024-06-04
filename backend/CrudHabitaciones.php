@@ -31,7 +31,7 @@ function infoHabitacion($id){
     $stmt->bindParam(':id',$id);
 
     $stmt->execute();
-
+    
     $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
     return $resultado;

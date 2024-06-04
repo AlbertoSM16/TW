@@ -12,8 +12,8 @@
 <body class="p-0 m-0">
     
     <?php require_once 'auxiliares/header.php' 
-        if(isset($_GET['id'])){
-            $usuario = infoUsuario($_GET['id']);
+        if(isset($_GET['id_usuario'])){
+            $usuario = infoUsuario($_GET['id_usuario']);
         }
     ?>
 
@@ -91,7 +91,7 @@
                 </div>
 
                 <div class="text-center col-span-3 justify-center items-center  w-full pt-16">
-                    <button type="submit" name="Registrarse" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton">Enviar</button>
+                    <button type="submit" name="modificar" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton">Enviar</button>
                 </div>
             </form>
         </section>

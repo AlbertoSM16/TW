@@ -2,31 +2,38 @@
 
 function insertReserva($num_pax, $dia_entrada, $dia_salida, $comentario) {
     require 'conexionBD.php';
-    try {
+    $habitacion = comprobarReserva($num_pax,$dia_entrada,$dia_salida);
+    if($habitacion !== NULL){
+        try {
 
-
-        $query = "INSERT INTO reservas (id_cliente, id_habitacion, dia_entrada, dia_salida, num_pax, comentario, estado) 
-                  VALUES (:id_cliente, :id_habitacion, :dia_entrada, :dia_salida, :num_pax, :comentario, 'PENDIENTE')";
-        
-        $stmt = $conn->prepare($query);
-
-        $stmt->bindParam(':id_cliente', $_SESSION['id']);
-        $stmt->bindParam(':id_habitacion', $id_habitacion, PDO::PARAM_INT);
-        $stmt->bindParam(':dia_entrada', $dia_entrada);
-        $stmt->bindParam(':dia_salida', $dia_salida);
-        $stmt->bindParam(':num_pax', $num_pax, PDO::PARAM_INT);
-        $stmt->bindParam(':comentario', $comentario, PDO::PARAM_STR);
-
-        // Ejecutar la sentencia
-        if ($stmt->execute()) {
-            return "Reserva insertada correctamente.";
-        } else {
-            return "Error al insertar la reserva.";
+            $query = "INSERT INTO reservas (id_cliente, id_habitacion, dia_entrada, dia_salida, num_pax, comentario, estado) 
+                      VALUES (:id_cliente, :id_habitacion, :dia_entrada, :dia_salida, :num_pax, :comentario, 'PENDIENTE')";
+            
+            $stmt = $conn->prepare($query);
+    
+            $stmt->bindParam(':id_cliente', $_SESSION['id']);
+            $stmt->bindParam(':id_habitacion', $habitacion['id_habitacion'] );
+            $stmt->bindParam(':dia_entrada', );
+            $stmt->bindParam(':dia_salida',);
+            $stmt->bindParam(':num_pax', $num_pax );
+            $stmt->bindParam(':comentario', $comentario);
+    
+            // Ejecutar la sentencia
+            if ($stmt->execute()) {
+                return "Reserva insertada correctamente.";
+            } else {
+                return "Error al insertar la reserva.";
+            }
+        } catch (PDOException $e) {
+            return "Error: " . $e->getMessage();
         }
-    } catch (PDOException $e) {
-        return "Error: " . $e->getMessage();
+    }else {
+        echo 'No es posible reservar en esas fechas no hay habitaciones libres';
     }
+    
+
 }
+
 
 function selectReservas(){
 
@@ -119,6 +126,60 @@ function selectReservas(){
                 </section>';
             }
         }
+
+
+    }
+
+
+    function eliminarReserva($id){
+
+        require 'conexionBD.php';
+
+        $query = 'DELETE  FROM reservas WHERE id=:id';
+
+        $stmt= $conn->prepare($query);
+
+        $stmt->bindParam(':id', $id);
+
+        $stmt->execute();
+
+
+    }
+
+
+    function comprobarReserva($pax,$fecha_entrada,$fecha_salida){
+        
+        require 'conexion_bd.php';
+
+        $query = "
+            SELECT h.id_habitacion
+            FROM habitaciones h
+            WHERE h.estado = 'LIBRE'
+            AND h.capacidad >= :pax
+            AND NOT EXISTS (
+                SELECT * FROM reservas r
+                WHERE r.id_habitacion = h.id_habitacion
+                AND (
+                    (r.dia_entrada <= :fecha_entrada AND r.dia_salida >= :fecha_entrada)
+                    OR (r.dia_entrada <= :fecha_salida AND r.dia_salida >= :fecha_salida)
+                    OR (r.dia_entrada >= :fecha_entrada AND r.dia_salida <= :fecha_salida)
+                )
+            ) LIMIT 1
+        ";
+
+        $stmt= $conn->prepare($query);
+
+        $stmt->bindParam(':pax', $pax);
+        $stmt->bindParam(':fecha_entrada', $fecha_entrada);
+        $stmt->bindParam(':fecha_salida', $fecha_salida);
+
+        $stmt->execute();
+        
+        if($stmt->rowCount()>0){
+            return $habitacion = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        }
+        return false;
 
 
     }

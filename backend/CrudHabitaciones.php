@@ -8,7 +8,7 @@ function mostrarInfoHabitacion($id,$fotos){
     $query_select = 'SELECT * FROM habitaciones WHERE "id_habitacion" = :id;';
 
     $stmt = $conn->prepare($query_select);
-    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->bindParam(':id', $id);
 
     $stmt->execute();
 
@@ -23,6 +23,20 @@ function mostrarInfoHabitacion($id,$fotos){
     
 }
 
+
+function infoHabitacion($id){
+
+    $query = 'SELECT * FROM habitaciones WHERE id =:id';
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(':id',$id);
+
+    $stmt->execute();
+
+    $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    return $resultado;
+       
+}
 
 function insertar_habitacion($nombre, $precio, $capacidad, $descripcion, $estado, $num_fotos) {
 

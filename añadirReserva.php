@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -49,5 +50,6 @@
 
     <?php require_once './auxiliares/footer.php'?>
 </body>
+
 
 </html>

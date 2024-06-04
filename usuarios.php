@@ -26,11 +26,15 @@
 <main class ="pt-36 md:pt-44 lg:p-0">
 
 <?php 
-
+    
     if(isset($_GET['rol'])){
         $rol = $_GET['rol'];
         filtrarUsuarios($rol);
+    }else{
+        mostrarUsuarios();
+
     }
+
 ?>    
     <section class="flex flex-col-reverse lg:flex-row">
         <div class="flex h-screen jusify-center">

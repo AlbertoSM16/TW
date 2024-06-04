@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -79,4 +80,5 @@
     <script src="./js/popupregistro.js" defer></script>
     <script src="./js/registro_habitaciones.js" defer></script>
 </body>
+
 </html>

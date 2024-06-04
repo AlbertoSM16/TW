@@ -25,150 +25,28 @@
 
     <main>
         <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-32">
-            <section class="flex flex-col md:flex-row bg-color-gris-carbon p-6 color-gris-crema mt-10">
-                <section = class="flex flex-col">
-                    <p>N Hab: 101</p>
-                    <p>Cap: 2</p>
-                    <p>Fecha Inicio: 28-04-2024</p>
-                    <p>Fecha Fin: 05-05-2024</p>
-                </section>
+        
+            <?php 
+                if(isset($_GET['estado'])){
+                    filtrarReservas($_GET['estado']);
+                }else{
+                    mostrarReservas();
+                }
+            ?>    
 
-                <section class="text-black p-10">
-                    <span class="border-2 border-black bg-red-500 inline p-3">Reservada</span>
-                </section>
-            </section>
-
-            <section class="flex flex-col md:flex-row bg-color-gris-carbon p-6 color-gris-crema mt-10">
-                <section = class="flex flex-col">
-                    <p>N Hab: 101</p>
-                    <p>Cap: 2</p>
-                    <p>Fecha Inicio: 28-04-2024</p>
-                    <p>Fecha Fin: 05-05-2024</p>
-                </section>
-
-                <section class="text-black p-10">
-                    <span class="border-2 border-black bg-red-500 inline p-3">Reservada</span>
-                </section>
-            </section>
-
-            <section class="flex flex-col md:flex-row bg-color-gris-carbon p-6 color-gris-crema mt-10">
-                <section = class="flex flex-col">
-                    <p>N Hab: 101</p>
-                    <p>Cap: 2</p>
-                    <p>Fecha Inicio: 28-04-2024</p>
-                    <p>Fecha Fin: 05-05-2024</p>
-                </section>
-
-                <section class="text-black p-10">
-                    <span class="border-2 border-black bg-red-500 inline p-3">Reservada</span>
-                </section>
-            </section>
-
-            <section class="flex flex-col md:flex-row bg-color-gris-carbon p-6 color-gris-crema mt-10">
-                <section = class="flex flex-col">
-                    <p>N Hab: 102</p>
-                    <p>Cap: 4</p>
-                    <p>Fecha Inicio: 28-04-2024</p>
-                    <p>Fecha Fin: 05-05-2024</p>
-                </section>
-
-                <section class="text-black p-10">
-                    <span class="border-2 border-black bg-red-500 inline p-3">Reservada</span>
-                </section>
-            </section>
-
-            <section class="flex flex-col md:flex-row bg-color-gris-carbon p-6 color-gris-crema mt-10">
-                <section = class="flex flex-col">
-                    <p>N Hab: 103</p>
-                    <p>Cap: 2</p>
-                    <p>Fecha Inicio: 28-04-2024</p>
-                    <p>Fecha Fin: 05-05-2024</p>
-                </section>
-
-                <section class="text-black p-10">
-                    <span class="border-2 border-black bg-green-500 inline p-3">Libre</span>
-                </section>
-            </section>
-
-            <section class="flex flex-col md:flex-row bg-color-gris-carbon p-6 color-gris-crema mt-10">
-                <section = class="flex flex-col">
-                    <p>N Hab: 101</p>
-                    <p>Cap: 2</p>
-                    <p>Fecha Inicio: 28-04-2024</p>
-                    <p>Fecha Fin: 05-05-2024</p>
-                </section>
-
-                <section class="text-black p-10">
-                    <span class="border-2 border-black bg-red-500 inline p-3">Reservada</span>
-                </section>
-            </section>
-
-            <section class="flex flex-col md:flex-row bg-color-gris-carbon p-6 color-gris-crema mt-10">
-                <section = class="flex flex-col">
-                    <p>N Hab: 101</p>
-                    <p>Cap: 2</p>
-                    <p>Fecha Inicio: 28-04-2024</p>
-                    <p>Fecha Fin: 05-05-2024</p>
-                </section>
-
-                <section class="text-black p-10">
-                    <span class="border-2 border-black bg-red-500 inline p-3">Reservada</span>
-                </section>
-            </section>
-
-            <section class="flex flex-col md:flex-row bg-color-gris-carbon p-6 color-gris-crema mt-10">
-                <section = class="flex flex-col">
-                    <p>N Hab: 101</p>
-                    <p>Cap: 2</p>
-                    <p>Fecha Inicio: 28-04-2024</p>
-                    <p>Fecha Fin: 05-05-2024</p>
-                </section>
-
-                <section class="text-black p-10">
-                    <span class="border-2 border-black bg-red-500 inline p-3">Reservada</span>
-                </section>
-            </section>
-            <section class="flex flex-col md:flex-row bg-color-gris-carbon p-6 color-gris-crema mt-10">
-                <section = class="flex flex-col">
-                    <p>N Hab: 101</p>
-                    <p>Cap: 2</p>
-                    <p>Fecha Inicio: 28-04-2024</p>
-                    <p>Fecha Fin: 05-05-2024</p>
-                </section>
-
-                <section class="text-black p-10">
-                    <span class="border-2 border-black bg-red-500 inline p-3">Reservada</span>
-                </section>
-            </section>
-
-            <section class="flex flex-col md:flex-row bg-color-gris-carbon p-6 color-gris-crema mt-10">
-                <section = class="flex flex-col">
-                    <p>N Hab: 101</p>
-                    <p>Cap: 2</p>
-                    <p>Fecha Inicio: 28-04-2024</p>
-                    <p>Fecha Fin: 05-05-2024</p>
-                </section>
-
-                <section class="text-black p-10">
-                    <span class="border-2 border-black bg-red-500 inline p-3">Reservada</span>
-                </section>
-            </section>
-
-            <section class="flex flex-col md:flex-row bg-color-gris-carbon p-6 color-gris-crema mt-10">
-                <section = class="flex flex-col">
-                    <p>N Hab: 101</p>
-                    <p>Cap: 2</p>
-                    <p>Fecha Inicio: 28-04-2024</p>
-                    <p>Fecha Fin: 05-05-2024</p>
-                </section>
-
-                <section class="text-black p-10">
-                    <span class="border-2 border-black bg-red-500 inline p-3">Reservada</span>
-                </section>
-            </section>
-            
-
-            
+                <aside class="lg:w-1/6 lg:fixed lg:right-0 z-0">
+                    <ul class="p-6 color-azul-marino">
+                    <?php if(esRecepcionista()): ?>
+                        <li class="font-bold text-xl pt-3"><a href="./añadirReserva.php">Registrar reserva</a></li>
+                    <?php endif;?>
+                    <li class="font-bold text-xl">Estado
+                        <ul class="font-normal text-lg ml-6">
+                            <li><a href="reservas.php?estado='PENDIENTE'" >Pendientes</a></li>
+                            <li><a href="habitaciones.php?estado='CONFIRMADA'" >Confimadas</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>
         </section>
     </main>
 

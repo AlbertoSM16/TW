@@ -29,7 +29,7 @@ function navRecepcionista(){
             </ul>
 
             <section class="lg:top-14 right-14 color-gris-crema font-bold absolute hidden md:block">
-            <form action="index.php" method="post">
+            <form action="datosUsuario.php" method="post">
             <button type="submit" name="cerrar_sesion" class="bg-color-azul-marino py-2 px-4 rounded border-white border-2 animate-pulse input-button">Cerrar sesión</button>
             </form>
                 

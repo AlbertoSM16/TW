@@ -3,7 +3,7 @@
 function insertReserva($num_pax, $dia_entrada, $dia_salida, $comentario) {
     require 'conexionBD.php';
     $habitacion = comprobarReserva($num_pax,$dia_entrada,$dia_salida);
-    if($habitacion !== NULL){
+    if($habitacion !== FALSE){
         try {
 
             $query = "INSERT INTO reservas (id_cliente, id_habitacion, dia_entrada, dia_salida, num_pax, comentario, estado) 
@@ -35,7 +35,7 @@ function insertReserva($num_pax, $dia_entrada, $dia_salida, $comentario) {
 }
 
 
-function selectReservas(){
+function mostrarReservas(){
 
     require 'conexionBD.php';
 

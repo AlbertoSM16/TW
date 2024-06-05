@@ -25,7 +25,11 @@
 
 <main class ="pt-36 md:pt-44 lg:p-0">
     <section class="flex flex-col-reverse lg:flex-row">
-        
+        <?php
+             if(isset($_POST['añadirUsuario'])){
+                registrarUsuario();
+             }
+        ?>
         <div class="flex h-screen justify-center items-center w-3/6 p-6">
             <?php if(isset($_GET['rol'])):?>
                 <div>
@@ -39,7 +43,7 @@
             <div>
                 <?php mostrarUsuarios();?>
             </div>
-
+           
             <?php endif; ?>
         </div>
 
@@ -47,7 +51,7 @@
         <aside class="lg:w-1/6 lg:fixed lg:right-0 z-0">
                 <ul class="p-6 color-azul-marino">
                     <?php if(esRecepcionista()): ?>
-                        <li class="font-bold text-xl pt-3"><a href="registro.php">Añadir Usuario</a></li>
+                        <li class="font-bold text-xl pt-3"><a href="añadirUsuario.php">Añadir Usuario</a></li>
                     <?php endif;?>
                     <li class="font-bold text-xl">Filtrado de usuarios
                         <ul class="font-normal text-lg ml-6">

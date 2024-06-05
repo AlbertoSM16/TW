@@ -55,11 +55,11 @@ function insertReservaPrevia($num_pax, $dia_entrada, $dia_salida, $comentario) {
 function confirmarReserva($id){
     require 'conexionBD.php';
 
-    
-    $query = "UPDATE reservas set estado = 'CONFIRMADA' WHERE id_reserva = :id";
+    var_dump($id);
+    $query = "UPDATE reservas set estado ='CONFIRMADA' WHERE id_reserva = :id";
     $stmt = $conn->prepare($query);
     
-    $stmt->bindParam(':id_cliente', $id);
+    $stmt->bindParam(':id', $id);
 
     $stmt->execute();
 
@@ -212,5 +212,55 @@ function mostrarReservas(){
         }
         return false;
 
-
+    
     }
+
+    function mostrarReservasUsuario($id_usuario){
+
+
+
+    require 'conexionBD.php';
+
+
+        $query = "SELECT id_habitacion,num_pax,dia_entrada,dia_salida,estado FROM reservas WHERE id_usuario=:id;";
+
+        $stmt= $conn->prepare($query);
+        $stmt->bindParam(':id', $id_usuario);
+
+        $stmt->execute();
+
+        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach($resultados as $reserva){
+
+            $query_hab = 'SELECT nombre FROM habitaciones WHERE id_habitacion=:id';
+
+            $statement = $conn->prepare($query_hab);
+            
+            $statement->bindParam(':id',  $reserva['id_habitacion'] );
+
+            $statement->execute();
+    
+            $nombre = $statement->fetchAll(PDO::FETCH_ASSOC);
+            echo '<section class="flex flex-col md:flex-row bg-color-gris-carbon p-6 color-gris-crema mt-10">
+                <section = class="flex flex-col">
+                    <p>N Habitacion: '.$nombre[0]["nombre"].'</p>
+                    <p>Capacidad:'.$reserva['num_pax'].'</p>
+                    <p>Fecha Inicio:'.$reserva['dia_entrada'].'</p>
+                    <p>Fecha Fin:'.$reserva['dia_salida'].'</p>
+                </section>';
+
+                if($reserva['estado'] === 'CONFIRMADA'){
+                    echo '<section class="text-black p-10">
+                            <span class="border-2 border-black bg-red-500 inline p-3">CONFIRMADA</span>
+                        </section>
+                        </section>';
+                }else{
+                    echo '<section class="text-black p-10">
+                    <span class="border-2 border-black bg-green-500 inline p-3">PENDIENTE</span>
+                    </section>
+                    </section>';
+                }
+            
+        }
+    }
+    

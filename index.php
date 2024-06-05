@@ -28,6 +28,7 @@
         confirmarReserva($_POST['confirmarReserva']);
     }
     if(isset($_POST['rechazarReserva'])){
+
         eliminarReserva($_POST['rechazarReserva']);
     }
     ?>

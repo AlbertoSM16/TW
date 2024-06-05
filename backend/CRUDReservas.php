@@ -222,7 +222,7 @@ function mostrarReservas(){
     require 'conexionBD.php';
 
 
-        $query = "SELECT id_habitacion,num_pax,dia_entrada,dia_salida,estado FROM reservas WHERE id_usuario=:id;";
+        $query = "SELECT id_habitacion,num_pax,dia_entrada,dia_salida,estado FROM reservas WHERE id_cliente=:id;";
 
         $stmt= $conn->prepare($query);
         $stmt->bindParam(':id', $id_usuario);

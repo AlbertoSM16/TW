@@ -76,8 +76,7 @@ function navAnonimoMovil(){
   
     echo '<nav id="menuMovil" class="transition-transform duration-1000 fixed left-0 w-full z-50 bg-color-gris-crema flex flex-col translate-x-full lg:hidden">
     <ul class="flex flex-col">
-      <li class=" h-full relative transition-transform duration-500 hover:scale-105 p-6"><a href="reservas.php" class="p-6 text-3xl color-dorado ">Reservar habitación</a></li>
-      <li class=" h-full relative transition-transform duration-500 hover:scale-105 p-6"><a href="usuarios.php" class="p-6 text-3xl color-dorado ">Habitaciones</a></li>
+      <li class=" h-full relative transition-transform duration-500 hover:scale-105 p-6"><a href="habitaciones.php" class="p-6 text-3xl color-dorado ">Habitaciones</a></li>
       <li class=" h-full relative transition-transform duration-500 hover:scale-105 p-6"><a href="servicios.php" class="p-6 text-3xl color-dorado ">Servicios</a></li>
       <li class=" h-full relative transition-transform duration-500 hover:scale-105 p-6"><a href="datosUsuario.php" class="p-6 text-3xl color-dorado "><i class="animate-pulse fa-solid fa-user"></i>'.'<p class="px-2 inline">'.$_SESSION['datosUsuario']['nombre'].'</p></a>'. '</li>
     </ul>

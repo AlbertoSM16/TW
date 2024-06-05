@@ -29,7 +29,7 @@
 <main class ="pt-36 md:pt-56 lg:p-0">
 
     <section class="flex justify-center p-6">
-        <form action="aceptarReserva.php" method="post" class="w-full grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center"> 
+        <form action="avisoReserva.php" method="post" class="w-full grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center"> 
             <div class="flex col-span-3 flex-col">
                 <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                     <label for="num_pax">Numero de personas:</label>
@@ -62,15 +62,6 @@
                 </div>  
             </div>
 
-            <div class="flex col-span-3 flex-col">
-                <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
-                    <label for="num_pax">Número de Personas:</label>
-                    <input class="mt-6 border-2 border-black color-azul-marino" type="number" id="num_pax" name="num_pax" required><br><br>
-                </div>
-                <div class="w-64 flex justify-between">
-                    <p class="text-red-600 hidden" name="error">Los apellidos no pueden estar vacíos</p>
-                </div>
-            </div>
 
             <div class="flex col-span-3 flex-col">
                 <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
@@ -83,7 +74,7 @@
             </div>
 
             <div class="text-center col-span-3 justify-center items-center   flex-col w-full lg:flex-row pt-16">
-                <button type="submit" name="add_reserva" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton">Realizar reserva</button>
+                <button type="submit" name="add_reserva_previa" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton">Realizar reserva</button>
             </div>
 
         </form>

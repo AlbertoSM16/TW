@@ -77,7 +77,7 @@
                 </div>
 
                 <div class="text-center col-span-3 justify-center items-center  w-full pt-16">
-                    <button type="submit" name="aniadirHabitacion" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton">Enviar</button>
+                    <button type="submit" name="editarHabitacion" value="<?php $habitacion["id_habitacion"]?>" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton">Enviar</button>
                 </div>
 
             </form>

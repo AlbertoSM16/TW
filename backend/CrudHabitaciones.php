@@ -1,6 +1,5 @@
 <?php 
 
-
 function mostrarInfoHabitacion($id,$fotos){
 
     require 'conexionBD.php';
@@ -15,10 +14,10 @@ function mostrarInfoHabitacion($id,$fotos){
         echo'<figure class="text-center bg-color-bronce-metalico rounded-sm">';
         
         foreach($fotos as $foto){
-            echo '<img src="./img/granHotel/habitaciones/'.$foto.'" alt="" class="p-3">';
+            echo '<img src="./img/granHotel/habitaciones/'.$foto["foto"].'" alt="" class="p-3">';
         }
 
-        echo '<figcaption class="p-3 color-azul-marino font-bold text-xl">'.$hab[$nombre].'</figcaption>
+        echo '<figcaption class="p-3 color-azul-marino font-bold text-xl">'.$hab["nombre"].'</figcaption>
         </figure>';
     
 }
@@ -26,6 +25,7 @@ function mostrarInfoHabitacion($id,$fotos){
 
 function infoHabitacion($id){
 
+    
     $query = 'SELECT * FROM habitaciones WHERE id =:id';
     $stmt = $conn->prepare($query);
     $stmt->bindParam(':id',$id);

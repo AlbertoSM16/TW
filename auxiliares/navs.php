@@ -32,12 +32,13 @@ function navRecepcionista(){
 
 function navCliente(){
     
+
   echo '<nav class="hidden lg:flex px-10 flex-col relative ">
   <ul class="flex h-full justify-center items-center">
-      <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="reservas.php" class="p-6 text-2xl color-dorado ">Gestionar Reservas</a></li>
-      <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="usuarios.php" class="p-6 text-2xl color-dorado ">Gestionar Clientes</a></li>
-      <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="habitaciones.php" class="p-6 text-2xl color-dorado ">Gestionar Habitaciones</a></li>
-      <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="servicios.php" class="p-6 text-2xl color-dorado ">Servicios</a></li>
+      <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="misReservas.php?misReservas='.$_SESSION['datosUsuario']['id_usuario'].'" class="p-6 text-3xl color-dorado ">Mis Reservas</a></li>
+      <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="añadirReserva.php" class="p-6 text-3xl color-dorado ">Reservar Habitación</a></li>
+      <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="habitaciones.php" class="p-6 text-3xl color-dorado ">Habitaciones</a></li>
+      <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="servicios.php" class="p-6 text-3xl color-dorado ">Servicios</a></li>
       <li class=" h-full relative transition-transform duration-500 hover:scale-105"><a href="datosUsuario.php" class="px-6 text-2xl color-dorado "><i class="animate-pulse fa-solid fa-user"></i>'. '<p class="px-2">'. $_SESSION['datosUsuario']['nombre'].'</p></li>            
   </ul>
 </nav>';

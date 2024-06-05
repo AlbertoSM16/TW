@@ -23,6 +23,7 @@
 <body class="p-0 m-0 overflow-x-hidden">
     <?php
     require_once './auxiliares/header.php';
+
     
     if(isset($_POST['confirmarReserva'])){
         confirmarReserva($_POST['confirmarReserva']);

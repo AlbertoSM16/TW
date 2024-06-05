@@ -42,6 +42,14 @@
     border-bottom: solid 2px #002B5C;
 }
 
+.border-azul-marino-right{
+    border-right: solid 2px #002B5C;
+}
+
 .fondo-gradiente{
     background-image: linear-gradient(to bottom, white, #002B5C);
+}
+
+.fondo-gradiente-aside{
+    background-image: linear-gradient(to bottom, #36454F, #002B5C);
 }

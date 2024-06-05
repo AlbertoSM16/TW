@@ -64,5 +64,6 @@ function esCliente(){
 function cerrarSesion(){
         
     session_destroy();
+    header('Location: index.php');
     
 }

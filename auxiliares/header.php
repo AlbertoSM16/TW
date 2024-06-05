@@ -9,7 +9,7 @@
 </head>
 <body>
     <header id="header" class="fixed w-full lg:relative z-20 border-azul-marino bg-color-gris-crema">
-        <section class="flex justify-between items-center">
+        <section class="flex justify-between items-center flex-row">
             <section data-aos="fade-up-right" class="w-1/6 h-1/6">
                 <a href="index.php"><img src="img/granHotel/granHotelLogo.png" class="object-cover"></a>
             </section>
@@ -25,7 +25,7 @@
              require 'navs.php';
              creaTablas();
 
-                if(isset($_POST['cerrar_sesion'])){
+                if(isset($_GET['cerrar_sesion'])){
                     cerrarSesion();
                 }
                 if (isset($_POST['sign_in'])) {

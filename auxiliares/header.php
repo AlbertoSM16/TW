@@ -15,7 +15,6 @@
             </section>
             <h1 class="text-3xl font-bold color-dorado lg:hidden">EL Gran Hotel</h1>
             <i id="barra" class="fa-solid fa-bars lg:hidden px-10 text-3xl color-dorado"></i>
-
         
         <?php 
             session_start();

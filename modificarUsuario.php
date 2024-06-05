@@ -21,7 +21,7 @@
                 <div class="flex col-span-3 flex-col">
                     <div class='w-full flex text-center  justify-between items-center '>
                         <label for="nombre" class=" pr-3">Nombre:</label>
-                        <input type="text" name="nombre" id="nombre" placeholder="Escriba su nombre" value="<?php $_SESSION['datosUsuario']['nombre']?>" class="border-2 border-black color-azul-marino">
+                        <input type="text" name="nombre" id="nombre" value="<?= $_SESSION['datosUsuario']['nombre']?>" class="border-2 border-black color-azul-marino">
                     </div>
                     <div class="w-64 flex justify-between">
                         <p class="text-red-600 hidden" name="error">El nombre no puede estar vacío</p>
@@ -31,7 +31,7 @@
                 <div class="flex col-span-3 flex-col">
                     <div class='w-full flex text-center  justify-between items-center '>
                         <label for="apellidos" class=" pr-3 pt-6">Apellidos:</label>
-                        <input type="text" name="apellidos" id="apellidos" value="<?php $_SESSION['datosUsuario']['Apellidos']?>" placeholder="Escriba sus apellidos" class="mt-6 border-2 border-black color-azul-marino">
+                        <input type="text" name="apellidos" id="apellidos" value="<?= $_SESSION['datosUsuario']['apellidos']?>" class="mt-6 border-2 border-black color-azul-marino">
                     </div>
                     <div class="w-64 flex justify-between">
                         <p class="text-red-600 hidden" name="error">Los apellidos no pueden estar vacíos</p>
@@ -41,7 +41,7 @@
                 <div class="flex col-span-3 flex-col">
                     <div class='w-full flex text-center  justify-between items-center '>
                         <label for="contrasena" class=" pr-3 pt-6">Contraseña:</label>
-                        <input type="password" name="contrasena" id="contrasena" value="<?php $_SESSION['datosUsuario']['contrasena']?>"placeholder="Escriba su contraseña" class="mt-6 border-2 border-black color-azul-marino">
+                        <input type="password" name="contrasena" id="contrasena" value="<?= $_SESSION['datosUsuario']['contrasena']?>"placeholder="Escriba su contraseña" class="mt-6 border-2 border-black color-azul-marino">
                     </div>
                     <div class="w-64 flex justify-between">
                         <p class="text-red-600 hidden" name="error">Debe contener almenos 5 caracteres alfanuméricos</p>
@@ -61,7 +61,7 @@
                 <div class="flex col-span-3 flex-col">
                     <div class='w-full flex text-center  justify-between items-center '>
                         <label for="email" class=" pr-3 pt-6">Email:</label>
-                        <input type="text" name="email" id="email" placeholder="Escriba su email" value="<?php $_SESSION['datosUsuario']['email']?>" class="mt-6 border-2 border-black color-azul-marino">
+                        <input type="text" name="email" id="email" placeholder="Escriba su email" value="<?= $_SESSION['datosUsuario']['email']?>" class="mt-6 border-2 border-black color-azul-marino">
                     </div>
                     <div class="w-64 flex justify-between">
                         <p class="text-red-600 hidden" name="error">La dirección de correo no es válida</p>
@@ -71,7 +71,7 @@
                 <div class="flex col-span-3 flex-col">
                     <div class='w-full flex text-center  justify-between items-center '>
                         <label for="dni" class=" pr-3 pt-6">DNI:</label>
-                        <input type="text" name="dni" id="dni"  value="<?php $_SESSION['datosUsuario']['dni']?>" placeholder="Escriba su DNI" class="mt-6 border-2 border-black color-azul-marino">
+                        <input type="text" name="dni" id="dni"  value="<?= $_SESSION['datosUsuario']['dni']?>" placeholder="Escriba su DNI" class="mt-6 border-2 border-black color-azul-marino">
                     </div>
                     <div class="w-64 flex justify-between">
                         <p class="text-red-600 hidden" name="error">DNI con formato incorrecto</p>
@@ -81,7 +81,7 @@
                 <div class="flex col-span-3 flex-col">
                     <div class='w-full flex text-center  justify-between items-center '>
                         <label for="tarjeta_credito" class=" pr-3 pt-6">Tarjeta de credito:</label>
-                        <input type="text" name="tarjeta_credito" id="tarjeta_credito"value="<?php $_SESSION['datosUsuario']['tarjeta_credito']?>" placeholder="Escriba su Tarjeta de credito" class="mt-6 border-2 border-black color-azul-marino">
+                        <input type="text" name="tarjeta_credito" id="tarjeta_credito"value="<?= $_SESSION['datosUsuario']['tarjeta_credito']?>" placeholder="Escriba su Tarjeta de credito" class="mt-6 border-2 border-black color-azul-marino">
                     </div>
                     <div class="w-64 flex justify-between">
                         <p class="text-red-600 hidden break-words" name="error">La tarjeta de crédito debe ser una secuencia de 16 dígitos consecutivos</p>

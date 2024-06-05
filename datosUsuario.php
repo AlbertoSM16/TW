@@ -29,7 +29,7 @@
             <p class="font-bold">Hola <?=$_SESSION['datosUsuario']['nombre']; ?></p> 
             <ul class="pt-10">
                 <li><a href="index.php?cerrar_sesion=true">Cerrar Sesion</a></li>
-                <li class="pt-6"><a href="">Modificar perfil</a></li>   
+                <li class="pt-6"><a href="modificarUsuario.php">Modificar perfil</a></li>   
             </ul>
         </aside>
 

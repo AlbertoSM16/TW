@@ -11,11 +11,7 @@
 </head>
 <body class="p-0 m-0">
     
-    <?php require_once 'auxiliares/header.php' 
-        if(isset($_GET['id_usuario'])){
-            $usuario=infoUsuarios($_GET['id_usuario']);
-        }
-    ?>
+    <?php require_once 'auxiliares/header.php' ;?>
 
     <main>
         <section class="flex justify-center p-6">

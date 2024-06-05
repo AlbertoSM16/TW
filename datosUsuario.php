@@ -41,7 +41,7 @@
             <section class="lg:border-r-4 lg:border-black p-10 lg:h-3/6 lg:bg-white text-2xl flex items-center justify-start lg:justify-center color-dorado lg:color-azul-marino w-full lg:w-auto">
                 <ul>
                     <li><span class="font-bold">Nombre: </span><?= $_SESSION['datosUsuario']['nombre']?></li>
-                    <li class="pt-6"><span class="font-bold">Apellidos: </span><?= $_SESSION['datosUsuario']['apellidos']?></li>
+                    <li class="pt-6"><span class="font-bold">Apellidos: </span> <?= $_SESSION['datosUsuario']['apellidos'];?></li>
                     <li class="pt-6"><span class="font-bold">DNI: </span><?= $_SESSION['datosUsuario']['dni']?></li>
                 </ul>
             </section>

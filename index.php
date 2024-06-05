@@ -23,8 +23,6 @@
 <body class="p-0 m-0 overflow-x-hidden">
     <?php
     require_once './auxiliares/header.php';
-    
-    
     ?>
     <main class ="pt-36 md:pt-56 lg:p-0">
         <section class="flex flex-wrap justify-center md:justify-between p-6">

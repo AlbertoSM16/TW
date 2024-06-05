@@ -21,7 +21,26 @@
 </head>
 <body class="p-0 m-0">
     
-    <?php require 'auxiliares/header.php' ?>
+    <?php require 'auxiliares/header.php' 
+        if(isset($_POST['add_reserva_previa'])){
+            $reserva=insertReservaPrevia($_POST['num_pax'],$_POST['dia_entrada'],$_POST['dia_salida'],$_POST['comentario']);
+        }
+
+    ?>
+
+    <section>
+        <h2>Datos de la Tabla Reservas</h2>
+        <ul>
+            <li><strong>Numero de la reserva:</strong><?php $reserva?> </li>
+            <li><strong>Dia de llegada:</strong></li>
+            <li><strong>Dia de salida:</strong> </li>
+            <li><strong>Número de personas:</strong> INT NOT NULL</li>
+        </ul>
+    </section>
+    
+
+
+
 
 <main>
 

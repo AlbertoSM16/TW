@@ -74,7 +74,7 @@
             </div>
 
             <div class="text-center col-span-3 justify-center items-center   flex-col w-full lg:flex-row pt-16">
-                <button type="submit" name="add_reserva" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton">Realizar reserva</button>
+                <button type="submit" name="add_reserva_previa" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton">Realizar reserva</button>
             </div>
 
         </form>

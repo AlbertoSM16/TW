@@ -1,6 +1,6 @@
 <?php
 
-function insertReserva($num_pax, $dia_entrada, $dia_salida, $comentario) {
+function insertReservaPrevia($num_pax, $dia_entrada, $dia_salida, $comentario) {
     require 'conexionBD.php';
     $habitacion = comprobarReserva($num_pax,$dia_entrada,$dia_salida);
     if($habitacion !== FALSE){
@@ -13,17 +13,26 @@ function insertReserva($num_pax, $dia_entrada, $dia_salida, $comentario) {
     
             $stmt->bindParam(':id_cliente', $_SESSION['id']);
             $stmt->bindParam(':id_habitacion', $habitacion['id_habitacion'] );
-            $stmt->bindParam(':dia_entrada', );
-            $stmt->bindParam(':dia_salida',);
+            $stmt->bindParam(':dia_entrada',$dia_entrada );
+            $stmt->bindParam(':dia_salida',$dia_salida);
             $stmt->bindParam(':num_pax', $num_pax );
             $stmt->bindParam(':comentario', $comentario);
     
-            // Ejecutar la sentencia
-            if ($stmt->execute()) {
-                return "Reserva insertada correctamente.";
-            } else {
-                return "Error al insertar la reserva.";
-            }
+            $stmt->execute;
+            
+            $query_id = "SELECT * WHERE id_habitacion =:id_hab, id_cliente=:id_cliente, dia_entrada=:dia_entrada, dia_salida=:dia_salida, num_pax=:num_pax, comentario=:comentario";
+            $stmt = $conn->prepare($query);
+    
+            $stmt->bindParam(':id_cliente', $_SESSION['id']);
+            $stmt->bindParam(':id_habitacion', $habitacion['id_habitacion'] );
+            $stmt->bindParam(':dia_entrada',$dia_entrada );
+            $stmt->bindParam(':dia_salida',$dia_salida);
+            $stmt->bindParam(':num_pax', $num_pax );
+            $stmt->bindParam(':comentario', $comentario);
+    
+            $stmt->execute;
+            $reserva = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $reserva;
         } catch (PDOException $e) {
             return "Error: " . $e->getMessage();
         }
@@ -31,6 +40,19 @@ function insertReserva($num_pax, $dia_entrada, $dia_salida, $comentario) {
         echo 'No es posible reservar en esas fechas no hay habitaciones libres';
     }
     
+
+}
+
+function confirmarReserva($id){
+    require 'conexionBD.php';
+
+    
+    $query = "UPDATE reservas set estado = 'CONFIRMADA' WHERE id_reserva = :id";
+    $stmt = $conn->prepare($query);
+    
+    $stmt->bindParam(':id_cliente', $id);
+
+    $stmt->execute();
 
 }
 

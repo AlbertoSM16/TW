@@ -30,19 +30,17 @@
                 registrarUsuario();
              }
         ?>
-        <div class="flex h-screen justify-center items-center w-3/6 p-6">
+        <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-6 bg-red-200 lg:w-5/6 overflow-y-auto fondo-gradiente">
             <?php if(isset($_GET['rol'])):?>
-                <div>
+                <section>
                     <?php 
                     $rol = $_GET['rol'];
                     filtrarUsuarios($rol);
                     ?>
-                </div>
+                </section>
             <?php else:?>
 
-            <div>
-                <?php mostrarUsuarios();?>
-            </div>
+                <?php mostrarUsuarios(); ?>
            
             <?php endif; ?>
         </div>

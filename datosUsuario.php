@@ -22,6 +22,10 @@
 <body class="p-0 m-0 overflow-x-hidden">
     <?php
     require_once './auxiliares/header.php';    
+
+        if(isset($_POST['modificarUsuario'])){
+            
+        }
     ?>
     <main class="flex flex-col lg:flex-row h-screen  bg-white lg:fondo-gradiente pt-36 md:pt-36 lg:p-0">
 
@@ -29,7 +33,7 @@
             <p class="font-bold">Hola <?=$_SESSION['datosUsuario']['nombre']; ?></p> 
             <ul class="pt-10">
                 <li><a href="index.php?cerrar_sesion=true">Cerrar Sesion</a></li>
-                <li class="pt-6"><a href="">Modificar perfil</a></li>   
+                <li class="pt-6"><a href="modificarUsuario.php?id_usuario=<? $_SESSION['datosUsuario']['id_usuario']">Modificar perfil</a></li>   
             </ul>
         </aside>
 

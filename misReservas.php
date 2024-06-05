@@ -22,8 +22,9 @@
 <body class="p-0 m-0 overflow-x-hidden">
 <?php require 'auxiliares/header.php' ?>
 
-<main>
     <?php
+    echo' <main class ="pt-36 md:pt-32 lg:p-0">
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-32">';
     if($_GET['misReservas']){
         mostrarReservasUsuario($_GET['misReservas']);
     }

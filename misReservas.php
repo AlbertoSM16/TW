@@ -21,15 +21,14 @@
 </head>
 <body class="p-0 m-0 overflow-x-hidden">
 <?php require 'auxiliares/header.php' ?>
-
-</main>
-
-    <?php require_once './auxiliares/footer.php';
+<main>
+    <?php
         if($_GET['misReservas']){
             mostrarReservasUsuario($_GET['misReservas']);
         }
     ?>
-
+</main>
+    <?php require_once './auxiliares/footer.php';?>
 
 </body>
 

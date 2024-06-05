@@ -146,8 +146,26 @@ function deleteClient($id){
     }
 
 
+
+    function updateCliente(){
+        $query_update = 'UPDATE usuarios SET email = :email, tarjeta_credito = :tarjeta_credito,contrasena=:contrasena
+        WHERE id_usuario = :id_usuario;';
+
+        try {
+            $stament = $conn->prepare($query_insert);
+            $stament->bindParam(':email',$_POST['email']);
+            $stament->bindParam(':contrasena',$_POST['contrasena']);
+            $stament->bindParam(':tarjeta_credito',$_POST['tarjeta_credito']);
+
+            $stament->execute();
+        }catch (Exception $e){
+            echo "Error: " .$e->getMessage();
+        }
+
+    }
+    
     function modificarUsuario(){
-        $query_update = 'UPDATE usuarios SET nombre = :nombre, apellidos = :apellidos, dni = :dni, email = :email, tarjeta_credito = :tarjeta_credito
+        $query_update = 'UPDATE usuarios SET nombre = :nombre, apellidos = :apellidos, dni = :dni,contrasena=:contrasena, email = :email, tarjeta_credito = :tarjeta_credito
         WHERE id_usuario = :id_usuario;';
 
 
@@ -166,5 +184,7 @@ function deleteClient($id){
         }
 
     }
+
+
 
 

@@ -31,9 +31,7 @@
             mostrarReservas();
         }
     ?>
-
-   
-
+    
                 <aside class="lg:w-1/6 lg:fixed lg:right-0 z-0">
                     <ul class="p-6 color-azul-marino">
                     <?php if(esRecepcionista()): ?>

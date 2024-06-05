@@ -29,8 +29,8 @@
     ?>
     <main class="flex flex-col lg:flex-row h-screen  bg-white lg:fondo-gradiente pt-36 md:pt-36 lg:p-0">
 
-        <aside data-aos="fade-right" class ="h-screen bg-white px-10 md:py-10 lg:py-20 color-dorado text-3xl border-azul-marino-right">
-            <p class="font-bold">Hola <?=$_SESSION['datosUsuario']['nombre']; ?></p> 
+        <aside data-aos="fade-right" class ="font-bold  h-screen fondo-gradiente px-10 md:py-10 lg:py-20 color-dorado text-2xl border-azul-marino-right">
+            <p class="text-3xl">Hola <?=$_SESSION['datosUsuario']['nombre']; ?></p> 
             <ul class="pt-10">
                 <li><a href="index.php?cerrar_sesion=true">Cerrar Sesion</a></li>
                 <li class="pt-6"><a href="modificarUsuario.php?id_usuario=<? $_SESSION['datosUsuario']['id_usuario']">Modificar perfil</a></li>   

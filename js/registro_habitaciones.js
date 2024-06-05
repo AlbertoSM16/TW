@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             switch (input.placeholder) {
                 case "Escriba el número de habitación":
-                    esValido = /^[1-9]\d*$/.test(valor);
+                    esValido = /^[a-zA-Z0-9\s]+$/.test(valor)
                     break;
 
                 case "Escriba la capacidad de la habitación":

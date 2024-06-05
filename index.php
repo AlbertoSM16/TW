@@ -24,7 +24,12 @@
     <?php
     require_once './auxiliares/header.php';
     
-    
+    if(isset($_POST['confirmarReserva'])){
+        confirmarReserva($_POST['confirmarReserva']);
+    }
+    if(isset($_POST['rechazarReserva'])){
+        eliminarReserva($_POST['rechazarReserva']);
+    }
     ?>
     <main class ="pt-36 md:pt-56 lg:p-0">
         <section class="flex flex-wrap justify-center md:justify-between p-6">

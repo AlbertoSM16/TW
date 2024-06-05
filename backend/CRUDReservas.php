@@ -2,6 +2,7 @@
 
 function insertReservaPrevia($num_pax, $dia_entrada, $dia_salida, $comentario) {
     require 'conexionBD.php';
+
     $habitacion = comprobarReserva($num_pax,$dia_entrada,$dia_salida);
     if($habitacion !== FALSE){
         try {
@@ -11,28 +12,36 @@ function insertReservaPrevia($num_pax, $dia_entrada, $dia_salida, $comentario) {
             
             $stmt = $conn->prepare($query);
     
-            $stmt->bindParam(':id_cliente', $_SESSION['id']);
-            $stmt->bindParam(':id_habitacion', $habitacion['id_habitacion'] );
+            $stmt->bindParam(':id_cliente', $_SESSION['datosUsuario']['id_usuario']);
+            $stmt->bindParam(':id_habitacion', $habitacion[0]['id_habitacion'] );
             $stmt->bindParam(':dia_entrada',$dia_entrada );
             $stmt->bindParam(':dia_salida',$dia_salida);
             $stmt->bindParam(':num_pax', $num_pax );
             $stmt->bindParam(':comentario', $comentario);
     
-            $stmt->execute;
+            $stmt->execute();
             
-            $query_id = "SELECT * WHERE id_habitacion =:id_hab, id_cliente=:id_cliente, dia_entrada=:dia_entrada, dia_salida=:dia_salida, num_pax=:num_pax, comentario=:comentario";
-            $stmt = $conn->prepare($query);
+            $query_id = 'SELECT * FROM reservas 
+            WHERE id_habitacion = :id_hab AND id_cliente = :id_cliente 
+            AND dia_entrada = :dia_entrada AND dia_salida = :dia_salida 
+            AND num_pax = :num_pax AND comentario = :comentario';
+
+           $statement = $conn->prepare($query_id);
+
+            $statement->bindParam(':id_cliente', $_SESSION['datosUsuario']['id_usuario']);
+            $statement->bindParam(':id_hab', $habitacion[0]['id_habitacion'] );
+            $statement->bindParam(':dia_entrada',$dia_entrada );
+            $statement->bindParam(':dia_salida',$dia_salida);
+            $statement->bindParam(':num_pax', $num_pax );
+            $statement->bindParam(':comentario', $comentario);
     
-            $stmt->bindParam(':id_cliente', $_SESSION['id']);
-            $stmt->bindParam(':id_habitacion', $habitacion['id_habitacion'] );
-            $stmt->bindParam(':dia_entrada',$dia_entrada );
-            $stmt->bindParam(':dia_salida',$dia_salida);
-            $stmt->bindParam(':num_pax', $num_pax );
-            $stmt->bindParam(':comentario', $comentario);
-    
-            $stmt->execute;
+            $statement->execute();
+
             $reserva = $statement->fetchAll(PDO::FETCH_ASSOC);
+            
             return $reserva;
+            
+
         } catch (PDOException $e) {
             return "Error: " . $e->getMessage();
         }
@@ -171,7 +180,7 @@ function mostrarReservas(){
 
     function comprobarReserva($pax,$fecha_entrada,$fecha_salida){
         
-        require 'conexion_bd.php';
+        require 'conexionBD.php';
 
         $query = "
             SELECT h.id_habitacion
@@ -187,7 +196,7 @@ function mostrarReservas(){
                     OR (r.dia_entrada >= :fecha_entrada AND r.dia_salida <= :fecha_salida)
                 )
             ) LIMIT 1
-        ";
+        ;";
 
         $stmt= $conn->prepare($query);
 
@@ -196,10 +205,10 @@ function mostrarReservas(){
         $stmt->bindParam(':fecha_salida', $fecha_salida);
 
         $stmt->execute();
-        
+
         if($stmt->rowCount()>0){
             return $habitacion = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+            
         }
         return false;
 

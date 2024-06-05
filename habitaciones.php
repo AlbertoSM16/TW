@@ -46,6 +46,12 @@
                     }else{
                         mostrarHabitaciones();
                     }
+                    if(isset($_POST['editarHabitacion'])){
+                        editarHabitacion($_POST['editarHabitacion']);
+                    }
+                    if(isset($_POST['eliminarHabitacion'])){
+                        eliminarHabitacion($_POST['eliminarHabitacion']);
+                    }
 
                 ?>
 

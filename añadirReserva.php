@@ -62,15 +62,6 @@
                 </div>  
             </div>
 
-            <div class="flex col-span-3 flex-col">
-                <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
-                    <label for="num_pax">Número de Personas:</label>
-                    <input class="mt-6 border-2 border-black color-azul-marino" type="number" id="num_pax" name="num_pax" required><br><br>
-                </div>
-                <div class="w-64 flex justify-between">
-                    <p class="text-red-600 hidden" name="error">Los apellidos no pueden estar vacíos</p>
-                </div>
-            </div>
 
             <div class="flex col-span-3 flex-col">
                 <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>

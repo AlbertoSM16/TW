@@ -189,6 +189,33 @@ function mostrarReservas(){
 
     }
 
+    function modificarReserva($id){
+
+        require 'conexionBD.php';
+
+        $habitacion = comprobarReserva($_POST['num_pax'],$_POST['dia_entrada'],$_POST['dia_salida']);
+        if($habitacion !== FALSE){
+            try {
+    
+                $query = "UPDATE reservas 
+                SET id_cliente =?, id_habitacion =?, dia_entrada = ?, dia_salida = ? num_pax =?, comentario =? 
+                WHERE id_reserva = ?";
+                    
+                $stmt = $conn->prepare($query);
+                $stmt->bindParam(1, $_POST['id_cliente']);
+                $stmt->bindParam(2, $habitacion[0]['id_habitacion']);
+                $stmt->bindParam(3, $_POST['dia_entrada']);
+                $stmt->bindParam(4, $_POST['dia_salida']);
+                $stmt->bindParam(5, $_POST['num_pax']);
+                $stmt->bindParam(6, $_POST['comentario']);
+                $stmt->bindParam(7, $id_reserva);
+                $stmt->execute();
+            }
+            catch (PDOException $e) {
+                echo "Error al actualizar la reserva: " . $e->getMessage();
+            }
+        }
+    }
 
     function comprobarReserva($pax,$fecha_entrada,$fecha_salida){
         
@@ -227,9 +254,23 @@ function mostrarReservas(){
     
     }
 
+    function infoReserva($id){
+        require 'conexionBD.php';
+
+        $query = 'SELECT * FROM reservas WHERE id_reserva=:id';
+
+        $stmt= $conn->prepare($query);
+
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        return $reserva = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    }
+
+
     function mostrarReservasUsuario($id_usuario){
-
-
+    
 
     require 'conexionBD.php';
 

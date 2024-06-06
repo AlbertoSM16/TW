@@ -30,6 +30,9 @@
         }else{
             mostrarReservas();
         }
+        if(isset($_POST['modificarReserva'])){
+            modificarReserva($_POST['modificarReserva']);
+        }
     ?>
     
                 <aside class="lg:w-1/6 lg:fixed lg:right-0 z-0">

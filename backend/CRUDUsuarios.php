@@ -15,7 +15,7 @@ function mostrarUsuarios(){
     foreach ($resultados as $fila) {
         echo "<section class='flex flex-col p-6 bg-color-azul-marino border-solid border-4 border-cobre color-bronce-metalico text-xl lg:text-lg'>
         <div class='w-full flex justify-between'>
-            <a class='transition-transform duration-100 hover:scale-105' href='modificarCliente.php?id_usuario_recepcionista=".$fila['id_usuario']."'><i class='fa-regular fa-pen-to-square'></i></a>
+            <a class='transition-transform duration-100 hover:scale-105' href='modificarACliente.php?id_usuario_recepcionista=".$fila['id_usuario']."'><i class='fa-regular fa-pen-to-square'></i></a>
             <h3 class='text-center color-bronce-metalico font-bold text-3xl border-b-2 border-cobre pb-2'>". $fila['nombre'] ."</h3>
             <a class='transition-transform duration-100 hover:scale-105' href='usuarios.php?elimiar_id_usuario=".$fila['id_usuario']."'><i class='fa-solid fa-trash'></i></a>
         </div>
@@ -56,7 +56,7 @@ function mostrarClientes(){
     foreach ($resultados as $fila) {
         echo "<section class='flex flex-col p-6 bg-color-azul-marino border-solid border-4 border-cobre color-bronce-metalico text-xl lg:text-lg'>
         <div class='w-full flex justify-between'>
-            <a class='transition-transform duration-100 hover:scale-105' href='modificarCliente.php?id_usuario_recepcionista=".$fila['id_usuario']."'><i class='fa-regular fa-pen-to-square'></i></a>
+            <a class='transition-transform duration-100 hover:scale-105' href='modificarACliente.php?id_usuario_recepcionista=".$fila['id_usuario']."'><i class='fa-regular fa-pen-to-square'></i></a>
             <h3 class='text-center color-bronce-metalico font-bold text-3xl border-b-2 border-cobre pb-2'>". $fila['nombre'] ."</h3>
             <a class='transition-transform duration-100 hover:scale-105' href='usuarios.php?elimiar_id_usuario=".$fila['id_usuario']."'><i class='fa-solid fa-trash'></i></a>
         </div>

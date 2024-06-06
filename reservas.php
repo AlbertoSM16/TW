@@ -27,8 +27,10 @@
         <section class="grid grid-cols-1 lg:grid-cols-3 gap-6 p-10">';
         if(isset($_GET['estado'])){
             filtrarReservas($_GET['estado']);
-        }else{
+        }else if(esRecepcionista()){
             mostrarReservas();
+        }else if(esCliente()){
+            mostrarReservasUsuario($_SESSION['datosUsuario']['id_usuario']);
         }
         if(isset($_POST['modificarReserva'])){
             modificarReserva($_POST['modificarReserva']);

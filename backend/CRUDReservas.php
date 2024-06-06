@@ -206,30 +206,24 @@ function mostrarReservas(){
     function modificarReserva($id){
 
         require 'conexionBD.php';
-
-        $habitacion = comprobarReserva($_POST['num_pax'],$_POST['dia_entrada'],$_POST['dia_salida']);
-        if($habitacion !== FALSE){
-            try {
-    
+       
+        try {
+                
                 $query = "UPDATE reservas 
-                SET id_cliente =?, id_habitacion =?, dia_entrada = ?, dia_salida = ? num_pax =?, comentario =? 
-                WHERE id_reserva = ?";
+                SET comentario =:comentario
+                WHERE id_reserva =:id_reserva";
                     
                 $stmt = $conn->prepare($query);
-                $stmt->bindParam(1, $_POST['id_cliente']);
-                $stmt->bindParam(2, $habitacion[0]['id_habitacion']);
-                $stmt->bindParam(3, $_POST['dia_entrada']);
-                $stmt->bindParam(4, $_POST['dia_salida']);
-                $stmt->bindParam(5, $_POST['num_pax']);
-                $stmt->bindParam(6, $_POST['comentario']);
-                $stmt->bindParam(7, $id_reserva);
+               
+                $stmt->bindParam(':comentario', $_POST['comentario']);
+                $stmt->bindParam(':id_reserva', $id);
                 $stmt->execute();
             }
             catch (PDOException $e) {
                 echo "Error al actualizar la reserva: " . $e->getMessage();
             }
-        }
     }
+    
 
     function comprobarReserva($pax,$fecha_entrada,$fecha_salida){
         
@@ -286,10 +280,10 @@ function mostrarReservas(){
     function mostrarReservasUsuario($id_usuario){
     
 
-    require 'conexionBD.php';
+        require 'conexionBD.php';
 
 
-        $query = "SELECT id_habitacion,num_pax,dia_entrada,dia_salida,estado FROM reservas WHERE id_cliente=:id;";
+        $query = "SELECT id_reserva,id_habitacion,num_pax,dia_entrada,dia_salida,estado FROM reservas WHERE id_cliente=:id;";
 
         $stmt= $conn->prepare($query);
         $stmt->bindParam(':id', $id_usuario);
@@ -310,8 +304,13 @@ function mostrarReservas(){
             $nombre = $statement->fetchAll(PDO::FETCH_ASSOC);
             echo '<section class="flex flex-col md:flex-row bg-color-gris-carbon p-6 color-gris-crema mt-10">
                 <section = class="flex flex-col">
-                    <div class="flex justify-between">
-                        <a class="transition-transform duration-100 hover:scale-105" href="modificarReserva.php?id_reserva='.$reserva["id_reserva"].'><i class="fa-regular fa-pen-to-square"></i></a>
+                    <div class="flex justify-between p-4 rounded-lg ">
+                        <a class="transition-transform duration-100 hover:scale-105" href="modificarReserva.php?id_reserva='.$reserva["id_reserva"] .'">
+                            <i class="fa-regular fa-pen-to-square"></i>
+                        </a>
+                        <a class="transition-transform duration-100 hover:scale-105 ml-4" href="reservas.php?id_reserva='.$reserva["id_reserva"].'">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
                     </div>
                     <p>N Habitacion: '.$nombre[0]["nombre"].'</p>
                     <p>Capacidad: '.$reserva['num_pax'].'</p>

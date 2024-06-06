@@ -73,6 +73,26 @@
                         <p class="text-red-600 hidden break-words" name="error">La tarjeta de crédito debe ser una secuencia de 16 dígitos consecutivos</p>
                     </div>
                 </div>
+            <?php 
+                if(esAdministrador()){
+
+                    echo'<div class="flex col-span-3 flex-col">
+                            <div class="w-full flex text-center  justify-between items-center ">
+                                <label for="Rol" class=" pr-3 pt-6">Rol:</label>
+                                <label for="rol">Seleccione un rol:</label>
+                                <select id="rol" name="rol" required>
+                                    <option value="administrador">Administrado</option>
+                                    <option value="cliente">Cliente</option>
+                                    <option value="recepcionista">Recepcionsta</option>
+                                </select>
+                    </div>';
+                }
+                ?>
+                
+                    <div class="w-64 flex justify-between">
+                        <p class="text-red-600 hidden break-words" name="error">La tarjeta de crédito debe ser una secuencia de 16 dígitos consecutivos</p>
+                    </div>
+                </div>
 
                 <div class="text-center col-span-3 justify-center items-center  w-full pt-16">
                     <button type="submit" name="modificarACliente" value="<?= $user[0]['id_usuario'] ?>" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton">Enviar</button>

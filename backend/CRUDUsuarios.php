@@ -169,22 +169,44 @@ function deleteClient($id){
 
         require 'conexionBD.php';
 
-        $query_update = 'UPDATE usuarios SET nombre = :nombre, apellidos = :apellidos, dni = :dni,contrasena=:contrasena, email = :email, tarjeta_credito = :tarjeta_credito
-        WHERE id_usuario = :id_usuario;';
-
+        
+        
         try {
 
-            $stament = $conn->prepare($query_update);
-            $stament->bindParam(':nombre',$_POST['nombre']);
-            $stament->bindParam(':apellidos',$_POST['apellidos']);
-            $stament->bindParam(':email',$_POST['email']);
-            $stament->bindParam(':dni',$_POST['dni']);
-            $stament->bindParam(':contrasena',$_POST['contrasena']);
-            $stament->bindParam(':tarjeta_credito',$_POST['tarjeta_credito']);
-            $stament->bindParam(':id_usuario',$id_usuario);
-            echo $id_usuario;
-
-            $stament->execute();
+            if(esRecepcionista()){
+                $query_update = 'UPDATE usuarios SET nombre = :nombre, apellidos = :apellidos, dni = :dni, email = :email, tarjeta_credito = :tarjeta_credito
+                WHERE id_usuario = :id_usuario;';
+                $stament = $conn->prepare($query_update);
+                $stament->bindParam(':nombre',$_POST['nombre']);
+                $stament->bindParam(':apellidos',$_POST['apellidos']);
+                $stament->bindParam(':email',$_POST['email']);
+                $stament->bindParam(':dni',$_POST['dni']);
+                $stament->bindParam(':tarjeta_credito',$_POST['tarjeta_credito']);
+                $stament->bindParam(':id_usuario',$id_usuario);
+                $stament->execute();
+            }else if(esCliente()){
+                $query_update = 'UPDATE usuarios SETcontrasena=:contrasena, email = :email, tarjeta_credito = :tarjeta_credito
+                WHERE id_usuario = :id_usuario;';
+                $stament = $conn->prepare($query_update);
+                $stament->bindParam(':email',$_POST['email']);
+                $stament->bindParam(':dni',$_POST['dni']);
+                $stament->bindParam(':id_usuario',$id_usuario);
+                $stament->execute();
+            }else{
+                $query_update = 'UPDATE usuarios SET nombre = :nombre, apellidos = :apellidos, dni = :dni, email = :email, tarjeta_credito = :tarjeta_credito,rol:=rol
+                WHERE id_usuario = :id_usuario;';
+                
+                $stament = $conn->prepare($query_update);
+                $stament->bindParam(':nombre',$_POST['nombre']);
+                $stament->bindParam(':apellidos',$_POST['apellidos']);
+                $stament->bindParam(':email',$_POST['email']);
+                $stament->bindParam(':dni',$_POST['dni']);
+                $stament->bindParam(':tarjeta_credito',$_POST['tarjeta_credito']);
+                $stament->bindParam(':rol',$_POST['rol']);
+                $stament->bindParam(':id_usuario',$id_usuario);
+                $stament->execute();
+            }
+          
 
         }catch (Exception $e){
             echo "Error: " .$e->getMessage();

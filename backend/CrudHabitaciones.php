@@ -198,5 +198,19 @@ function obtenerFotos($id){
 }
 
 
+function editarHabitacion($id){
+    require 'conexionBD.php';
+    $query_update = 'UPDATE usuarios SET nombre = :nombre, precio = :precio, capacidad = :capacidad, descripcion = :descripcion, estado = :estado
+                WHERE id_habitacion = :id;';
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':nombre', $_POST['nombre']);
+    $stmt->bindParam(':precio', $_POST['precio']);
+    $stmt->bindParam(':capacidad', $_POST['capacidad']);
+    $stmt->bindParam(':descripcion', $_POST['descripcion']);
+    $stmt->bindParam(':estado', $_POST['estado']);
 
+
+
+}
 

@@ -40,11 +40,11 @@
                 
                 <?php 
 
-                    if(isset($_POST['editarHabitacion'])){
-                        editarHabitacion($_POST['editarHabitacion']);
+                    if(isset($_GET['editarHabitacion'])){
+                        editarHabitacion($_GET['editarHabitacion']);
                     }
-                    if(isset($_POST['eliminarHabitacion'])){
-                        eliminarHabitacion($_POST['eliminarHabitacion']);
+                    if(isset($_GET['eliminarHabitacion'])){
+                        eliminarHabitacion($_GET['eliminarHabitacion']);
                     }
                                         
                     if(isset($_GET['pax'])){

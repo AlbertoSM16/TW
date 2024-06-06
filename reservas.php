@@ -41,12 +41,12 @@
             mostrarReservas($_SESSION['datosUsuario']['id_usuario']);
         }
     ?>
-    
+            <?php if(esRecepcionista()): ?>
                 <aside class="lg:w-1/6 lg:fixed lg:right-0 z-0">
                     <ul class="p-6 color-azul-marino">
-                    <?php if(esRecepcionista()): ?>
-                        <li class="font-bold text-xl pt-3"><a href="./añadirReserva.php">Registrar reserva</a></li>
-                    <?php endif;?>
+                   
+                        <li class="font-bold text-xl pt-3"><a href="./añadirReservaRecepcionista.php">Registrar reserva</a></li>
+                    
                     <li class="font-bold text-xl">Estado
                         <ul class="font-normal text-lg ml-6">
                             <li><a href="reservas.php?estado=PENDIENTE" >Pendientes</a></li>
@@ -55,6 +55,7 @@
                     </li>
                 </ul>
             </aside>
+            <?php endif;?>
         </section>
     </main>
 

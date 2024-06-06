@@ -9,11 +9,27 @@ function insertReservaPrevia($num_pax, $dia_entrada, $dia_salida, $comentario) {
 
             $query = "INSERT INTO reservas (id_cliente, id_habitacion, dia_entrada, dia_salida, num_pax, comentario, estado) 
                       VALUES (:id_cliente, :id_habitacion, :dia_entrada, :dia_salida, :num_pax, :comentario, 'PENDIENTE')";
-            
+             
             $stmt = $conn->prepare($query);
-    
-            $stmt->bindParam(':id_cliente', $_SESSION['datosUsuario']['id_usuario']);
-            $stmt->bindParam(':id_habitacion', $habitacion[0]['id_habitacion'] );
+
+            if(isset($_POST['add_reserva_recepcion'])){
+                $query_id = 'SELECT id_usuario FROM usuarios WHERE email=:email';
+                
+                $statement = $conn->prepare($query_id);
+                $statement->bindParam(':email',$_POST['email']);
+                $statement->execute();
+
+                $id_cliente=$statement->fetch(PDO::FETCH_ASSOC);
+                $stmt->bindParam(':id_cliente', $id_cliente['id_usuario']);
+                
+            }
+
+            if(!esRecepcionista()){
+                $stmt->bindParam(':id_cliente', $_SESSION['datosUsuario']['id_usuario']);
+                
+            }
+        
+            $stmt->bindParam(':id_habitacion', $habitacion[0]['id_habitacion']);
             $stmt->bindParam(':dia_entrada',$dia_entrada );
             $stmt->bindParam(':dia_salida',$dia_salida);
             $stmt->bindParam(':num_pax', $num_pax );
@@ -26,9 +42,14 @@ function insertReservaPrevia($num_pax, $dia_entrada, $dia_salida, $comentario) {
             AND dia_entrada = :dia_entrada AND dia_salida = :dia_salida 
             AND num_pax = :num_pax AND comentario = :comentario';
 
-           $statement = $conn->prepare($query_id);
+            $statement = $conn->prepare($query_id);
+            if(!esRecepcionista()){
+                $statement->bindParam(':id_cliente', $_SESSION['datosUsuario']['id_usuario']);
 
-            $statement->bindParam(':id_cliente', $_SESSION['datosUsuario']['id_usuario']);
+            }else{
+                $statement->bindParam(':id_cliente', $id_cliente['id_usuario']);
+
+            }
             $statement->bindParam(':id_hab', $habitacion[0]['id_habitacion'] );
             $statement->bindParam(':dia_entrada',$dia_entrada );
             $statement->bindParam(':dia_salida',$dia_salida);
@@ -40,13 +61,12 @@ function insertReservaPrevia($num_pax, $dia_entrada, $dia_salida, $comentario) {
             $reserva = $statement->fetchAll(PDO::FETCH_ASSOC);
             
             return $reserva;
-            
 
         } catch (PDOException $e) {
             return "Error: " . $e->getMessage();
         }
     }else {
-        echo 'No es posible reservar en esas fechas no hay habitaciones libres';
+        echo '<p>No es posible reservar en esas fechas no hay habitaciones libres</p>';
     }
     
 
@@ -169,23 +189,48 @@ function mostrarReservas($id_usuario){
 
             $stmt->execute();
     
-            $nombre = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            echo '<section class="flex flex-col md:flex-row bg-color-gris-carbon p-6 color-gris-crema mt-10">
-            <section = class="flex flex-col">
-                <p>N Habitacion: '.$nombre[0]['nombre'].'</p>
-                <p>Capacidad:'.$reserva['num_pax'].'</p>
-                <p>Fecha Inicio:'.$reserva['dia_entrada'].'</p>
-                <p>Fecha Fin:'.$reserva['dia_salida'].'</p>
-            </section>';
+            $query_cliente = 'SELECT nombre FROM usuarios WHERE id_usuario=:id';
+            
+            $stmt2 = $conn->prepare($query_cliente);
 
-            if($estado === 'CONFIRMADA'){
+            $stmt2->bindParam(':id', $reserva['id_cliente']);
+
+            $stmt2->execute();
+            
+
+            $nombre = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            $cliente = $stmt2->fetch(PDO::FETCH_ASSOC);
+
+            echo '<section class="flex flex-col bg-color-gris-carbon  w-full color-gris-crema p-10">
+            <div class="flex justify-between p-4 rounded-lg ">
+                <a class="transition-transform duration-100 hover:scale-105" href="modificarReserva.php?id_reserva='.$reserva["id_reserva"] .'">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </a>
+                <a class="transition-transform duration-100 hover:scale-105 ml-4" href="reservas.php?id_reserva='.$reserva["id_reserva"].'">
+                    <i class="fa-solid fa-trash"></i>
+                </a>
+            </div>
+            <section class="flex flex-col mt-10">
+                <section = class="flex flex-col">
+                    <p>N Cliente: '.$cliente["nombre"].'</p>
+                    <p>N Habitacion: '.$nombre[0]["nombre"].'</p>
+                    <p>Capacidad: '.$reserva['num_pax'].'</p>
+                    <p>Fecha Inicio: '.$reserva['dia_entrada'].'</p>
+                    <p>Fecha Fin: '.$reserva['dia_salida'].'</p>
+                    <p>Comentario: '.$reserva['comentario'].'</p>
+                </section>';
+
+            if($reserva['estado'] === 'CONFIRMADA'){
                 echo '<section class="text-black p-10">
                         <span class="border-2 border-black bg-red-500 inline p-3">CONFIRMADA</span>
+                        </section>
                     </section>
                     </section>';
             }else{
                 echo '<section class="text-black p-10">
                 <span class="border-2 border-black bg-green-500 inline p-3">PENDIENTE</span>
+                </section>
                 </section>
                 </section>';
             }

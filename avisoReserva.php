@@ -22,10 +22,10 @@
 <body class="p-0 m-0">
     
     <?php require 'auxiliares/header.php';
-        if(isset($_POST['add_reserva_previa'])){
+        if(isset($_POST['add_reserva_previa']) || isset($_POST['add_reserva_recepcion']) ){
             $reserva=insertReservaPrevia($_POST['num_pax'],$_POST['dia_entrada'],$_POST['dia_salida'],$_POST['comentario']);
+            var_dump($reserva);
         }
-        var_dump($reserva[0]['id_reserva']);
     ?>  
 
     <section>

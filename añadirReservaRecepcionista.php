@@ -34,7 +34,7 @@
             <div class="flex col-span-3 flex-col">
                 <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                     <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre" class="mt-6 border-2 border-black color-azul-marino" required><br><br>
+                    <input type="text" id="nombre" name="nombre" class=" border-2 border-black color-azul-marino" required><br><br>
                 </div>
                 <div class="w-64 flex justify-between">
                     <p class="text-red-600 hidden" name="error">El nombre no puede estar vacío</p>
@@ -42,7 +42,7 @@
             </div>
             <div class="flex col-span-3 flex-col">
                 <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
-                    <label for="apellidos">Apellidos:</label>
+                    <label for="apellidos" class="mt-6">Apellidos:</label>
                     <input type="text" id="apellidos" name="apellidos" class="mt-6 border-2 border-black color-azul-marino" required><br><br>
                 </div>
                 <div class="w-64 flex justify-between">
@@ -52,7 +52,7 @@
 
             <div class="flex col-span-3 flex-col">
                 <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
-                    <label for="email">Email:</label>
+                    <label for="email" class="mt-6">Email:</label>
                     <input type="text" id="email" name="email" class="mt-6 border-2 border-black color-azul-marino" required><br><br>
                 </div>
                 <div class="w-64 flex justify-between">
@@ -62,7 +62,7 @@
 
             <div class="flex col-span-3 flex-col">
                 <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
-                    <label for="num_pax">Numero de personas:</label>
+                    <label for="num_pax" class="mt-6">Numero de personas:</label>
                     <input type="number" id="num_pax" name="num_pax" class="mt-6 border-2 border-black color-azul-marino" required><br><br>
                 </div>
                 <div class="w-64 flex justify-between">
@@ -72,7 +72,7 @@
 
             <div class="flex col-span-3 flex-col">
                 <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center'> 
-                    <label for="dia_entrada">Día de Entrada:</label>
+                    <label for="dia_entrada" class="mt-6">Día de Entrada:</label>
                     <input class="mt-6 border-2 border-black color-azul-marino" type="date" id="dia_entrada" name="dia_entrada" required><br><br>
                 </div>
                 <div class="w-64 flex justify-between">
@@ -82,7 +82,7 @@
 
             <div class="flex col-span-3 flex-col">
                 <div class=" flex-col w-full lg:flex-row flex text-center  justify-between items-center">
-                    <label for="dia_salida">Día de Salida:</label>
+                    <label for="dia_salida" class="mt-6">Día de Salida:</label>
                     <input class="mt-6 border-2 border-black color-azul-marino" type="date" id="dia_salida" name="dia_salida" required><br><br>
                 </div>
 
@@ -95,7 +95,7 @@
 
             <div class="flex col-span-3 flex-col">
                 <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
-                    <label for="comentario">Comentario:</label><br>
+                    <label for="comentario" class="mt-6">Comentario:</label><br>
                     <textarea class="mt-6 border-2 mr-6 w-11/12 lg:w-6/12 border-black color-azul-marino" id="comentario" name="comentario" rows="4" cols="50"></textarea><br><br>
                 </div>
                 <div class="w-64 flex justify-between">

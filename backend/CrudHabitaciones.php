@@ -60,9 +60,9 @@ function mostrarInfoHabitacion($id){
 
 
 function infoHabitacion($id){
-
+    require 'conexionBD.php';
     
-    $query = 'SELECT * FROM habitaciones WHERE id =:id';
+    $query = 'SELECT * FROM habitaciones WHERE id_habitacion =:id';
     $stmt = $conn->prepare($query);
     $stmt->bindParam(':id',$id);
 
@@ -156,11 +156,21 @@ function mostrarHabitaciones(){
     foreach($resultados as $hab){
         
         $fotos = obtenerFotos($hab['id_habitacion']);
-        echo'<figure class="flex items-center bg-color-gris-crema rounded-xl flex-col">';
+        echo'<figure class="flex items-center bg-color-gris-crema rounded-xl flex-col  ">';
         echo '<img src="' . $fotos[0]['foto'] . '" alt="" class="p-3">';
 
-        echo '<figcaption class="p-3 color-azul-marino font-bold text-xl"><a href="habitacion.php?id='.$hab['id_habitacion'].'">'.$hab['nombre'].'</figcaption>
-        </figure>';
+
+        echo '<section class="flex justify-center w-full">
+                <a class="transition-transform duration-100 hover:scale-105 p-3" href="editarHabitacion.php?id_habitacion='.$hab["id_habitacion"] .'">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </a>
+                <figcaption class="p-3 color-azul-marino font-bold text-xl"><a href="habitacion.php?id='.$hab['id_habitacion'].'">'.$hab['nombre'].'</figcaption>
+                <a class="transition-transform duration-100 hover:scale-105 p-3" href="habitaciones.php?eliminarHabitacion='. $hab["id_habitacion"] . '">
+                    <i class="fa-solid fa-trash"></i>
+                </a>
+            </section>';
+        
+        echo '</figure>';
     }
     
 }
@@ -170,7 +180,7 @@ function eliminarHabitacion($id){
     
     require 'conexionBD.php';
 
-    $query = 'DELETE FROM habitaciones WHERE id=:id AND estado = "LIBRE"';
+    $query = 'DELETE FROM habitaciones WHERE id_habitacion=:id AND estado = "LIBRE"';
 
     $stmt = $conn->prepare($query);
     

@@ -26,9 +26,17 @@
 <main class ="pt-36 md:pt-44 lg:p-0">
     <section class="flex flex-col-reverse lg:flex-row">
         <?php
-             if(isset($_POST['añadirUsuario'])){
+
+            if(isset($_GET['elimiar_id_usuario'])){
+                deleteClient($_GET['elimiar_id_usuario']);
+            }
+            if(isset($_POST['modificarACliente'])){
+               
+                modificarUsuario((int)$_POST['modificarACliente']);
+            }
+            if(isset($_POST['añadirUsuario'])){
                 registrarUsuario();
-             }
+            }
         ?>
         <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-6 bg-red-200 lg:w-5/6 overflow-y-auto fondo-gradiente">
             <?php if(isset($_GET['rol'])):?>
@@ -39,8 +47,14 @@
                     ?>
                 </section>
             <?php else:?>
-
-                <?php mostrarUsuarios(); ?>
+                
+                <?php
+                    if($_SESSION['datosUsuario']['rol'] === "administrador"){
+                        mostrarUsuarios(); 
+                    }else{
+                        mostrarClientes();
+                    }    
+                ?>
            
             <?php endif; ?>
         </div>
@@ -48,16 +62,19 @@
 
         <aside class="lg:w-1/6 lg:fixed lg:right-0 z-0">
                 <ul class="p-6 color-azul-marino">
-                    <?php if(esRecepcionista()): ?>
+                    <?php if(!esCliente()): ?>
                         <li class="font-bold text-xl pt-3"><a href="añadirUsuario.php">Añadir Usuario</a></li>
                     <?php endif;?>
-                    <li class="font-bold text-xl">Filtrado de usuarios
+                    <?php  if($_SESSION['datosUsuario']['rol']==='administrador'){
+                        echo '<li class="font-bold text-xl">Filtrado de usuarios
                         <ul class="font-normal text-lg ml-6">
                             <li><a href="usuarios.php?rol=cliente" >Clientes</a></li>
                             <li><a href="usuarios.php?rol=administrador" >Administradores</a></li>
                             <li><a href="usuarios.php?rol=recepcionista">Recepcionistas</a></li>
                         </ul>
-                    </li>
+                    </li>';
+                    }
+                    ?>
                     
                 </ul>
         </aside>

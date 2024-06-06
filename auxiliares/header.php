@@ -22,7 +22,7 @@
              require_once './backend/CRUDUsuarios.php';
              require_once './backend/funcionesLogin.php';
              require_once './backend/CRUDReservas.php';
-             require_once './backend/crudHabitaciones.php';
+             require_once './backend/CrudHabitaciones.php';
              require_once 'navs.php';
              creaTablas();
 

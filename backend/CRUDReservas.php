@@ -66,15 +66,22 @@ function confirmarReserva($id){
 }
 
 
-function mostrarReservas(){
+function mostrarReservas($id_usuario){
 
     require 'conexionBD.php';
 
+        if(esRecepcionista()){
+            $query = "SELECT id_reserva,id_habitacion,id_cliente,num_pax,dia_entrada,dia_salida,comentario,estado FROM reservas;";
 
-        $query = "SELECT id_reserva,id_habitacion,id_cliente,num_pax,dia_entrada,dia_salida,comentario,estado FROM reservas;";
+        }else{
+            $query = "SELECT id_reserva,id_habitacion,id_cliente,num_pax,dia_entrada,dia_salida,comentario,estado FROM reservas WHERE id_cliente=:id;";
 
+        }
+        
         $stmt= $conn->prepare($query);
-
+        if(!esRecepcionista()){
+            $stmt->bindParam(':id', $id_usuario);
+        }
         $stmt->execute();
 
         $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -277,59 +284,4 @@ function mostrarReservas(){
     }
 
 
-    function mostrarReservasUsuario($id_usuario){
-    
-
-        require 'conexionBD.php';
-
-
-        $query = "SELECT id_reserva,id_habitacion,num_pax,dia_entrada,dia_salida,estado FROM reservas WHERE id_cliente=:id;";
-
-        $stmt= $conn->prepare($query);
-        $stmt->bindParam(':id', $id_usuario);
-
-        $stmt->execute();
-
-        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        foreach($resultados as $reserva){
-
-            $query_hab = 'SELECT nombre FROM habitaciones WHERE id_habitacion=:id';
-
-            $statement = $conn->prepare($query_hab);
-            
-            $statement->bindParam(':id',  $reserva['id_habitacion'] );
-
-            $statement->execute();
-    
-            $nombre = $statement->fetchAll(PDO::FETCH_ASSOC);
-            echo '<section class="flex flex-col md:flex-row bg-color-gris-carbon p-6 color-gris-crema mt-10">
-                    <section = class="flex flex-col">
-                    <div class="flex justify-between p-4 rounded-lg ">
-                        <a class="transition-transform duration-100 hover:scale-105" href="modificarReserva.php?id_reserva='.$reserva["id_reserva"] .'">
-                            <i class="fa-regular fa-pen-to-square"></i>
-                        </a>
-                        <a class="transition-transform duration-100 hover:scale-105 ml-4" href="reservas.php?id_reserva='.$reserva["id_reserva"].'">
-                            <i class="fa-solid fa-trash"></i>
-                        </a>
-                    </div>
-                    <p>N Habitacion: '.$nombre[0]["nombre"].'</p>
-                    <p>Capacidad: '.$reserva['num_pax'].'</p>
-                    <p>Fecha Inicio: '.$reserva['dia_entrada'].'</p>
-                    <p>Fecha Fin: '.$reserva['dia_salida'].'</p>
-                </section>';
-
-                if($reserva['estado'] === 'CONFIRMADA'){
-                    echo '<section class="text-black p-10">
-                            <span class="border-2 border-black bg-red-500 inline p-3">CONFIRMADA</span>
-                        </section>
-                        </section>';
-                }else{
-                    echo '<section class="text-black p-10">
-                    <span class="border-2 border-black bg-green-500 inline p-3">PENDIENTE</span>
-                    </section>
-                    </section>';
-                }
-            
-        }
-    }
-    
+   

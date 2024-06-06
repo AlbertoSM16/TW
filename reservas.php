@@ -36,9 +36,9 @@
         if(isset($_GET['estado'])){
             filtrarReservas($_GET['estado']);
         }else if(esRecepcionista()){
-            mostrarReservas();
+            mostrarReservas($_SESSION['datosUsuario']['id_usuario']);
         }else if(esCliente()){
-            mostrarReservasUsuario($_SESSION['datosUsuario']['id_usuario']);
+            mostrarReservas($_SESSION['datosUsuario']['id_usuario']);
         }
     ?>
     

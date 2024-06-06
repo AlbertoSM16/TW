@@ -18,11 +18,12 @@
         
         <?php 
             session_start();
-             require './backend/creacionTablas.php';
-             require './backend/CRUDUsuarios.php';
-             require './backend/funcionesLogin.php';
-             require './backend/CRUDReservas.php';
-             require 'navs.php';
+             require_once './backend/creacionTablas.php';
+             require_once './backend/CRUDUsuarios.php';
+             require_once './backend/funcionesLogin.php';
+             require_once './backend/CRUDReservas.php';
+             require_once './backend/crudHabitaciones.php';
+             require_once 'navs.php';
              creaTablas();
 
                 if(isset($_GET['cerrar_sesion'])){

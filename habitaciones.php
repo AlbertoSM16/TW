@@ -36,21 +36,22 @@
     <?php require 'auxiliares/header.php'?>
     <main class = "pt-36 md:pt-56 lg:p-0">
         <section class="flex flex-col-reverse lg:flex-row">
-            <section class="lg:w-5/6 grid grid-cols-2 md:grid-cols-3 gap-6 p-6">
+            <section class="lg:w-5/6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 content-start fondo-gradiente">
                 
                 <?php 
-                    
-                    if(isset($_GET['pax'])){
-                        $pax=(int)$_GET['pax'];
-                        filtrarHabitaciones($pax);   
-                    }else{
-                        mostrarHabitaciones();
-                    }
+
                     if(isset($_POST['editarHabitacion'])){
                         editarHabitacion($_POST['editarHabitacion']);
                     }
                     if(isset($_POST['eliminarHabitacion'])){
                         eliminarHabitacion($_POST['eliminarHabitacion']);
+                    }
+                                        
+                    if(isset($_GET['pax'])){
+                        $pax=(int)$_GET['pax'];
+                        filtrarHabitaciones($pax);   
+                    }else{
+                        mostrarHabitaciones();
                     }
 
                 ?>

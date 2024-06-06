@@ -25,15 +25,19 @@
     
     <?php require_once 'auxiliares/header.php'?>
     
-    <main class ="pt-36 md:pt-56 lg:p-0">
-
-
-
-
-
+    <main class="pt-36 md:pt-56 lg:p-0 flex flex-col items-center justify-center">
+        
+        <?php
+            if(isset($_GET['id'])){
+            mostrarInfoHabitacion($_GET['id']);
+            }
+        ?>
+        </section>
     </main>
+
     <?php require_once './auxiliares/footer.php'?>
 
 </body>
 
+<script src="js/slider.js" defer></script>
 </html>

@@ -26,46 +26,46 @@
 
     <main class="flex justify-center w-full pt-36 md:pt-44 lg:p-0"">
         <div class="lg:w-3/6 p-6">
-            <section data-aos="fade-left" class="flex justify-between h-64 bg-color-azul-marino mt-20 p-5 color-gris-crema">
-                <img src="img/granHotel/servicios/recepcion.png" alt="" class="object-cover">
+            <section data-aos="fade-left" class="flex flex-col md:flex-row md:justify-between h-64 bg-color-azul-marino mt-20 p-5 color-gris-crema justify-center text-center">
+                <img src="img/granHotel/servicios/recepcion.png" alt="" class="object-cover hidden md:block">
                 <div class="flex items-center text-3xl font-bold">
                     <h2>Recepción 24 H</h2>
                 </div>
             </section >
 
-            <section data-aos="fade-right" class="flex justify-between h-64 bg-color-azul-marino mt-20 p-5 color-gris-crema">
+            <section data-aos="fade-right" class="flex flex-col md:flex-row md:justify-between h-64 bg-color-azul-marino mt-20 p-5 color-gris-crema justify-center text-center">
                 <div class="flex items-center text-3xl font-bold">
                     <h2>Parking gratuito</h2>
                 </div>
-                <img src="img/granHotel/servicios/parking.png" alt="" class="object-cover">
+                <img src="img/granHotel/servicios/parking.png" alt="" class="object-cover hidden md:block">
             </section>
 
-            <section data-aos="fade-left" class="flex justify-between h-64 bg-color-azul-marino mt-20 p-5 color-gris-crema">
-                <img src="img/granHotel/servicios/restaurante.png" alt="" class="object-cover">
+            <section data-aos="fade-left" class="flex flex-col md:flex-row md:justify-between h-64 bg-color-azul-marino mt-20 p-5 color-gris-crema justify-center text-center">
+                <img src="img/granHotel/servicios/restaurante.png" alt="" class="object-cover hidden md:block">
                 <div class="flex items-center text-3xl font-bold">
                     <h2>Restaurante dentro del hotel</h2>
                 </div>
             </section>
 
-            <section data-aos="fade-right" class="flex justify-between h-64 bg-color-azul-marino mt-20 p-5 color-gris-crema">
+            <section data-aos="fade-right" class="flex flex-col md:flex-row md:justify-between h-64 bg-color-azul-marino mt-20 p-5 color-gris-crema">
                 <div class="flex items-center text-3xl font-bold">
                     <h2>Spa y piscina aclimatadas</h2>
                 </div>
-                <img src="img/granHotel/servicios/spa.png" alt="" class="object-cover">
+                <img src="img/granHotel/servicios/spa.png" alt="" class="object-cover hidden md:block">
             </section>
 
-            <section data-aos="fade-left" class="flex justify-between h-64 bg-color-azul-marino mt-20 p-5 color-gris-crema">
-                <img src="img/granHotel/servicios/gimnasio.png" alt="" class="object-cover">
+            <section data-aos="fade-left" class="flex flex-col md:flex-row md:justify-between h-64 bg-color-azul-marino mt-20 p-5 color-gris-crema justify-center text-center">
+                <img src="img/granHotel/servicios/gimnasio.png" alt="" class="object-cover hidden md:block">
                 <div class="flex items-center text-3xl font-bold">
                     <h2>Gimnasio y zona de deportes</h2>
                 </div>
             </section>
 
-            <section data-aos="fade-right" class="flex justify-between h-64 bg-color-azul-marino mt-20 p-5 color-gris-crema">
+            <section data-aos="fade-right" class="flex flex-col md:flex-row md:justify-between h-64 bg-color-azul-marino mt-20 p-5 color-gris-crema justify-center text-center">
                 <div class="flex items-center text-3xl font-bold">
                     <h2>Servicio de habitaciones</h2>
                 </div>
-                <img src="img/granHotel/servicios/servicioHabitaciones.png" alt="" class="object-cover">
+                <img src="img/granHotel/servicios/servicioHabitaciones.png" alt="" class="object-cover hidden md:block">
             </section>
         </div>
     </main>

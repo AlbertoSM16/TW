@@ -19,7 +19,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>Gran Hotel</title>
 </head>
-<body class="p-0 m-0">
+<body class="p-0 m-0 overflow-x-hidden">
     
     <?php require 'auxiliares/header.php';
         if(isset($_POST['add_reserva_previa'])){
@@ -27,41 +27,35 @@
         }
         var_dump($reserva[0]['id_reserva']);
     ?>  
-
-    <section>
-        <h2>Datos de la Tabla Reservas</h2>
-        <ul>
-            <li><strong>Numero de la reserva:</strong><?= $reserva[0]['id_reserva']?> </li>
-            <li><strong>Dia de llegada:</strong><?= $reserva[0]['dia_entrada']?></li>
-            <li><strong>Dia de salida:</strong><?= $reserva[0]['dia_salida']?> </li>
-            <li><strong>Número de personas:</strong> <?= $reserva[0]['num_pax']?></li>
+    
+<main class="pt-36 md:pt-56 lg:p-0">
+    <section class="flex w-full justify-center items-center flex-col">
+        <h2 class="font-bold text-5xl color-azul-marino mb-6">Datos de su reserva</h2>
+        <ul class="p-2">
+            <li id="id_reserva" class="hidden"><?= $reserva[0]['id_reserva']?></li>
+            <li  class="p-6 text-2xl"><strong>Numero de la reserva: </strong><?= $reserva[0]['id_reserva']?> </li>
+            <li class="p-6 text-2xl"><strong>Dia de llegada: </strong><?= $reserva[0]['dia_entrada']?></li>
+            <li class="p-6 text-2xl"><strong>Dia de salida: </strong><?= $reserva[0]['dia_salida']?> </li>
+            <li class="p-6 text-2xl"><strong>Número de personas: </strong> <?= $reserva[0]['num_pax']?></li>
         </ul>
 
     </section>
 
-    <section>
+    <section class="flex flex-col lg:flex-row p-10 w-full justify-center items-center">
 
-        <form action="index.php" method="POST" class="w-full grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center"> 
+        <form action="index.php" method="POST" class="m-6 text-center bg-color-azul-marino color-gris-crema font-bold p-10 rounded-3xl justify-center"> 
             <button type="submit" name="confirmarReserva" value="<?= $reserva[0]["id_reserva"]?>" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton">Confirmar</button>
         </form>
 
-    </section>
-
-    <section>
-
-        <form action="index.php" method="POST" class="w-full grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center"> 
+        <form action="index.php" method="POST" class="m-6 text-center bg-color-azul-marino color-gris-crema font-bold p-10 rounded-3xl justify-center"> 
             <a><button type="submit" name="rechazarReserva" value="<?= $reserva[0]["id_reserva"]?>" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton">Rechazar</button></a>
         </form>
 
     </section>
 
-
-
-
-<main>
-
 </main>
 
 <?php require_once './auxiliares/footer.php'?>
+<script src="js/tiempo.js" defer></script>
 </body>
 </html>

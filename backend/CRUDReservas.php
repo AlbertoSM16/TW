@@ -102,7 +102,7 @@ function mostrarReservas(){
             $nombre = $statement->fetchAll(PDO::FETCH_ASSOC);
             $cliente = $stmt2->fetch(PDO::FETCH_ASSOC);
           
-            echo '<section class="flex flex-col bg-color-gris-carbon  w-full color-gris-crema p-10">
+            echo '<section class="flex flex-col bg-color-gris-carbon  lg:w-3/6 color-gris-crema p-10">
                 <div class="flex justify-between p-4 rounded-lg ">
                     <a class="transition-transform duration-100 hover:scale-105" href="modificarReserva.php?id_reserva='.$reserva["id_reserva"] .'">
                         <i class="fa-regular fa-pen-to-square"></i>

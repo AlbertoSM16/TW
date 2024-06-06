@@ -91,7 +91,7 @@ function mostrarReservas(){
 
             $nombre = $statement->fetchAll(PDO::FETCH_ASSOC);
             echo '<section class="flex flex-col bg-color-gris-carbon  color-gris-crema p-10">
-                <div class="flex justify-between p-4 rounded-lg ">
+                    <div class="flex justify-between p-4 rounded-lg ">
                     <a class="transition-transform duration-100 hover:scale-105" href="modificarReserva.php?id_reserva='.$reserva["id_reserva"] .'">
                         <i class="fa-regular fa-pen-to-square"></i>
                     </a>
@@ -289,7 +289,7 @@ function mostrarReservas(){
     
             $nombre = $statement->fetchAll(PDO::FETCH_ASSOC);
             echo '<section class="flex flex-col md:flex-row bg-color-gris-carbon p-6 color-gris-crema mt-10">
-                <section = class="flex flex-col">
+                    <section = class="flex flex-col">
                     <div class="flex justify-between p-4 rounded-lg ">
                         <a class="transition-transform duration-100 hover:scale-105" href="modificarReserva.php?id_reserva='.$reserva["id_reserva"] .'">
                             <i class="fa-regular fa-pen-to-square"></i>

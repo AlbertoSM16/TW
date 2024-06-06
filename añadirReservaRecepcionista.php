@@ -33,7 +33,7 @@
 
             <div class="flex col-span-3 flex-col">
                 <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
-                    <label for="nombre">Numero de personas:</label>
+                    <label for="nombre">Nombre:</label>
                     <input type="text" id="nombre" name="nombre" class="mt-6 border-2 border-black color-azul-marino" required><br><br>
                 </div>
                 <div class="w-64 flex justify-between">

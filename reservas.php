@@ -24,7 +24,7 @@
     
     <?php require 'auxiliares/header.php' ;
         echo' <main class ="pt-36 md:pt-32 lg:p-0">
-        <section class="grid grid-cols-1 lg:grid-cols-3 gap-6 p-10">';
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 p-10">';
 
         if(isset($_POST['modificarReserva'])){
             modificarReserva((int)$_POST['modificarReserva']);

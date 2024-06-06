@@ -9,10 +9,10 @@ function insertReservaPrevia($num_pax, $dia_entrada, $dia_salida, $comentario) {
 
             $query = "INSERT INTO reservas (id_cliente, id_habitacion, dia_entrada, dia_salida, num_pax, comentario, estado) 
                       VALUES (:id_cliente, :id_habitacion, :dia_entrada, :dia_salida, :num_pax, :comentario, 'PENDIENTE')";
-             
             $stmt = $conn->prepare($query);
 
             if(isset($_POST['add_reserva_recepcion'])){
+
                 $query_id = 'SELECT id_usuario FROM usuarios WHERE email=:email';
                 
                 $statement = $conn->prepare($query_id);
@@ -23,10 +23,8 @@ function insertReservaPrevia($num_pax, $dia_entrada, $dia_salida, $comentario) {
                 $stmt->bindParam(':id_cliente', $id_cliente['id_usuario']);
                 
             }
-
             if(!esRecepcionista()){
-                $stmt->bindParam(':id_cliente', $_SESSION['datosUsuario']['id_usuario']);
-                
+                $stmt->bindParam(':id_cliente', $_SESSION['datosUsuario']['id_usuario']);   
             }
         
             $stmt->bindParam(':id_habitacion', $habitacion[0]['id_habitacion']);
@@ -202,38 +200,38 @@ function mostrarReservas($id_usuario){
             
             $cliente = $stmt2->fetch(PDO::FETCH_ASSOC);
 
-            echo '<section class="flex flex-col bg-color-gris-carbon  w-full color-gris-crema p-10">
-            <div class="flex justify-between p-4 rounded-lg ">
-                <a class="transition-transform duration-100 hover:scale-105" href="modificarReserva.php?id_reserva='.$reserva["id_reserva"] .'">
-                    <i class="fa-regular fa-pen-to-square"></i>
-                </a>
-                <a class="transition-transform duration-100 hover:scale-105 ml-4" href="reservas.php?id_reserva='.$reserva["id_reserva"].'">
-                    <i class="fa-solid fa-trash"></i>
-                </a>
-            </div>
-            <section class="flex flex-col mt-10">
-                <section = class="flex flex-col">
-                    <p>N Cliente: '.$cliente["nombre"].'</p>
-                    <p>N Habitacion: '.$nombre[0]["nombre"].'</p>
-                    <p>Capacidad: '.$reserva['num_pax'].'</p>
-                    <p>Fecha Inicio: '.$reserva['dia_entrada'].'</p>
-                    <p>Fecha Fin: '.$reserva['dia_salida'].'</p>
-                    <p>Comentario: '.$reserva['comentario'].'</p>
-                </section>';
+            echo '<section class="flex flex-col bg-color-gris-carbon  lg:w-3/6 color-gris-crema p-10">
+                <div class="flex justify-between p-4 rounded-lg ">
+                    <a class="transition-transform duration-100 hover:scale-105" href="modificarReserva.php?id_reserva='.$reserva["id_reserva"] .'">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                    </a>
+                    <a class="transition-transform duration-100 hover:scale-105 ml-4" href="reservas.php?id_reserva='.$reserva["id_reserva"].'">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </div>
+                <section class="flex flex-col mt-10">
+                    <section = class="flex flex-col">
+                        <p>N Cliente: '.$cliente["nombre"].'</p>
+                        <p>N Habitacion: '.$nombre[0]["nombre"].'</p>
+                        <p>Capacidad: '.$reserva['num_pax'].'</p>
+                        <p>Fecha Inicio: '.$reserva['dia_entrada'].'</p>
+                        <p>Fecha Fin: '.$reserva['dia_salida'].'</p>
+                        <p>Comentario: '.$reserva['comentario'].'</p>
+                    </section>';
 
-            if($reserva['estado'] === 'CONFIRMADA'){
-                echo '<section class="text-black p-10">
-                        <span class="border-2 border-black bg-red-500 inline p-3">CONFIRMADA</span>
+                if($reserva['estado'] === 'CONFIRMADA'){
+                    echo '<section class="text-black p-10">
+                            <span class="border-2 border-black bg-red-500 inline p-3">CONFIRMADA</span>
+                            </section>
                         </section>
+                        </section>';
+                }else{
+                    echo '<section class="text-black p-10">
+                    <span class="border-2 border-black bg-green-500 inline p-3">PENDIENTE</span>
+                    </section>
                     </section>
                     </section>';
-            }else{
-                echo '<section class="text-black p-10">
-                <span class="border-2 border-black bg-green-500 inline p-3">PENDIENTE</span>
-                </section>
-                </section>
-                </section>';
-            }
+                }
         }
 
 

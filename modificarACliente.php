@@ -46,26 +46,6 @@
             
                 <div class="flex col-span-3 flex-col">
                     <div class='w-full flex text-center  justify-between items-center '>
-                        <label for="contrasena" class=" pr-3 pt-6">Contraseña:</label>
-                        <input type="password" name="contrasena" id="contrasena" value="<?=  $user[0]['contrasena']?>"placeholder="Escriba su contraseña" class="mt-6 border-2 border-black color-azul-marino">
-                    </div>
-                    <div class="w-64 flex justify-between">
-                        <p class="text-red-600 hidden" name="error">Debe contener almenos 5 caracteres alfanuméricos</p>
-                    </div>
-                </div>
-
-                <div class="flex col-span-3 flex-col">
-                    <div class='w-full flex text-center  justify-between items-center '>
-                        <label for="confirmar_contrasena" class=" pr-3 pt-6">Repetir contraseña:</label>
-                        <input type="password" name="confirmar_contrasena" id="confirmar_contrasena" placeholder="Repite la contraseña" class="mt-6 border-2 border-black color-azul-marino">
-                    </div>
-                    <div class="w-64 flex justify-between">
-                        <p class="text-red-600 hidden" name="error">Las contraseñas no coinciden</p>
-                    </div>
-                </div>
-
-                <div class="flex col-span-3 flex-col">
-                    <div class='w-full flex text-center  justify-between items-center '>
                         <label for="email" class=" pr-3 pt-6">Email:</label>
                         <input type="text" name="email" id="email" placeholder="Escriba su email" value="<?=  $user[0]['email']?>" class="mt-6 border-2 border-black color-azul-marino">
                     </div>

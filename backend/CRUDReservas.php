@@ -71,13 +71,14 @@ function mostrarReservas(){
     require 'conexionBD.php';
 
 
-        $query = "SELECT id_reserva,id_habitacion,num_pax,dia_entrada,dia_salida,estado FROM reservas;";
+        $query = "SELECT id_reserva,id_habitacion,id_cliente,num_pax,dia_entrada,dia_salida,comentario,estado FROM reservas;";
 
         $stmt= $conn->prepare($query);
 
         $stmt->execute();
 
         $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
         foreach($resultados as $reserva){
 
             $query_hab = 'SELECT nombre FROM habitaciones WHERE id_habitacion=:id';
@@ -87,11 +88,22 @@ function mostrarReservas(){
             $statement->bindParam(':id',  $reserva['id_habitacion'] );
 
             $statement->execute();
+
+
+            $query_cliente = 'SELECT nombre FROM usuarios WHERE id_usuario=:id';
+            
+            $stmt2 = $conn->prepare($query_cliente);
+
+            $stmt2->bindParam(':id', $reserva['id_cliente']);
+
+            $stmt2->execute();
             
 
             $nombre = $statement->fetchAll(PDO::FETCH_ASSOC);
-            echo '<section class="flex flex-col bg-color-gris-carbon  color-gris-crema p-10">
-                    <div class="flex justify-between p-4 rounded-lg ">
+            $cliente = $stmt2->fetch(PDO::FETCH_ASSOC);
+          
+            echo '<section class="flex flex-col bg-color-gris-carbon  w-full color-gris-crema p-10">
+                <div class="flex justify-between p-4 rounded-lg ">
                     <a class="transition-transform duration-100 hover:scale-105" href="modificarReserva.php?id_reserva='.$reserva["id_reserva"] .'">
                         <i class="fa-regular fa-pen-to-square"></i>
                     </a>
@@ -99,18 +111,20 @@ function mostrarReservas(){
                         <i class="fa-solid fa-trash"></i>
                     </a>
                 </div>
-                <section class="flex flex-col md:flex-row  mt-10">
-                <section = class="flex flex-col">
-                    <p>N Habitacion: '.$nombre[0]["nombre"].'</p>
-                    <p>Capacidad:'.$reserva['num_pax'].'</p>
-                    <p>Fecha Inicio:'.$reserva['dia_entrada'].'</p>
-                    <p>Fecha Fin:'.$reserva['dia_salida'].'</p>
-                </section>';
+                <section class="flex flex-col mt-10">
+                    <section = class="flex flex-col">
+                        <p>N Cliente: '.$cliente["nombre"].'</p>
+                        <p>N Habitacion: '.$nombre[0]["nombre"].'</p>
+                        <p>Capacidad: '.$reserva['num_pax'].'</p>
+                        <p>Fecha Inicio: '.$reserva['dia_entrada'].'</p>
+                        <p>Fecha Fin: '.$reserva['dia_salida'].'</p>
+                        <p>Comentario: '.$reserva['comentario'].'</p>
+                    </section>';
 
                 if($reserva['estado'] === 'CONFIRMADA'){
                     echo '<section class="text-black p-10">
                             <span class="border-2 border-black bg-red-500 inline p-3">CONFIRMADA</span>
-                        </section>
+                            </section>
                         </section>
                         </section>';
                 }else{

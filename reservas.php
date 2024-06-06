@@ -24,16 +24,21 @@
     
     <?php require 'auxiliares/header.php' ;
         echo' <main class ="pt-36 md:pt-32 lg:p-0">
-        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-32">';
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-6 p-10">';
+
+        if(isset($_POST['modificarReserva'])){
+            modificarReserva((int)$_POST['modificarReserva']);
+        }
+
+        if(isset($_GET['id_reserva'])){
+            eliminarReserva($_GET['id_reserva']);
+        }
         if(isset($_GET['estado'])){
             filtrarReservas($_GET['estado']);
         }else if(esRecepcionista()){
             mostrarReservas();
         }else if(esCliente()){
             mostrarReservasUsuario($_SESSION['datosUsuario']['id_usuario']);
-        }
-        if(isset($_POST['modificarReserva'])){
-            modificarReserva($_POST['modificarReserva']);
         }
     ?>
     

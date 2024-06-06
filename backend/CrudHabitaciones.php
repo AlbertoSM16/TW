@@ -1,24 +1,60 @@
 <?php 
 
-function mostrarInfoHabitacion($id,$fotos){
-
+function mostrarInfoHabitacion($id){
     require 'conexionBD.php';
 
-    $query_select = 'SELECT * FROM habitaciones WHERE "id_habitacion" = :id;';
+    $query_select = 'SELECT * FROM habitaciones WHERE id_habitacion = :id;';
 
     $stmt = $conn->prepare($query_select);
     $stmt->bindParam(':id', $id);
 
     $stmt->execute();
 
-        echo'<figure class="text-center bg-color-bronce-metalico rounded-sm">';
-        
-        foreach($fotos as $foto){
-            echo '<img src="./img/granHotel/habitaciones/'.$foto["foto"].'" alt="" class="p-3">';
-        }
+    $hab = $stmt->fetchAll(PDO::FETCH_ASSOC);
+     
+    $fotos = obtenerFotos($hab[0]['id_habitacion']);
 
-        echo '<figcaption class="p-3 color-azul-marino font-bold text-xl">'.$hab["nombre"].'</figcaption>
-        </figure>';
+    $html='
+    <h1 class="py-10 font-bold text-3xl">'. $hab[0]['nombre'].'</h1>
+    <section class="flex flex-col lg:flex-row lg:justify-between pb-10 my-6 items-center">
+    <section class=" w-4/6 lg:w-2/6 ">         
+            <div id="slider" class="relative w-full overflow-hidden m-6">
+                <div class="slider-items flex transition-transform duration-500">';
+
+                foreach($fotos as $foto){
+                    $html = $html . '
+                    <div class="slide w-full flex-shrink-0">
+                        <img src="'.$foto['foto'] .'" class="w-full h-full object-cover">
+                    </div>';
+                }
+
+                $html = $html . '</div>                     
+                <button id="prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button id="next" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </section>
+            
+        <section class="break-all lg:w-3/6  p-10 items-center ">
+            <p class="text-xl"><span class="font-bold text-2xl">Precio: </span>'.$hab[0]['precio'].'€</p>
+            <p class="text-xl pt-2"><span class="font-bold text-2xl">Capacidad: </span>'.$hab[0]['capacidad'].'</p>
+            <p class="text-xl pt-2"><span class="font-bold text-2xl">Descripción: </span><br>'.$hab[0]['descripcion'].'</p>';
+            
+            if(esRecepcionista() || esAdministrador()){
+            $html = $html . '<section class="pt-4">';
+                if($hab[0]['estado'] == "OCUPADA"){
+                    $html= $html.'<span class="font-bold text-2xl p-2 mt-2 bg-red-700">OCUPADO</span>';
+                }
+                else{
+                    $html= $html.'<span class="font-bold text-2xl p-2 mt-2 bg-green-700">LIBRE</span>';
+                }
+            $html = $html . '</section>';
+            }
+        $html = $html. '</section>';
+        echo $html;
     
 }
 
@@ -106,7 +142,6 @@ function filtrarHabitaciones($pax){
 }
 
 function mostrarHabitaciones(){
-    
     require 'conexionBD.php';
 
     $query_select = 'SELECT * FROM habitaciones;';
@@ -121,7 +156,7 @@ function mostrarHabitaciones(){
     foreach($resultados as $hab){
         
         $fotos = obtenerFotos($hab['id_habitacion']);
-        echo'<figure class="text-center bg-color-bronce-metalico rounded-sm">';
+        echo'<figure class="flex items-center bg-color-gris-crema rounded-xl flex-col">';
         echo '<img src="' . $fotos[0]['foto'] . '" alt="" class="p-3">';
 
         echo '<figcaption class="p-3 color-azul-marino font-bold text-xl"><a href="habitacion.php?id='.$hab['id_habitacion'].'">'.$hab['nombre'].'</figcaption>

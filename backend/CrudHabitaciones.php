@@ -209,17 +209,21 @@ function obtenerFotos($id){
 
 
 function editarHabitacion($id){
+
+    echo $id;
     require 'conexionBD.php';
-    $query_update = 'UPDATE usuarios SET nombre = :nombre, precio = :precio, capacidad = :capacidad, descripcion = :descripcion, estado = :estado
+    
+    $query_update = 'UPDATE habitaciones SET nombre = :nombre, precio = :precio, capacidad = :capacidad, descripcion = :descripcion
                 WHERE id_habitacion = :id;';
-    $stmt = $conn->prepare($query);
+    $stmt = $conn->prepare($query_update);
+    
     $stmt->bindParam(':id', $id);
     $stmt->bindParam(':nombre', $_POST['nombre']);
     $stmt->bindParam(':precio', $_POST['precio']);
     $stmt->bindParam(':capacidad', $_POST['capacidad']);
     $stmt->bindParam(':descripcion', $_POST['descripcion']);
-    $stmt->bindParam(':estado', $_POST['estado']);
 
+    $stmt->execute();
 
 
 }

@@ -39,9 +39,10 @@
             <section class="lg:w-5/6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 content-start fondo-gradiente">
                 
                 <?php 
-
-                    if(isset($_GET['editarHabitacion'])){
-                        editarHabitacion($_GET['editarHabitacion']);
+                
+                
+                    if(isset($_POST['editarHabitacion'])){
+                        editarHabitacion($_POST['editarHabitacion']);
                     }
                     if(isset($_GET['eliminarHabitacion'])){
                         eliminarHabitacion($_GET['eliminarHabitacion']);

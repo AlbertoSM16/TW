@@ -16,7 +16,6 @@
 
     if(isset($_GET['id_habitacion'])){
         $habitacion = infoHabitacion($_GET['id_habitacion']);
-        $fotos = obtenerFotos($_GET['id_habitacion']);
     }
 ?>
 
@@ -27,6 +26,8 @@
 <main class ="pt-36 md:pt-56 lg:p-0">
     <section class="flex justify-center p-6">
         <form id="miFormulario" action="habitaciones.php" method="POST" class="w-full grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center" enctype="multipart/form-data">
+         <input type="hidden" name="id_habitacion" value="<?=$habitacion[0]['id_habitacion']; ?>">
+    
             <div class="flex col-span-3 flex-col">
                 <div class='flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                     <label for="habitacion" class="pr-3">Nombre de la habitación:</label>
@@ -68,14 +69,14 @@
             </div>
 
             <div class="text-center col-span-3 justify-center items-center w-full pt-16">
-                <button type="submit" name="editarHabitacion" value="<?php echo htmlspecialchars($habitacion[0]['id_habitacion']); ?>" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton">Enviar</button>
+                <button type="submit" name="editarHabitacion" value="<?= $habitacion[0]['id_habitacion'] ?>" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton">Enviar</button>
             </div>
         </form>
     </section>
 </main>
 
 <?php require_once './auxiliares/footer.php'; ?>
-<script src="./js/popupregistro.js" defer></script>
-<script src="./js/registro_habitaciones.js" defer></script>
+<!-- <script src="./js/popupregistro.js" defer></script>
+<script src="./js/registro_habitaciones.js" defer></script> -->
 </body>
 </html>

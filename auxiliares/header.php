@@ -43,6 +43,8 @@
                     }else if(esCliente()){
                         navClienteMovil();
                         navCliente();
+                    }if(esAdministrador()){
+                        navAdministrador();
                     }else{
                         navAnonimoMovil();
                         navAnonimo();

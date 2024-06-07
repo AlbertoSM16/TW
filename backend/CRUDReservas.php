@@ -58,10 +58,10 @@ function insertReservaPrevia($num_pax, $dia_entrada, $dia_salida, $comentario) {
 
             $reserva = $statement->fetchAll(PDO::FETCH_ASSOC);
             
-            $query_habitacion = 'UPDATE habitaciones set estado ="OCUPADA" WHERE id_habitacion =:id ;';
-            $stmt2 = $conn->prepare($query_id);
-            $stmt2->bindParam(':id',$habitacion[0]['id_habitacion']);
-            $stmt2->execute();
+            // $query_habitacion = 'UPDATE habitaciones set estado ="OCUPADA" WHERE id_habitacion =:id ;';
+            // $stmt2 = $conn->prepare($query_habitacion);
+            // $stmt2->bindParam(':id',$habitacion[0]['id_habitacion']);
+            // $stmt2->execute();
             return $reserva;
 
         } catch (PDOException $e) {

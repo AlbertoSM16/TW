@@ -62,6 +62,14 @@ function creaTablas(){
    $stmt->execute();
 
 
+   $query_log= 'CREATE TABLE IF NOT EXISTS logs(
+   id_log INT AUTO_INCREMENT PRIMARY KEY,
+   accion varchar(255) NOT NULL);';
+
+$stmt = $conn->prepare($query_fotos);
+$stmt->execute();
+
+
 }
  
 

@@ -13,7 +13,9 @@
     
     <?php require_once 'auxiliares/header.php' ;?>
     <?php
-    
+        if(esCliente()){
+            echo '<meta http-equiv="refresh" content="0;url=index.php">';
+        }
         if(isset($_GET['id_usuario_recepcionista'])){
             $user=infoUsuario($_GET['id_usuario_recepcionista']);
         }

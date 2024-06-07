@@ -212,13 +212,8 @@ function deleteClient($id){
     }
     
     function modificarUsuario($id_usuario){
-
         require 'conexionBD.php';
-
-        
-        
         try {
-
             if(esRecepcionista()){
                 $query_update = 'UPDATE usuarios SET nombre = :nombre, apellidos = :apellidos, dni = :dni, email = :email, tarjeta_credito = :tarjeta_credito
                 WHERE id_usuario = :id_usuario;';
@@ -241,7 +236,6 @@ function deleteClient($id){
             }else{
                 $query_update = 'UPDATE usuarios SET nombre = :nombre, apellidos = :apellidos, dni = :dni, email = :email, tarjeta_credito = :tarjeta_credito,rol:=rol
                 WHERE id_usuario = :id_usuario;';
-                
                 $stament = $conn->prepare($query_update);
                 $stament->bindParam(':nombre',$_POST['nombre']);
                 $stament->bindParam(':apellidos',$_POST['apellidos']);

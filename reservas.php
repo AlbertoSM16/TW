@@ -23,6 +23,9 @@
 <body class="p-0 m-0 overflow-x-hidden">
     
     <?php require 'auxiliares/header.php' ;
+        if(!esRecepcionista()){
+            echo '<meta http-equiv="refresh" content="0;url=index.php">';
+        }
         echo' <main class ="pt-36 md:pt-32 lg:p-0">
         <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 p-10">';
 

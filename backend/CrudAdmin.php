@@ -44,3 +44,30 @@ function restaurarBackup($rutaBackup) {
         echo "Error al restaurar el backup: " . $e->getMessage();
     }
 }
+
+function mostrarLogs(){
+
+    require 'conexionBD.php';
+    try{
+        $query = 'SELECT * FROM logs';
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        echo '<ul style="list-style-type: none;">';
+        foreach ($logs as $log) {
+            echo '<li>';
+            foreach ($log as $key => $value) {
+                echo htmlspecialchars("$key: $value ", ENT_QUOTES, 'UTF-8');
+            }
+            echo '</li>';
+        }
+        echo '</ul>';
+
+    }catch(Exception $e){
+        echo "Error mostrar los logs: " . $e->getMessage();
+
+    }
+    
+
+}

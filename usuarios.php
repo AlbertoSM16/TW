@@ -33,7 +33,6 @@
                 deleteClient($_GET['elimiar_id_usuario']);
             }
             if(isset($_POST['modificarACliente'])){
-               
                 modificarUsuario((int)$_POST['modificarACliente']);
             }
             if(isset($_POST['añadirUsuario'])){

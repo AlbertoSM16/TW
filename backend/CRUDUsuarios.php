@@ -43,7 +43,7 @@ function mostrarUsuarios(){
 
     $stmt = $conn->prepare($query_logs);
     
-    $stmt->bindParam(":query",$query_select);
+    $stmt->bindParam(":query",$query_logs);
     $stmt->execute();
 }
 
@@ -234,7 +234,7 @@ function deleteClient($id){
                 $stament->bindParam(':id_usuario',$id_usuario);
                 $stament->execute();
             }else{
-                $query_update = 'UPDATE usuarios SET nombre = :nombre, apellidos = :apellidos, dni = :dni, email = :email, tarjeta_credito = :tarjeta_credito,rol:=rol
+                $query_update = 'UPDATE usuarios SET nombre = :nombre, apellidos = :apellidos, dni = :dni, email = :email, tarjeta_credito = :tarjeta_credito,rol=:rol
                 WHERE id_usuario = :id_usuario;';
                 $stament = $conn->prepare($query_update);
                 $stament->bindParam(':nombre',$_POST['nombre']);
@@ -244,9 +244,10 @@ function deleteClient($id){
                 $stament->bindParam(':tarjeta_credito',$_POST['tarjeta_credito']);
                 $stament->bindParam(':rol',$_POST['rol']);
                 $stament->bindParam(':id_usuario',$id_usuario);
+                var_dump($query_update);
+
                 $stament->execute();
             }
-          
             $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
 
             $stmt = $conn->prepare($query_logs);

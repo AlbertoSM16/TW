@@ -22,6 +22,10 @@
 <body class="p-0 m-0 overflow-x-hidden">
     
     <?php require 'auxiliares/header.php';
+        if(!isset($_POST['add_reserva_previa']) || isset($_POST['add_reserva_recepcion'])){
+            echo '<meta http-equiv="refresh" content="0;url=index.php">';
+
+        }
         if(isset($_POST['add_reserva_previa']) || isset($_POST['add_reserva_recepcion']) ){
             $reserva=insertReservaPrevia($_POST['num_pax'],$_POST['dia_entrada'],$_POST['dia_salida'],$_POST['comentario']);
         }

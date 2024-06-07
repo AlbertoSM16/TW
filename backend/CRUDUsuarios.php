@@ -41,9 +41,9 @@ function mostrarUsuarios(){
 
     $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
 
-    $stmt = $conn->prepare($query_log);
+    $stmt = $conn->prepare($query_logs);
     
-    $stament->bindParam(":query",$query_select);
+    $stmt->bindParam(":query",$query_select);
     $stmt->execute();
 }
 
@@ -108,9 +108,9 @@ function deleteClient($id){
 
         $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
 
-        $stmt = $conn->prepare($query_log);
+        $stmt = $conn->prepare($query_logs);
         
-        $stament->bindParam(":query",$query_delete);
+        $stmt->bindParam(":query",$query_delete);
         $stmt->execute();
         
     }catch (Exception $e){
@@ -141,9 +141,9 @@ function deleteClient($id){
 
             $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
 
-            $stmt = $conn->prepare($query_log);
+            $stmt = $conn->prepare($query_logs);
             
-            $stament->bindParam(":query",$query_insert);
+            $stmt->bindParam(":query",$query_insert);
             $stmt->execute();
         }catch (Exception $e){
             echo "Error: " .$e->getMessage();
@@ -165,9 +165,9 @@ function deleteClient($id){
         $resultado  = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
 
-        $stmt = $conn->prepare($query_log);
+        $stmt = $conn->prepare($query_logs);
         
-        $stament->bindParam(":query",$query);
+        $stmt->bindParam(":query",$query);
         $stmt->execute();
 
         return $resultado;
@@ -193,16 +193,16 @@ function deleteClient($id){
 
         $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
 
-        $stmt = $conn->prepare($query_log);
+        $stmt = $conn->prepare($query_logs);
         
-        $stament->bindParam(":query",$query_update);
+        $stmt->bindParam(":query",$query_update);
         $stmt->execute();
 
         $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
 
-        $stmt = $conn->prepare($query_log);
+        $stmt = $conn->prepare($query_logs);
         
-        $stament->bindParam(":query",$query_update);
+        $stmt->bindParam(":query",$query_update);
         $stmt->execute();
 
         }catch (Exception $e){
@@ -249,9 +249,9 @@ function deleteClient($id){
           
             $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
 
-            $stmt = $conn->prepare($query_log);
+            $stmt = $conn->prepare($query_logs);
             
-            $stament->bindParam(":query",$query_update);
+            $stmt->bindParam(":query",$query_update);
             $stmt->execute();
 
         }catch (Exception $e){

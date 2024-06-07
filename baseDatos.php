@@ -24,7 +24,10 @@
     <?php
     require_once './auxiliares/header.php';
     require './backend/CrudAdmin.php';
-
+    
+    if(!esAdministrador()){
+        echo '<meta http-equiv="refresh" content="0;url=index.php">';
+    }
     if(isset($_GET['backups'])){
         if($_GET['backup']==='hacer'){
             hacerBackup('/backups/backup.sql');
@@ -45,6 +48,8 @@
         <section class="flex flex-wrap justify-center md:justify-between p-6">
         <ul class="p-6 color-azul-marino">
                 <li class="font-bold text-xl pt-3"><a href="./baseDatos.php?reiniciar=1">Reiniciar Base de datos</a></li>
+                <li class="font-bold text-xl pt-3"><a href="./logs.php">Mostrar Logs</a></li>
+
                <li class="font-bold text-xl">BackUps
                    <ul class="font-normal text-lg ml-6">
                        <li><a href="baseDatos.php?backup=hacer" >Hacer</a></li>

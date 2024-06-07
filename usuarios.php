@@ -26,11 +26,14 @@
 <main class ="pt-36 md:pt-44 lg:p-0">
     <section class="flex flex-col-reverse lg:flex-row">
         <?php
+
+            if(esCliente()){
+                echo '<meta http-equiv="refresh" content="0;url=index.php">';
+            }
             if(isset($_GET['elimiar_id_usuario'])){
                 deleteClient($_GET['elimiar_id_usuario']);
             }
             if(isset($_POST['modificarACliente'])){
-               
                 modificarUsuario((int)$_POST['modificarACliente']);
             }
             if(isset($_POST['añadirUsuario'])){

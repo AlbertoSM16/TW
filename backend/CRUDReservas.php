@@ -60,10 +60,7 @@ function insertReservaPrevia($num_pax, $dia_entrada, $dia_salida, $comentario) {
 
             $reserva = $statement->fetchAll(PDO::FETCH_ASSOC);
             
-            // $query_habitacion = 'UPDATE habitaciones set estado ="OCUPADA" WHERE id_habitacion =:id ;';
-            // $stmt2 = $conn->prepare($query_habitacion);
-            // $stmt2->bindParam(':id',$habitacion[0]['id_habitacion']);
-            // $stmt2->execute();
+           
             return $reserva;
 
         } catch (PDOException $e) {
@@ -100,7 +97,6 @@ function mostrarReservas($id_usuario){
             $query = "SELECT id_reserva,id_habitacion,id_cliente,num_pax,dia_entrada,dia_salida,comentario,estado FROM reservas WHERE id_cliente=:id;";
 
         }
-        
         $stmt= $conn->prepare($query);
         if(!esRecepcionista()){
             $stmt->bindParam(':id', $id_usuario);
@@ -259,7 +255,7 @@ function mostrarReservas($id_usuario){
     function eliminarReserva($id){
 
         require 'conexionBD.php';
-
+    
         $query = 'DELETE  FROM reservas WHERE id_reserva=:id';
 
         $stmt= $conn->prepare($query);
@@ -267,6 +263,7 @@ function mostrarReservas($id_usuario){
         $stmt->bindParam(':id', $id);
 
         $stmt->execute();
+
 
         $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
 
@@ -307,68 +304,7 @@ function mostrarReservas($id_usuario){
     }
     
 
-    // function comprobarReserva($pax,$fecha_entrada,$fecha_salida){
-        
-    //     require 'conexionBD.php';
-
-    //     $query = "
-    //        SELECT h.*
-    //             FROM habitaciones h
-    //             WHERE h.capacidad >= :num_pax
-    //             AND NOT EXISTS (
-    //                 SELECT 1
-    //                 FROM reservas r
-    //                 WHERE r.id_habitacion = h.id_habitacion
-    //                 AND r.dia_entrada <= :dia_salida
-    //                 AND r.dia_salida >= :dia_entrada
-    //             )
-    //         LIMIT 1;
-    //     ;";
-
-    //     $stmt= $conn->prepare($query);
-
-    //     $stmt->bindParam(':num_pax', $pax);
-    //     $stmt->bindParam(':dia_entrada', $fecha_entrada);
-    //     $stmt->bindParam(':dia_salida', $fecha_salida);
-
-    //     $stmt->execute();
-    //     var_dump($stmt);
-
-    //     $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
-
-    //     $stmt = $conn->prepare($query_logs);
-        
-    //     $stmt->bindParam(":query",$query);
-    //     $stmt->execute();
-    //     if($stmt->rowCount()>0){
-    //         return $habitacion = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            
-    //     }
-    //     return false;
-
     
-    // }
-
-    // function infoReserva($id){
-    //     require 'conexionBD.php';
-
-    //     $query = 'SELECT * FROM reservas WHERE id_reserva=:id';
-
-    //     $stmt= $conn->prepare($query);
-
-    //     $stmt->bindParam(':id', $id);
-    //     $stmt->execute();
-
-    //     return $reserva = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    //     $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
-
-    //     $stmt = $conn->prepare($query_logs);
-        
-    //     $stmt->bindParam(":query",$query);
-    //     $stmt->execute();
-
-    // }
     function comprobarReserva($pax,$fecha_entrada,$fecha_salida){
 
         require 'conexionBD.php';

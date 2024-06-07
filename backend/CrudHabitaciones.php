@@ -43,16 +43,7 @@ function mostrarInfoHabitacion($id){
             <p class="text-xl pt-2"><span class="font-bold text-2xl">Capacidad: </span>'.$hab[0]['capacidad'].'</p>
             <p class="text-xl pt-2"><span class="font-bold text-2xl">Descripción: </span><br>'.$hab[0]['descripcion'].'</p>';
             
-            // if(esRecepcionista() || esAdministrador()){
-            // $html = $html . '<section class="pt-4">';
-            //     if($hab[0]['estado'] == "OCUPADA"){
-            //         $html= $html.'<span class="font-bold text-2xl p-2 mt-2 bg-red-700">OCUPADO</span>';
-            //     }
-            //     else{
-            //         $html= $html.'<span class="font-bold text-2xl p-2 mt-2 bg-green-700">LIBRE</span>';
-            //     }
-            // $html = $html . '</section>';
-            // }
+          
         $html = $html. '</section>';
         echo $html;
 

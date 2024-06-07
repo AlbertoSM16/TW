@@ -41,9 +41,9 @@ function mostrarUsuarios(){
 
     $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
 
-    $stmt = $conn->prepare($query_log);
+    $stmt = $conn->prepare($query_logs);
     
-    $stament->bindParam(":query",$query_select);
+    $stmt->bindParam(":query",$query_logs);
     $stmt->execute();
 }
 
@@ -108,9 +108,9 @@ function deleteClient($id){
 
         $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
 
-        $stmt = $conn->prepare($query_log);
+        $stmt = $conn->prepare($query_logs);
         
-        $stament->bindParam(":query",$query_delete);
+        $stmt->bindParam(":query",$query_delete);
         $stmt->execute();
         
     }catch (Exception $e){
@@ -144,11 +144,20 @@ function registrarUsuario(){
         $stmt->bindParam(':contrasena', $contrasena);
         $stmt->bindParam(':tarjeta_credito', $tarjeta_credito);
 
+
         $stmt->execute();
 
         $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
 
-        $stmt_log = $conn->prepare($query_logs);
+
+            $stmt = $conn->prepare($query_logs);
+            
+            $stmt->bindParam(":query",$query_insert);
+            $stmt->execute();
+        }catch (Exception $e){
+            echo "Error: " .$e->getMessage();
+        }
+
         
         $accion = 'Usuario registrado: ' . json_encode(['nombre' => $nombre, 'apellidos' => $apellidos, 'dni' => $dni, 'email' => $email]);
         $stmt_log->bindParam(":query", $accion);
@@ -173,9 +182,9 @@ function registrarUsuario(){
         $resultado  = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
 
-        $stmt = $conn->prepare($query_log);
+        $stmt = $conn->prepare($query_logs);
         
-        $stament->bindParam(":query",$query);
+        $stmt->bindParam(":query",$query);
         $stmt->execute();
 
         return $resultado;
@@ -201,16 +210,16 @@ function registrarUsuario(){
 
         $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
 
-        $stmt = $conn->prepare($query_log);
+        $stmt = $conn->prepare($query_logs);
         
-        $stament->bindParam(":query",$query_update);
+        $stmt->bindParam(":query",$query_update);
         $stmt->execute();
 
         $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
 
-        $stmt = $conn->prepare($query_log);
+        $stmt = $conn->prepare($query_logs);
         
-        $stament->bindParam(":query",$query_update);
+        $stmt->bindParam(":query",$query_update);
         $stmt->execute();
 
         }catch (Exception $e){
@@ -220,13 +229,8 @@ function registrarUsuario(){
     }
     
     function modificarUsuario($id_usuario){
-
         require 'conexionBD.php';
-
-        
-        
         try {
-
             if(esRecepcionista()){
                 $query_update = 'UPDATE usuarios SET nombre = :nombre, apellidos = :apellidos, dni = :dni, email = :email, tarjeta_credito = :tarjeta_credito
                 WHERE id_usuario = :id_usuario;';
@@ -247,9 +251,8 @@ function registrarUsuario(){
                 $stament->bindParam(':id_usuario',$id_usuario);
                 $stament->execute();
             }else{
-                $query_update = 'UPDATE usuarios SET nombre = :nombre, apellidos = :apellidos, dni = :dni, email = :email, tarjeta_credito = :tarjeta_credito,rol:=rol
+                $query_update = 'UPDATE usuarios SET nombre = :nombre, apellidos = :apellidos, dni = :dni, email = :email, tarjeta_credito = :tarjeta_credito,rol=:rol
                 WHERE id_usuario = :id_usuario;';
-                
                 $stament = $conn->prepare($query_update);
                 $stament->bindParam(':nombre',$_POST['nombre']);
                 $stament->bindParam(':apellidos',$_POST['apellidos']);
@@ -258,14 +261,14 @@ function registrarUsuario(){
                 $stament->bindParam(':tarjeta_credito',$_POST['tarjeta_credito']);
                 $stament->bindParam(':rol',$_POST['rol']);
                 $stament->bindParam(':id_usuario',$id_usuario);
+
                 $stament->execute();
             }
-          
             $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
 
-            $stmt = $conn->prepare($query_log);
+            $stmt = $conn->prepare($query_logs);
             
-            $stament->bindParam(":query",$query_update);
+            $stmt->bindParam(":query",$query_update);
             $stmt->execute();
 
         }catch (Exception $e){

@@ -30,7 +30,10 @@
                     cerrarSesion();
                 }
                 if (isset($_POST['sign_in'])) {
-                    login();
+                    $logeao = login();
+                    if(!$logeao){
+                        echo '<meta http-equiv="refresh" content="0;url=SignIn.php?error=si">';
+                    }
                 } elseif (isset($_POST['Registrarse'])) {
                     registrarUsuario();
                     login();

@@ -120,26 +120,35 @@ function deleteClient($id){
 }
    
     
-    function registrarUsuario(){
+function registrarUsuario(){
+    require 'conexionBD.php';
 
-        require 'conexionBD.php';
 
-        $query_insert= 'INSERT INTO usuarios (nombre, apellidos, dni, email, contrasena, tarjeta_credito) 
-        VALUES (:nombre, :apellidos, :dni, :email, :contrasena, :tarjeta_credito);';
-          
+    $query_insert = 'INSERT INTO usuarios (nombre, apellidos, dni, email, contrasena, tarjeta_credito) 
+                     VALUES (:nombre, :apellidos, :dni, :email, :contrasena, :tarjeta_credito);';
 
-        try {
-            $stament = $conn->prepare($query_insert);
-            $stament->bindParam(':nombre',$_POST['nombre']);
-            $stament->bindParam(':apellidos',$_POST['apellidos']);
-            $stament->bindParam(':email',$_POST['email']);
-            $stament->bindParam(':dni',$_POST['dni']);
-            $stament->bindParam(':contrasena',password_hash($_POST['contrasena'],PASSWORD_BCRYPT));
-            $stament->bindParam(':tarjeta_credito',$_POST['tarjeta_credito']);
+    try {
+        $stmt = $conn->prepare($query_insert);
 
-            $stament->execute();
+        $nombre = $_POST['nombre'];
+        $apellidos = $_POST['apellidos'];
+        $dni = $_POST['dni'];
+        $email = $_POST['email'];
+        $contrasena = password_hash($_POST['contrasena'], PASSWORD_BCRYPT);
+        $tarjeta_credito = $_POST['tarjeta_credito'];
 
-            $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
+        $stmt->bindParam(':nombre', $nombre);
+        $stmt->bindParam(':apellidos', $apellidos);
+        $stmt->bindParam(':dni', $dni);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':contrasena', $contrasena);
+        $stmt->bindParam(':tarjeta_credito', $tarjeta_credito);
+
+
+        $stmt->execute();
+
+        $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
+
 
             $stmt = $conn->prepare($query_logs);
             
@@ -148,8 +157,16 @@ function deleteClient($id){
         }catch (Exception $e){
             echo "Error: " .$e->getMessage();
         }
+
         
+        $accion = 'Usuario registrado: ' . json_encode(['nombre' => $nombre, 'apellidos' => $apellidos, 'dni' => $dni, 'email' => $email]);
+        $stmt_log->bindParam(":query", $accion);
+        $stmt_log->execute();
+
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
     }
+}
 
 
     

@@ -44,18 +44,18 @@
         <h2 class="md:hidden font-bold text-3xl text-center mt-6">Algunas Habitaciones</h2>
         
         <section data-aos="zoom-out" class="fondo-gradiente grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-10 w-full gap-10 p-3">
-            <figure class="text-center bg-color-bronce-metalico rounded-sm">
-                <img src="img/granHotel/habitacion1.png" alt="" class="p-3">
+            <figure class="text-center bg-color-bronce-metalico rounded-sm flex justify-center items-center flex-col">
+                <img src="img/granHotel/habitaciones/doble1.jpg" alt="" class="p-3">
                 <figcaption class="p-3 color-azul-marino font-bold text-xl">Habitación 1</figcaption>
             </figure>
 
-            <figure class="text-center bg-color-bronce-metalico rounded-sm">
-                <img src="img/granHotel/habitacion2.jpg" alt="" class="p-3">
+            <figure class="text-center bg-color-bronce-metalico rounded-sm flex justify-center items-center flex-col">
+                <img src="img/granHotel/habitaciones/doble2.jpg" alt="" class="p-3">
                 <figcaption class="p-3 color-azul-marino font-bold text-xl">Habitación 2</figcaption>
             </figure>
 
-            <figure class="text-center bg-color-bronce-metalico rounded-sm">
-                <img src="img/granHotel/habitacion3.jpg" alt="" class="p-3">
+            <figure class="text-center bg-color-bronce-metalico rounded-sm flex justify-center items-center flex-col">
+                <img src="img/granHotel/habitaciones/doble3.jpg" alt="" class="p-3">
                 <figcaption class="p-3 color-azul-marino font-bold text-xl">Habitación 3</figcaption>
             </figure>
         </section>

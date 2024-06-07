@@ -1,11 +1,22 @@
 
 <?php
-    require './backend/CrudHabitaciones.php';
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+require './backend/CrudHabitaciones.php';
+    var_dump($_GET);
+    if(isset($_GET['vieneRegistro'])){
+        require_once "./backend/validaciones_registroHabitaciones.php";
+
+        var_dump($msj_error);
+        if(isset($msj_error)){
+            echo '<meta http-equiv="refresh" content="0;url=registro_habitaciones.php?error='.$msj_error.'">';
+        }
+    }
+
+    
+    else if($_SERVER['REQUEST_METHOD'] == 'POST'){
         if(isset($_FILES['filesToUpload'])) {
             $num_files = count($_FILES['filesToUpload']['name']);
             insertar_habitacion($_POST['nombre'], $_POST['precio'], $_POST['capacidad'], $_POST['descripcion'], 'LIBRE', $num_files);
-                  
+            echo '<meta http-equiv="refresh" content="0;url=habitaciones.php">';      
         }
     }
 ?>

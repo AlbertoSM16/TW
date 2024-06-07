@@ -24,16 +24,18 @@
 <body class="p-0 m-0 overflow-x-hidden">
     <?php
     require_once './auxiliares/header.php';
+    var_dump($_POST);
 
     ?>
 <main class ="pt-36 md:pt-56 lg:p-0">
 
     <section class="flex justify-center p-6">
-        <form action="avisoReserva.php" method="post" class="w-full grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center"> 
+        <form action="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'avisoReserva.php' : 'añadirReserva.php'; ?>" method="post" class="w-full grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center"> 
             <div class="flex col-span-3 flex-col">
                 <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                     <label for="num_pax">Numero de personas:</label>
-                    <input type="number" id="num_pax" name="num_pax" class="mt-6 border-2 border-black color-azul-marino" required><br><br>
+                    <input type="number" id="num_pax" value="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? $_POST['num_pax'] : ''; ?>" name="num_pax" class="mt-6 border-2 border-black color-azul-marino" required 
+                    <?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'readonly' : ''; ?>><br><br>
                 </div>
                 <div class="w-64 flex justify-between">
                     <p class="text-red-600 hidden" name="error">El nombre no puede estar vacío</p>
@@ -43,7 +45,8 @@
             <div class="flex col-span-3 flex-col">
                 <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center'> 
                     <label for="dia_entrada">Día de Entrada:</label>
-                    <input class="mt-6 border-2 border-black color-azul-marino" type="date" id="dia_entrada" name="dia_entrada" required><br><br>
+                    <input class="mt-6 border-2 border-black color-azul-marino" type="date" id="dia_entrada" name="dia_entrada" value="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? $_POST['dia_entrada'] : ''; ?>" required
+                    <?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'readonly' : ''; ?>><br><br>
                 </div>
                 <div class="w-64 flex justify-between">
                     <p class="text-red-600 hidden" name="error">Los apellidos no pueden estar vacíos</p>
@@ -53,7 +56,8 @@
             <div class="flex col-span-3 flex-col">
                 <div class=" flex-col w-full lg:flex-row flex text-center  justify-between items-center">
                     <label for="dia_salida">Día de Salida:</label>
-                    <input class="mt-6 border-2 border-black color-azul-marino" type="date" id="dia_salida" name="dia_salida" required><br><br>
+                    <input class="mt-6 border-2 border-black color-azul-marino" type="date" id="dia_salida" name="dia_salida" value="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? $_POST['dia_salida'] : ''; ?>" required
+                    <?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'readonly' : ''; ?>><br><br>
                 </div>
 
                 
@@ -66,7 +70,8 @@
             <div class="flex col-span-3 flex-col">
                 <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                     <label for="comentario">Comentario:</label><br>
-                    <textarea class="mt-6 border-2 mr-6 w-11/12 lg:w-6/12 border-black color-azul-marino" id="comentario" name="comentario" rows="4" cols="50"></textarea><br><br>
+                    <textarea class="mt-6 border-2 mr-6 w-11/12 lg:w-6/12 border-black color-azul-marino" id="comentario" name="comentario"  rows="4" cols="50"
+                    <?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'readonly' : ''; ?>><?= ($_SERVER["REQUEST_METHOD"] == "POST") ? $_POST['comentario'] : ''; ?></textarea><br><br>
                 </div>
                 <div class="w-64 flex justify-between">
                     <p class="text-red-600 hidden" name="error">Debe contener almenos 5 caracteres alfanuméricos</p>
@@ -74,7 +79,7 @@
             </div>
 
             <div class="text-center col-span-3 justify-center items-center   flex-col w-full lg:flex-row pt-16">
-                <button type="submit" name="add_reserva_previa" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton">Realizar reserva</button>
+                <button type="submit" name="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'add_reserva_previa' : ''; ?>" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton"><?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'Datos comprobados' : 'Realizar reserva'; ?></button>
             </div>
 
         </form>

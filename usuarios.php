@@ -26,6 +26,7 @@
 <main class ="pt-36 md:pt-44 lg:p-0">
     <section class="flex flex-col-reverse lg:flex-row">
         <?php
+
             if(esCliente()){
                 echo '<meta http-equiv="refresh" content="0;url=index.php">';
             }
@@ -37,6 +38,7 @@
             }
             if(isset($_POST['añadirUsuario'])){
                 registrarUsuario();
+                echo '<meta http-equiv="refresh" content="0;url=usuarios.php">';
             }
         ?>
         <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-6 bg-red-200 lg:w-5/6 overflow-y-auto fondo-gradiente">

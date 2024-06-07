@@ -5,11 +5,13 @@
             <a href="">Instagram <i class="fa-brands fa-instagram px-3"></i></a>
             <a href="">Facebook<i class="fa-brands fa-square-facebook px-3"></i></a>
             <a href="">Gmail<i class="fa-regular fa-envelope px-3"></i></a>
+            <p>HECHO POR JUAN JOSE MARTINEZ AGUILA Y ALBERTO SILES MOLINA</p>
         </section>
 
         <section class="flex flex-col text-center">
             <h3 class="text-3xl font-bold">Copyright</h3>
             <p class="pt-6"> &copy; 2024 El Gran Hotel. Todos los derechos reservados.</p>
+            <a href="memoria/memoria_TW.pdf">Memoria del proyecto final</a>
         </section>
 
         <section class="flex flex-col text-right">

@@ -1,4 +1,14 @@
+<?php
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        
+        require_once './backend/validaciones_registro.php';
 
+        if(isset($msj_error)){
+            echo '<meta http-equiv="refresh" content="0;url=registro.php?error='.$msj_error.'">';
+        }
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -97,6 +107,12 @@
                 <div class="text-center col-span-3 justify-center items-center  w-full pt-16">
                     <button type="submit" name="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'Registrarse' : 'Hola'; ?>" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton"><?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'Confirmar datos' : 'Enviar'; ?></button>
                 </div>
+
+                <?php if(isset($_GET['error'])):?>
+                <div class="text-center col-span-3 justify-center items-center text-red-700 w-full pt-16">
+                    <p><?=$_GET['error']?></p>
+                </div>
+                <?php endif;?>
             </form>
         </section>
     <?php require_once './auxiliares/footer.php'?>

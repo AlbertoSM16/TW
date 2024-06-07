@@ -37,6 +37,12 @@
                 <section class="text-center col-span-3 justify-center items-center  w-full pt-10 text-3xl">
                     <a href="registro.php">Registrarse</a>
                 </section>
+
+                <?php if(isset($_GET['error'])):?>
+                    <section class="text-center col-span-3 justify-center items-center  w-full pt-10 text-red-700 text-3xl">
+                        <p>Contraseña o email incorrectos</p>
+                    </section>
+                <?php endif; ?>
             </form>
         </section>
     </main>

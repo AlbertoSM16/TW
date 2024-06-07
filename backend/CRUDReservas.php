@@ -5,6 +5,7 @@ function insertReservaPrevia($num_pax, $dia_entrada, $dia_salida, $comentario) {
     require 'conexionBD.php';
 
     $habitacion = comprobarReserva($num_pax,$dia_entrada,$dia_salida);
+    var_dump($habitacion);
     if($habitacion !== FALSE){
         try {
 

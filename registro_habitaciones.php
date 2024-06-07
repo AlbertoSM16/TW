@@ -1,4 +1,6 @@
 
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -20,7 +22,7 @@
 
     <main class ="pt-36 md:pt-56 lg:p-0">
         <section class="flex justify-center p-6">
-            <form id="miFormulario" action="habitaciones.php" method="POST" class="w-full grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center"  enctype="multipart/form-data">
+            <form id="miFormulario" action="habitaciones.php?vieneRegistro=si" method="POST" class="w-full grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center"  enctype="multipart/form-data">
                 <div class="flex col-span-3 flex-col">
                     <div class='flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                         <label for="habitacion" class=" pr-3">Nombre de la habitación:</label>
@@ -71,6 +73,13 @@
                 <div class="text-center col-span-3 justify-center items-center  w-full pt-16">
                     <button type="submit" name="aniadirHabitacion" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton">Enviar</button>
                 </div>
+                
+                <?php if (isset($_GET['error'])):?>
+                <div class="text-center col-span-3 justify-center items-center text-red-800 w-full pt-16">
+                    <p><?=$_GET['error']?></p>
+                </div>
+                <?php endif; ?>
+
 
             </form>
         </section>

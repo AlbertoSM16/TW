@@ -6,19 +6,17 @@ function login(){
     if($_SERVER["REQUEST_METHOD"]==="POST"){
         
         $email=$_POST['email'];
-        $contrasena=$_POST['contrasena'];
-
-        $query="SELECT * FROM usuarios WHERE email=:email AND contrasena=:contrasena";
+        $query="SELECT * FROM usuarios WHERE email=:email";
 
         $stament=$conn->prepare($query);
         $stament->bindParam(":email",$email);
-        $stament->bindParam(":contrasena", $contrasena);
-
         $stament->execute();
+        $usuario = $stament->fetch(PDO::FETCH_ASSOC);
+        $contrasenia = $usuario["contrasena"];
 
-    if($stament->rowCount()==1){
-            $usuario_log=$stament->fetch(PDO::FETCH_ASSOC);
-            $_SESSION['datosUsuario']=$usuario_log;   
+
+    if(password_verify($_POST['contrasena'], $contrasenia)){
+            $_SESSION['datosUsuario']=$usuario;   
             $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
 
             $stament=$conn->prepare($query_logs);
@@ -30,6 +28,7 @@ function login(){
             return true;
            
         }
+
         return false;
     }
 }

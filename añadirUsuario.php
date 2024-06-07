@@ -1,3 +1,15 @@
+<?php
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        
+        require_once './backend/validaciones_registro.php';
+
+        if(isset($msj_error)){
+            echo '<meta http-equiv="refresh" content="0;url=registro.php?error='.$msj_error.'">';
+        }
+    }
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -16,11 +28,12 @@
 
     <main class ="pt-36 md:pt-56 lg:p-0">
         <section class="flex justify-center p-6">
-            <form action="usuarios.php" method="POST" class="w-full grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center">
+            <form action="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'usuarios.php' : 'añadirUsuario.php'; ?>" method="POST" class="w-full grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center">
                 <div class="flex col-span-3 flex-col">
                     <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                         <label for="nombre" class=" pr-3">Nombre:</label>
-                        <input type="text" name="nombre" id="nombre" placeholder="Escriba su nombre" class=" mt-6 lg:mt-0 border-2 border-black color-azul-marino">
+                        <input type="text" name="nombre" id="nombre" value="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? $_POST["nombre"] : ''; ?>" placeholder="Escriba su nombre" class=" mt-6 lg:mt-0 border-2 border-black color-azul-marino"
+                        <?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'readonly' : ''; ?>>
                     </div>
                     <div class="w-64 flex justify-between">
                         <p class="text-red-600 hidden" name="error">El nombre no puede estar vacío</p>
@@ -30,7 +43,8 @@
                 <div class="flex col-span-3 flex-col">
                     <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                         <label for="apellidos" class=" pr-3 pt-6">Apellidos:</label>
-                        <input type="text" name="apellidos" id="apellidos" placeholder="Escriba sus apellidos" class="mt-6 border-2 border-black color-azul-marino">
+                        <input type="text" name="apellidos" id="apellidos" value="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? $_POST["apellidos"] : ''; ?>" placeholder="Escriba sus apellidos" class="mt-6 border-2 border-black color-azul-marino"
+                        <?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'readonly' : ''; ?>>
                     </div>
                     <div class="w-64 flex justify-between">
                         <p class="text-red-600 hidden" name="error">Los apellidos no pueden estar vacíos</p>
@@ -40,7 +54,7 @@
                 <div class="flex col-span-3 flex-col">
                     <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                         <label for="contrasena" class=" pr-3 pt-6">Contraseña:</label>
-                        <input type="password" name="contrasena" id="contrasena" placeholder="Escriba su contraseña" class="mt-6 border-2 border-black color-azul-marino">
+                        <input type="password" name="contrasena" id="contrasena" placeholder="Escriba su contraseña" value="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? $_POST["contrasena"] : ''; ?>" class="mt-6 border-2 border-black color-azul-marino"<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'readonly' : ''; ?>>
                     </div>
                     <div class="w-64 flex justify-between">
                         <p class="text-red-600 hidden" name="error">Debe contener almenos 5 caracteres alfanuméricos</p>
@@ -50,7 +64,8 @@
                 <div class="flex col-span-3 flex-col">
                     <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                         <label for="confirmar_contrasena" class=" pr-3 pt-6">Repetir contraseña:</label>
-                        <input type="password" name="confirmar_contrasena" id="confirmar_contrasena" placeholder="Repite la contraseña" class="mt-6 border-2 border-black color-azul-marino">
+                        <input type="password" name="confirmar_contrasena" id="confirmar_contrasena" value="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? $_POST["confirmar_contrasena"] : ''; ?>" placeholder="Repite la contraseña" class="mt-6 border-2 border-black color-azul-marino"
+                        <?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'readonly' : ''; ?>>
                     </div>
                     <div class="w-64 flex justify-between">
                         <p class="text-red-600 hidden" name="error">Las contraseñas no coinciden</p>
@@ -60,7 +75,8 @@
                 <div class="flex col-span-3 flex-col">
                     <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                         <label for="email" class=" pr-3 pt-6">Email:</label>
-                        <input type="text" name="email" id="email" placeholder="Escriba su email" class="mt-6 border-2 border-black color-azul-marino">
+                        <input type="text" name="email" id="email" value="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? $_POST["email"] : ''; ?>" placeholder="Escriba su email" class="mt-6 border-2 border-black color-azul-marino"
+                        <?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'readonly' : ''; ?>>
                     </div>
                     <div class="w-64 flex justify-between">
                         <p class="text-red-600 hidden" name="error">La dirección de correo no es válida</p>
@@ -70,7 +86,8 @@
                 <div class="flex col-span-3 flex-col">
                     <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                         <label for="dni" class=" pr-3 pt-6">DNI:</label>
-                        <input type="text" name="dni" id="dni" placeholder="Escriba su DNI" class="mt-6 border-2 border-black color-azul-marino">
+                        <input type="text" name="dni" id="dni" value="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? $_POST["dni"] : ''; ?>" placeholder="Escriba su DNI" class="mt-6 border-2 border-black color-azul-marino"
+                        <?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'readonly' : ''; ?>>
                     </div>
                     <div class="w-64 flex justify-between">
                         <p class="text-red-600 hidden" name="error">DNI con formato incorrecto</p>
@@ -80,7 +97,8 @@
                 <div class="flex col-span-3 flex-col">
                     <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                         <label for="tarjeta_credito" class=" pr-3 pt-6">Tarjeta de credito:</label>
-                        <input type="text" name="tarjeta_credito" id="tarjeta_credito" placeholder="Escriba su Tarjeta de credito" class="mt-6 border-2 border-black color-azul-marino">
+                        <input type="text" name="tarjeta_credito" id="tarjeta_credito" value="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? $_POST["tarjeta_credito"] : ''; ?>" placeholder="Escriba su Tarjeta de credito" class="mt-6 border-2 border-black color-azul-marino"
+                        <?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'readonly' : ''; ?>>
                     </div>
                     <div class="w-64 flex justify-between">
                         <p class="text-red-600 hidden break-words" name="error">La tarjeta de crédito debe ser una secuencia de 16 dígitos consecutivos</p>
@@ -90,6 +108,13 @@
                 <div class="text-center col-span-3 justify-center items-center  w-full pt-16">
                     <button type="submit" name="añadirUsuario" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton">Enviar</button>
                 </div>
+
+                <?php if(isset($_GET['error'])):?>
+                <div class="text-center col-span-3 justify-center items-center text-red-700 w-full pt-16">
+                    <p><?=$_GET['error']?></p>
+                </div>
+                <?php endif;?>
+
             </form>
         </section>
     <?php require_once './auxiliares/footer.php'?>

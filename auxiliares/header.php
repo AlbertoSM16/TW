@@ -34,6 +34,7 @@
                 } elseif (isset($_POST['Registrarse'])) {
                     registrarUsuario();
                     login();
+                    echo '<meta http-equiv="refresh" content="0;url=index.php">';
                 }
                 
                 if(isLogged()){
@@ -43,11 +44,8 @@
                     }else if(esCliente()){
                         navClienteMovil();
                         navCliente();
-                    }if(esAdministrador()){
-                        navAdministrador();
                     }else{
-                        navAnonimoMovil();
-                        navAnonimo();
+                        navAdministrador();
                     }
                 }
                 if(!isLogged()){

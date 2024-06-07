@@ -24,12 +24,10 @@
     <?php
     require_once './auxiliares/header.php';
 
-    
     if(isset($_POST['confirmarReserva'])){
         confirmarReserva($_POST['confirmarReserva']);
     }
     if(isset($_POST['rechazarReserva'])){
-
         eliminarReserva($_POST['rechazarReserva']);
     }
     ?>

@@ -159,9 +159,12 @@ function registrarUsuario(){
         }
 
         
-        $accion = 'Usuario registrado: ' . json_encode(['nombre' => $nombre, 'apellidos' => $apellidos, 'dni' => $dni, 'email' => $email]);
-        $stmt_log->bindParam(":query", $accion);
-        $stmt_log->execute();
+        $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
+
+        $stmt = $conn->prepare($query_logs);
+        
+        $stmt->bindParam(":query",$query_insert);
+        $stmt->execute();
 
 
 }

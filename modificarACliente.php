@@ -19,7 +19,7 @@
         }
     ?>
 
-    <main>
+    <main class="pt-36 md:pt-56 lg:p-0">
         <section class="flex justify-center p-6">
             <form action="usuarios.php" method="POST" class="grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center">
                 
@@ -101,7 +101,7 @@
         </section>
     <?php require_once './auxiliares/footer.php'?>
     
-    <script defer>
+    <!-- <script defer>
 
         document.addEventListener('DOMContentLoaded', function () {
             const errores = document.getElementsByName('error');
@@ -204,6 +204,6 @@
                 boton.disabled = !formularioValido;
             }
         });
-    </script> 
+    </script>  -->
 </body>
 </html>

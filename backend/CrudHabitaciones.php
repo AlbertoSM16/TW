@@ -43,18 +43,27 @@ function mostrarInfoHabitacion($id){
             <p class="text-xl pt-2"><span class="font-bold text-2xl">Capacidad: </span>'.$hab[0]['capacidad'].'</p>
             <p class="text-xl pt-2"><span class="font-bold text-2xl">Descripción: </span><br>'.$hab[0]['descripcion'].'</p>';
             
-            if(esRecepcionista() || esAdministrador()){
-            $html = $html . '<section class="pt-4">';
-                if($hab[0]['estado'] == "OCUPADA"){
-                    $html= $html.'<span class="font-bold text-2xl p-2 mt-2 bg-red-700">OCUPADO</span>';
-                }
-                else{
-                    $html= $html.'<span class="font-bold text-2xl p-2 mt-2 bg-green-700">LIBRE</span>';
-                }
-            $html = $html . '</section>';
-            }
+            // if(esRecepcionista() || esAdministrador()){
+            // $html = $html . '<section class="pt-4">';
+            //     if($hab[0]['estado'] == "OCUPADA"){
+            //         $html= $html.'<span class="font-bold text-2xl p-2 mt-2 bg-red-700">OCUPADO</span>';
+            //     }
+            //     else{
+            //         $html= $html.'<span class="font-bold text-2xl p-2 mt-2 bg-green-700">LIBRE</span>';
+            //     }
+            // $html = $html . '</section>';
+            // }
         $html = $html. '</section>';
         echo $html;
+
+        
+        $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
+
+        $stmt = $conn->prepare($query_logs);
+        
+        $stmt->bindParam(":query",$query_select);
+        $stmt->execute();
+         
     
 }
 
@@ -70,6 +79,14 @@ function infoHabitacion($id){
     
     $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
+
+    $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
+
+    $stmt = $conn->prepare($query_logs);
+    
+    $stmt->bindParam(":query",$query);
+    $stmt->execute();
+
     return $resultado;
        
 }
@@ -97,15 +114,21 @@ function insertar_habitacion($nombre, $precio, $capacidad, $descripcion, $estado
             $foto_nombre = $_FILES['filesToUpload']['name'][$i];
             $foto_temporal = $_FILES['filesToUpload']['tmp_name'][$i];
             $ruta_foto = './img/granHotel/habitaciones/' . $foto_nombre;
-            move_uploaded_file($foto_temporal, $ruta_foto);
 
             $query_foto = "INSERT INTO fotos_habitaciones (id_habitacion, foto) VALUES (:id_habitacion, :ruta_foto)";
             $stmt_foto = $conn->prepare($query_foto);
             $stmt_foto->bindParam(':id_habitacion', $id_habitacion);
             $stmt_foto->bindParam(':ruta_foto', $ruta_foto);
             $stmt_foto->execute();
-        }
 
+            
+        }
+        $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
+
+        $stmt = $conn->prepare($query_logs);
+        
+        $stmt->bindParam(":query",$query_habitacion);
+        $stmt->execute();
         // Confirmar la transacción
         $conn->commit();
 
@@ -139,6 +162,12 @@ function filtrarHabitaciones($pax){
         </figure>';
     }
 
+    $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
+
+    $stmt = $conn->prepare($query_logs);
+    $stmt->bindParam(":query",$query);
+    $stmt->execute();
+
 }
 
 function mostrarHabitaciones(){
@@ -160,19 +189,32 @@ function mostrarHabitaciones(){
         echo '<img src="' . $fotos[0]['foto'] . '" alt="" class="p-3">';
 
 
-        echo '<section class="flex justify-center w-full">
-                <a class="transition-transform duration-100 hover:scale-105 p-3" href="editarHabitacion.php?id_habitacion='.$hab["id_habitacion"] .'">
+        echo '<section class="flex justify-center w-full">';
+        
+        if(esRecepcionista()){
+            echo'<a class="transition-transform duration-100 hover:scale-105 p-3" href="editarHabitacion.php?id_habitacion='.$hab["id_habitacion"] .'">
                     <i class="fa-regular fa-pen-to-square"></i>
-                </a>
-                <figcaption class="p-3 color-azul-marino font-bold text-xl"><a href="habitacion.php?id='.$hab['id_habitacion'].'">'.$hab['nombre'].'</figcaption>
-                <a class="transition-transform duration-100 hover:scale-105 p-3" href="habitaciones.php?eliminarHabitacion='. $hab["id_habitacion"] . '">
+                </a>';
+        }
+                
+                echo'<figcaption class="p-3 color-azul-marino font-bold text-xl"><a href="habitacion.php?id='.$hab['id_habitacion'].'">'.$hab['nombre'].'</figcaption>';
+                if(esRecepcionista()){
+                    echo'<a class="transition-transform duration-100 hover:scale-105 p-3" href="habitaciones.php?eliminarHabitacion='. $hab["id_habitacion"] . '">
                     <i class="fa-solid fa-trash"></i>
-                </a>
-            </section>';
+                </a>';
+                }
+                
+           echo'</section>';
         
         echo '</figure>';
     }
+    $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
+
+    $stmt = $conn->prepare($query_logs);
     
+    $stmt->bindParam(":query",$query_select);
+    $stmt->execute();
+
 }
 
 
@@ -194,6 +236,11 @@ function eliminarHabitacion($id){
 
 
     $query_log = 'INSERT INTO logs (accion) VALUES (:query);';
+
+    $stmt = $conn->prepare($query_log);
+    $stmt->bindParam(':query', $query);
+
+    $stmt->execute();
 
 }
 
@@ -227,7 +274,14 @@ function editarHabitacion($id){
     $stmt->bindParam(':descripcion', $_POST['descripcion']);
 
     $stmt->execute();
+    
 
+    $query = 'INSERT INTO logs (accion) VALUES (:query);';
+
+    $stament = $conn->prepare($query);
+    $stament->bindParam(':query', $query_update);
+
+    $stament->execute();
 
 }
 

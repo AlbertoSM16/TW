@@ -165,7 +165,15 @@ function mostrarReservas($id_usuario){
                 }
             
         }
+
+        $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
+
+            $stmt = $conn->prepare($query_logs);
+            
+            $stmt->bindParam(":query",$query);
+            $stmt->execute();
     }
+
     function filtrarReservas($estado){
         
         require 'conexionBD.php';
@@ -238,7 +246,12 @@ function mostrarReservas($id_usuario){
                 }
         }
 
+        $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
 
+        $stmt = $conn->prepare($query_logs);
+        
+        $stmt->bindParam(":query",$query);
+        $stmt->execute();
     }
 
 
@@ -254,6 +267,12 @@ function mostrarReservas($id_usuario){
 
         $stmt->execute();
 
+        $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
+
+        $stmt = $conn->prepare($query_logs);
+        
+        $stmt->bindParam(":query",$query);
+        $stmt->execute();
 
     }
 
@@ -272,10 +291,18 @@ function mostrarReservas($id_usuario){
                 $stmt->bindParam(':comentario', $_POST['comentario']);
                 $stmt->bindParam(':id_reserva', $id);
                 $stmt->execute();
+
+            $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
+
+            $stmt = $conn->prepare($query_logs);
+            
+            $stmt->bindParam(":query",$query);
+            $stmt->execute();
             }
             catch (PDOException $e) {
                 echo "Error al actualizar la reserva: " . $e->getMessage();
             }
+
     }
     
 
@@ -307,6 +334,13 @@ function mostrarReservas($id_usuario){
 
         $stmt->execute();
 
+        $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
+
+        $stmt = $conn->prepare($query_logs);
+        
+        $stmt->bindParam(":query",$query);
+        $stmt->execute();
+
         if($stmt->rowCount()>0){
             return $habitacion = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
@@ -327,6 +361,13 @@ function mostrarReservas($id_usuario){
         $stmt->execute();
 
         return $reserva = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
+
+        $stmt = $conn->prepare($query_logs);
+        
+        $stmt->bindParam(":query",$query);
+        $stmt->execute();
 
     }
 

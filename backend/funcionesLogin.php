@@ -19,7 +19,15 @@ function login(){
 
     if($stament->rowCount()==1){
             $usuario_log=$stament->fetch(PDO::FETCH_ASSOC);
-            $_SESSION['datosUsuario']=$usuario_log;    
+            $_SESSION['datosUsuario']=$usuario_log;   
+            $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
+
+            $stament=$conn->prepare($query_logs);
+
+            $stament->bindParam(":query",$query);
+            $stament->execute();
+
+            
             return true;
            
         }

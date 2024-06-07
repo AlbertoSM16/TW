@@ -134,7 +134,7 @@ function deleteClient($id){
             $stament->bindParam(':apellidos',$_POST['apellidos']);
             $stament->bindParam(':email',$_POST['email']);
             $stament->bindParam(':dni',$_POST['dni']);
-            $stament->bindParam(':contrasena',$_POST['contrasena']);
+            $stament->bindParam(':contrasena',password_hash($_POST['contrasena'],PASSWORD_BCRYPT));
             $stament->bindParam(':tarjeta_credito',$_POST['tarjeta_credito']);
 
             $stament->execute();

@@ -6,7 +6,6 @@ function login(){
     if($_SERVER["REQUEST_METHOD"]==="POST"){
         
         $email=$_POST['email'];
-
         $contrasena=$_POST['contrasena'];
 
         $query="SELECT * FROM usuarios WHERE email=:email AND contrasena=:contrasena";

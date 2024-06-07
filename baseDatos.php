@@ -26,9 +26,9 @@
     require './backend/CrudAdmin.php';
 
     if(isset($_GET['backups'])){
-        if($_GET['hacer']){
+        if($_GET['backup']==='hacer'){
             hacerBackup('/backups/backup.sql');
-        }else{
+        }else if($_GET['backup']==='recuperar'){
             restaurarBackup('/backups/backup.sql');
         }
     }

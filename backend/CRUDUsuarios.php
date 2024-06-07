@@ -244,7 +244,6 @@ function deleteClient($id){
                 $stament->bindParam(':tarjeta_credito',$_POST['tarjeta_credito']);
                 $stament->bindParam(':rol',$_POST['rol']);
                 $stament->bindParam(':id_usuario',$id_usuario);
-                var_dump($query_update);
 
                 $stament->execute();
             }

@@ -4,7 +4,7 @@
 function vaciarTablas(){
     require 'conexionBD.php';
 
-    $tablas = array("reservas", "fotos_habitaciones", "habitaciones", "usuarios");
+    $tablas = array("reservas", "fotos_habitaciones", "habitaciones", "usuarios","logs");
 
     foreach ($tablas as $tabla) {
         $query = "DELETE FROM $tabla";

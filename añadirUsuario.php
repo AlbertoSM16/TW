@@ -28,7 +28,7 @@
 
     <main class ="pt-36 md:pt-56 lg:p-0">
         <section class="flex justify-center p-6">
-            <form action="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'usuarios.php' : 'añadirUsuario.php'; ?>" method="POST" class="w-full grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center">
+            <form action="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'usuarios.php' : 'añadirUsuario.php'; ?>" method="POST" class="w-full grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center" novalidate>
                 <div class="flex col-span-3 flex-col">
                     <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                         <label for="nombre" class=" pr-3">Nombre:</label>

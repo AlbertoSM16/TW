@@ -25,7 +25,7 @@
 
 <main class ="pt-36 md:pt-56 lg:p-0">
     <section class="flex justify-center p-6">
-        <form id="miFormulario" action="habitaciones.php" method="POST" class="w-full grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center" enctype="multipart/form-data">
+        <form id="miFormulario" action="habitaciones.php" method="POST" class="w-full grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center" enctype="multipart/form-data" novalidate>
          <input type="hidden" name="id_habitacion" value="<?=$habitacion[0]['id_habitacion']; ?>">
     
             <div class="flex col-span-3 flex-col">

@@ -19,7 +19,7 @@
 
 <main>
         <section class="flex justify-center p-6">
-            <form action="datosUsuario.php" method="POST" class="grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center">
+            <form action="datosUsuario.php" method="POST" class="grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center" novalidate>
             <div class="flex col-span-3 flex-col">
                     <div class='w-full flex text-center  justify-between items-center '>
                         <label for="contrasena" class=" pr-3 pt-6">Contraseña:</label>

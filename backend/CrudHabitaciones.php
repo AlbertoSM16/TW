@@ -192,6 +192,9 @@ function eliminarHabitacion($id){
         echo "La habitación ha sido eliminada correctamente.";
     }
 
+
+    $query_log = 'INSERT INTO logs (accion) VALUES (:query);';
+
 }
 
 function obtenerFotos($id){

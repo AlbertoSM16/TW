@@ -66,8 +66,8 @@ function creaTablas(){
    id_log INT AUTO_INCREMENT PRIMARY KEY,
    accion varchar(255) NOT NULL);';
 
-$stmt = $conn->prepare($query_fotos);
-$stmt->execute();
+   $stmt = $conn->prepare($query_fotos);
+   $stmt->execute();
 
 
 }

@@ -163,9 +163,7 @@ function registrarUsuario(){
         $stmt_log->bindParam(":query", $accion);
         $stmt_log->execute();
 
-    } catch (Exception $e) {
-        echo "Error: " . $e->getMessage();
-    }
+
 }
 
 

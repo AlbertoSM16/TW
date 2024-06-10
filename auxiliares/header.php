@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +18,7 @@
             <i id="barra" class="fa-solid fa-bars lg:hidden px-10 text-3xl color-dorado"></i>
         
         <?php 
-            session_start();
+            
              require_once './backend/creacionTablas.php';
              require_once './backend/CRUDUsuarios.php';
              require_once './backend/funcionesLogin.php';

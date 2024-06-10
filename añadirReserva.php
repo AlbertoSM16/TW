@@ -24,7 +24,6 @@
 <body class="p-0 m-0 overflow-x-hidden">
     <?php
     require_once './auxiliares/header.php';
-    var_dump($_POST);
 
     ?>
 <main class ="pt-36 md:pt-56 lg:p-0">

@@ -1,7 +1,7 @@
 
 <?php
 require './backend/CrudHabitaciones.php';
-    var_dump($_GET);
+
     if(isset($_GET['vieneRegistro'])){
         require_once "./backend/validaciones_registroHabitaciones.php";
 

@@ -28,9 +28,6 @@
     <main class="pt-36 md:pt-56 lg:p-0 flex flex-col items-center justify-center">
         
         <?php
-        if(!esRecepcionista()){
-            echo '<meta http-equiv="refresh" content="0;url=index.php">';
-        }
             if(isset($_GET['id'])){
             mostrarInfoHabitacion($_GET['id']);
             }

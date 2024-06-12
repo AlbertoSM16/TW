@@ -22,7 +22,7 @@ if(!noEstaVacia($_POST['nombre'])){
 }else if(!contraseniasIguales($_POST['contrasena'],$_POST['confirmar_contrasena'])){
     $msj_error = "Las contraseñas no son iguales";
 } else if(!esDNIValido($_POST['dni'])){
-    $msj_error = "El email no es valido";
+    $msj_error = "El DNI no es válido, formato incorrecto";
 } else if(!esTarjetaCreditoValida($_POST['tarjeta_credito'])){
     $msj_error = "La tarjeta no es valida";
 }

@@ -3,35 +3,26 @@
 function login(){
     require 'conexionBD.php';
 
-    if($_SERVER["REQUEST_METHOD"]==="POST"){
+   
         
-        $email=$_POST['email'];
-        $query="SELECT * FROM usuarios WHERE email=:email";
+    $email=$_GET['email'];
+    $query="SELECT * FROM usuarios WHERE email=:email";
 
-        $stament=$conn->prepare($query);
-        $stament->bindParam(":email",$email);
-        $stament->execute();
-        $usuario = $stament->fetch(PDO::FETCH_ASSOC);
-        $contrasenia = $usuario["contrasena"];
+    $stament=$conn->prepare($query);
+    $stament->bindParam(":email",$email);
+    $stament->execute();
+    $usuario = $stament->fetch(PDO::FETCH_ASSOC);
+    $_SESSION['datosUsuario']=$usuario;   
+    $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
 
+    $stament=$conn->prepare($query_logs);
 
-    if(password_verify($_POST['contrasena'], $contrasenia)){
-            $_SESSION['datosUsuario']=$usuario;   
-            $query_logs = 'INSERT INTO logs (accion) VALUES (:query);';
+    $stament->bindParam(":query",$query);
+    $stament->execute();
 
-            $stament=$conn->prepare($query_logs);
-
-            $stament->bindParam(":query",$query);
-            $stament->execute();
-
-            
-            return true;
-           
-        }
-
-        return false;
-    }
+     
 }
+
 function isLogged(){
     return isset($_SESSION['datosUsuario']);
 }

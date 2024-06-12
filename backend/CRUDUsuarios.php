@@ -1,5 +1,23 @@
 <?php
 
+function usuarioRegistrado($email, $password){
+    require 'conexionBD.php';
+
+    $query = 'SELECT * FROM usuarios WHERE email=:email';
+    $statement = $conn->prepare($query);
+    $statement->bindParam(":email",$email);
+    $statement->execute();
+
+    $usuario = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if(!$usuario && !password_verify($password, $usuario['contrasena'])){
+        return 'Credenciales incorrectos';
+    } 
+
+    return true;
+    
+}
+
 
 function mostrarUsuarios(){
     require 'conexionBD.php';

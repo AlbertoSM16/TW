@@ -1,4 +1,13 @@
+<?php
+    require_once './backend/CRUDUsuarios.php';
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+       $msj = usuarioRegistrado($_POST['email'], $_POST['contrasena']);
 
+       if($msj === true){
+         echo '<meta http-equiv="refresh" content="0;url=index.php?sign_in=true&email='.$_POST['email'].'">';
+       }
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -17,8 +26,13 @@
     <?php require_once './auxiliares/header.php'?>
     <main class="pt-36 md:pt-56 lg:p-0">
         <section class="flex justify-center p-6">
-            <form action="index.php" method='POST' class="w-full grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center" novalidate>
+            <form action="SignIn.php" method='POST' class="w-full grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center" novalidate>
                 
+                <?php if(isset($msj)):?>
+                    <section class="text-center col-span-3 justify-center items-center  w-full pb-10 text-red-700 text-3xl">
+                        <p><?= $msj ?></p>
+                    </section>
+                <?php endif; ?>
 
                 <div  class=' col-span-3 flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                     <label for="name">Email:</label>
@@ -38,11 +52,7 @@
                     <a href="registro.php">Registrarse</a>
                 </section>
 
-                <?php if(isset($_GET['error'])):?>
-                    <section class="text-center col-span-3 justify-center items-center  w-full pt-10 text-red-700 text-3xl">
-                        <p>Contraseña o email incorrectos</p>
-                    </section>
-                <?php endif; ?>
+
             </form>
         </section>
     </main>

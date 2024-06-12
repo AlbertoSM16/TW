@@ -26,7 +26,15 @@
 
     <main class ="pt-36 md:pt-56 lg:p-0">
         <section class="flex justify-center p-6">
-            <form action="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'index.php' : 'registro.php'; ?>" method="POST" class="w-full grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center" novalidate >
+            <form action="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'index.php?email='.$_POST['email']. '' : 'registro.php'; ?>" method="POST" class="w-full grid lg:grid-cols-3 lg:w-3/6 bg-color-azul-marino color-gris-crema font-bold p-32 rounded-3xl justify-center" novalidate >
+                
+                
+                <?php if(isset($_GET['error'])):?>
+                <div class="text-center col-span-3 justify-center items-center text-red-700 w-full pb-10 text-xl">
+                    <p><?=$_GET['error']?></p>
+                </div>
+                <?php endif;?>
+
                 <div class="flex col-span-3 flex-col">
                     <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                         <label for="nombre" class=" pr-3">Nombre:</label>
@@ -74,7 +82,7 @@
                 <div class="flex col-span-3 flex-col">
                     <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                         <label for="email" class=" pr-3 pt-6">Email:</label>
-                        <input type="text" name="email" id="email" value="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? $_POST["email"] : ''; ?>"p laceholder="Escriba su email" class="mt-6 border-2 border-black color-azul-marino"
+                        <input type="text" name="email" id="email" value="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? $_POST["email"] : ''; ?>" placeholder="Escriba su email" class="mt-6 border-2 border-black color-azul-marino"
                         <?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'readonly' : ''; ?>>
                     </div>
                     <div class="w-64 flex justify-between">
@@ -85,7 +93,7 @@
                 <div class="flex col-span-3 flex-col">
                     <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                         <label for="dni" class=" pr-3 pt-6">DNI:</label>
-                        <input type="text" name="dni" id="dni" value="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? $_POST["dni"] : ''; ?> " placeholder="Escriba su DNI" class="mt-6 border-2 border-black color-azul-marino"
+                        <input type="text" name="dni" id="dni" value="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? $_POST["dni"] : ''; ?>" placeholder="Escriba su DNI" class="mt-6 border-2 border-black color-azul-marino"
                         <?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'readonly' : ''; ?>>
                     </div>
                     <div class="w-64 flex justify-between">
@@ -96,7 +104,7 @@
                 <div class="flex col-span-3 flex-col">
                     <div class=' flex-col w-full lg:flex-row flex text-center  justify-between items-center '>
                         <label for="tarjeta_credito" class=" pr-3 pt-6">Tarjeta de credito:</label>
-                        <input type="text" name="tarjeta_credito" id="tarjeta_credito" value="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? $_POST["tarjeta_credito"] : ''; ?> " placeholder="Escriba su Tarjeta de credito" class="mt-6 border-2 border-black color-azul-marino"
+                        <input type="text" name="tarjeta_credito" id="tarjeta_credito" value="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? $_POST["tarjeta_credito"] : ''; ?>" placeholder="Escriba su Tarjeta de credito" class="mt-6 border-2 border-black color-azul-marino"
                         <?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'readonly' : ''; ?>>
                     </div>
                     <div class="w-64 flex justify-between">
@@ -107,18 +115,12 @@
                 <div class="text-center col-span-3 justify-center items-center  w-full pt-16">
                     <button type="submit" name="<?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'Registrarse' : 'Hola'; ?>" class="text border-white border-2 p-3 bg-color-bronce-metalico rounded-full w-32 animate-pulse" id="boton"><?= ($_SERVER["REQUEST_METHOD"] == "POST") ? 'Confirmar datos' : 'Enviar'; ?></button>
                 </div>
-
-                <?php if(isset($_GET['error'])):?>
-                <div class="text-center col-span-3 justify-center items-center text-red-700 w-full pt-16">
-                    <p><?=$_GET['error']?></p>
-                </div>
-                <?php endif;?>
             </form>
         </section>
     <?php require_once './auxiliares/footer.php'?>
     
     <?php if ($_SERVER['REQUEST_METHOD'] != 'POST'): ?>
-    <script defer>
+    <!-- <script defer>
 
         document.addEventListener('DOMContentLoaded', function () {
             const errores = document.getElementsByName('error');
@@ -221,7 +223,7 @@
                 boton.disabled = !formularioValido;
             }
         });
-    </script> 
+    </script>  -->
     <?php endif; ?>
 </body>
 </html>
